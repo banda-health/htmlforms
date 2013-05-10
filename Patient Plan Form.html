@@ -1,0 +1,364 @@
+<htmlform>
+
+<script type="text/javascript">
+
+		if(jQuery) {
+		
+			$j(function(){
+				$j('.pharma').hide();
+			});
+			$j(function(){
+				$j('.type').hide();
+			});
+		}
+
+if(jQuery){
+      $j(function(){
+          $j('#1-removeEntry').remove();
+          $j('#20-addEntry').remove();
+          $j('#1-toggleContainer').show();
+ 
+          $j('#21-removeEntry').remove();
+          $j('#40-addEntry').remove();
+          $j('#21-toggleContainer').show();
+
+          $j('#41-removeEntry').remove();
+          $j('#60-addEntry').remove();
+          $j('#41-toggleContainer').show();
+
+        });
+ 
+ 
+      $j(function(){
+      $j('button.addEntry').live("click", function(){
+      var correctedAddButtonId = parseFloat(this.id) + 1;
+      var contentAddId = "#" + correctedAddButtonId + "-toggleContainer";
+      $j(contentAddId).toggle(true);
+      $j('#' + this.id).toggle(false); $j('#' + parseFloat(this.id) + '-removeEntry').toggle(false);
+      return false;});
+    });
+ 
+     $j(function(){
+      $j('button.removeEntry').live("click", function(){
+      var correctedRemoveButtonId = parseFloat(this.id) - 1;
+      var contentAddId = "#" + parseFloat(this.id) + "-toggleContainer";
+      $j(contentAddId).toggle(false);
+      $j( ':input:not(:button)', contentAddId).val([]);
+      $j('#' + correctedRemoveButtonId + '-addEntry').toggle(true); $j('#' + correctedRemoveButtonId + '-removeEntry').toggle(true);
+ 
+      return false;});
+ 
+    });
+    
+    $j(function() {
+    
+       $j('#surgical_c').hide();
+       $j('#ophthalmology_c').hide();
+       $j('#dental_c').hide();
+       
+    });
+
+
+
+       $j('#surgical').live('change', function(e) { var surgical = $j('[value=' + $j(this).val() + ']', this).text(); setValue('surgical_c.value', surgical);       });
+       $j('#ophthalmology').live('change', function(e) { var ophthalmology = $j('[value=' + $j(this).val() + ']', this).text(); 
+          setValue('ophthalmology_c.value', ophthalmology);       });
+       $j('#dental').live('change', function(e) { var dental = $j('[value=' + $j(this).val() + ']', this).text(); setValue('dental_c.value', dental);       });
+       
+}
+
+
+</script>
+	<!--<macros>
+                paperFormId = (Fill this in)
+		headerColor =#009d8e
+		fontOnHeaderColor = white
+	</macros>-->
+
+	<style>
+		.section {
+			border: 1px solid #009d8e;
+			padding: 2px;
+			text-align: left;
+			margin-bottom: 1em;
+		}
+		.sectionHeader {
+			background-color: #009d8e;
+			color: white;
+			display: block;
+			padding: 2px;
+			font-weight: bold;
+		}
+		table.baseline-aligned td {
+			vertical-align: baseline;
+		}
+                td.ref {
+                        padding-left:2.8cm;
+                }
+                td.comment {
+                        padding-left:2.9cm;
+                }
+                td.point {
+                        padding-left:1.0cm;
+                }
+
+	</style>
+	<span style="float:right">Paper Form ID: $paperFormId</span>
+	<h2>PATIENT PLAN FORM (v1)</h2>
+
+	<section headerLabel="1. Encounter Details">
+		<table class="baseline-aligned">
+			<tr>
+				<td>Date:</td>
+				<td><encounterDate default="today"/></td>
+				<td><pre>			</pre></td>
+				<td>Location:</td>
+				<td><encounterLocation default="Unknown Location" /></td>
+				<td><pre>			</pre></td>
+				<td>Provider:</td>
+				<td><encounterProvider default="currentUser" role="Provider" /></td>
+				<td><pre>			</pre></td>
+				<td class="type">Type:</td>
+				<td class="type"><encounterType default="Interval History" /></td>
+			</tr>
+		</table>
+	</section>
+
+	<section headerLabel="2. Patient Information">
+		<table class="baseline-aligned">
+			<tr>
+				<td>Name:</td>
+				<td><lookup class="value" expression="patient.personName"/></td>
+				<td><pre>		</pre></td>
+				<td>Manual ID:</td>
+				<td><lookup class="value" complexExpression="#foreach( $patId in $patientIdentifiers.get('Old Identification Number') ) $patId #end "/></td>
+				<td><pre>		</pre></td>
+				<td>Auto ID:</td>
+				<td><lookup class="value" complexExpression="#foreach( $patId in $patientIdentifiers.get('OpenMRS Identification Number') ) $patId #end"/></td>
+				<td><pre>		</pre></td>
+				<td>Gender:</td>
+				<td><lookup class="value" expression="patient.gender"/></td>
+			</tr>
+			
+		</table>
+	</section>
+
+	<section headerLabel="3. Counseling Information">
+		<table class="baseline-aligned">
+			<tr>
+				<td>Nutrition Counseling:</td>
+				<td class="point"><obs conceptId="1380" answerConceptIds="1065,1066" answerLabels="Done,Not Done" style="radio" /></td>
+			</tr>
+			<tr>
+				<td>Exercise Counseling:</td>
+				<td class="point"><obs conceptId="e38a3f87-feb3-4a28-bd25-7602832c2ed1" answerConceptIds="1065,1066" answerLabels="Done,Not Done" style="radio" /></td>
+			</tr>
+			<tr>
+				<td>Foot care teaching:</td>
+				<td class="point"></td>
+			</tr>
+			<tr>
+				<td>Smoking counseling:</td>
+				<td class="point"><obs conceptId="1455" answerConceptIds="1065,1066" answerLabels="Done,Not Done" style="radio" /></td>
+			</tr>
+			<tr>
+				<td>Signs of DKA:</td>
+				<td class="point"><obs conceptId="091fba4c-df7c-40c1-a7e5-8d97999f0fd3" answerConceptIds="1065,1066" answerLabels="Yes,No" style="radio" /></td>
+			</tr>
+			<tr>
+				<td>Signs of Hypoglycemia:</td>
+				<td class="point"><obs conceptId="e47a3ee3-352f-4bce-bb44-adf483a0e49f" answerConceptIds="1065,1066" answerLabels="Yes,No" style="radio" /></td>
+			</tr>
+        <obsgroup groupingConceptId="161593">
+                <tr>
+                    <td>Other Counseling Orders:</td>
+                <td>
+                <repeat>
+                    <template>
+                        <div id="{n}-toggleContainer" style="display:none;">
+                            <table>
+                                <tr>
+
+                                    <td class="point">
+                                        <obs conceptId="161588" answerClasses="{concept}" style="autocomplete" />
+                                    </td>
+                                    <td><button id="{n}-addEntry" class="addEntry">Add</button><button id="{n}-removeEntry" class="removeEntry">Remove</button></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </template>
+                    <render n="1" concept="Misc Order"/>
+                    <render n="2" concept="Misc Order"/>
+                    <render n="3" concept="Misc Order"/>
+                    <render n="4" concept="Misc Order"/>
+                    <render n="5" concept="Misc Order"/>
+                    <render n="6" concept="Misc Order"/>
+                    <render n="7" concept="Misc Order"/>
+                    <render n="8" concept="Misc Order"/>
+                    <render n="9" concept="Misc Order"/>
+                    <render n="10" concept="Misc Order"/>
+                    <render n="11" concept="Misc Order"/>
+                    <render n="12" concept="Misc Order"/>
+                    <render n="13" concept="Misc Order"/>
+                    <render n="14" concept="Misc Order"/>
+                    <render n="15" concept="Misc Order"/>
+                    <render n="16" concept="Misc Order"/>
+                    <render n="17" concept="Misc Order"/>
+                    <render n="18" concept="Misc Order"/>
+                    <render n="19" concept="Misc Order"/>
+                    <render n="20" concept="Misc Order"/>
+                </repeat>
+                </td></tr>           
+            </obsgroup>
+			
+		</table>
+	</section>
+
+	<section headerLabel="4. Specialty Referrals">
+		<table class="baseline-aligned">
+			
+			<tr>
+				<td>Surgical:</td>
+				<td class="comment">
+                                <select id="surgical">
+                                <option value="Surgical Option 1">Surgical Option 1</option>
+                                <option value="Surgical Option 2">Surgical Option 2</option>
+                                <option value="Surgical Option 3">Surgical Option 3</option>
+                                </select>
+                                <obs conceptId="1673" id="surgical_c" />
+                        </td>
+			</tr>
+			<tr>
+				<td>Ophthalmology:</td>
+				<td class="comment">
+                                <select id="ophthalmology">
+                                <option value="KH Eye Clinic">KH Eye Clinic</option>
+                                <option value="Outside Ophthalmology">Outside Ophthalmology</option>
+                                </select>
+                                <obs conceptId="1763" id="ophthalmology_c" />
+                                </td>
+			</tr>
+			<tr>
+				<td>Dental:</td>
+				<td class="comment">
+                                <select id="dental">
+                                <option value="Dental Option 1">Dental Option 1</option>
+                                <option value="Dental Option 2">Dental Option 2</option>
+                                <option value="Dental Option 3">Dental Option 3</option>
+                                </select>
+                                <obs conceptId="1772" id="dental_c" />
+                                </td>
+			</tr>
+            <obsgroup groupingConceptId="161592">
+                <tr>
+                    <td>Other Referrals:</td>
+                <td class="ref">
+                <repeat>
+                    <template>
+                        <div id="{n}-toggleContainer" style="display:none;">
+                            <table>
+                                <tr>
+
+                                    <td>
+                                        <obs conceptId="161589" answerClasses="{concept}" style="autocomplete" />
+                                    </td>
+                                    <td><button id="{n}-addEntry" class="addEntry">Add</button><button id="{n}-removeEntry" class="removeEntry">Remove</button></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </template>
+                    <render n="41" concept="Misc Order"/>
+                    <render n="42" concept="Misc Order"/>
+                    <render n="43" concept="Misc Order"/>
+                    <render n="44" concept="Misc Order"/>
+                    <render n="45" concept="Misc Order"/>
+                    <render n="46" concept="Misc Order"/>
+                    <render n="47" concept="Misc Order"/>
+                    <render n="48" concept="Misc Order"/>
+                    <render n="49" concept="Misc Order"/>
+                    <render n="50" concept="Misc Order"/>
+                    <render n="51" concept="Misc Order"/>
+                    <render n="52" concept="Misc Order"/>
+                    <render n="53" concept="Misc Order"/>
+                    <render n="54" concept="Misc Order"/>
+                    <render n="55" concept="Misc Order"/>
+                    <render n="56" concept="Misc Order"/>
+                    <render n="57" concept="Misc Order"/>
+                    <render n="58" concept="Misc Order"/>
+                    <render n="59" concept="Misc Order"/>
+                    <render n="60" concept="Misc Order"/>
+                </repeat>
+                </td></tr>           
+            </obsgroup>        
+			
+		</table>
+	</section>
+
+	<section headerLabel="5. Plan Information">
+		<!--<table class="baseline-aligned">
+		<tr><td colspan="3">-->
+            <fieldset>
+		<table>	
+			<tr>
+				<th style="background-color: #696969; color: #ffffff;">Drug Prescribed</th>
+				<th style="background-color: #696969; color: #ffffff;">Dose Prescribed</th>
+				<th style="background-color: #696969; color: #ffffff;" class="pharma">Dispensed Units</th>
+				<th style="background-color: #696969; color: #ffffff;">Frequency Prescribed</th>
+			</tr>
+			<repeat>
+				<template>
+					<obsgroup groupingConceptId="1442">
+						<tr>
+							<td><obs conceptId="1282" style="autocomplete" answerClasses="Drug"/></td>
+							<td><obs conceptId="1443" labetText=""/></td>
+							<td class="pharma"><obs conceptId="1444" size="5" /></td>
+							<td><obs conceptId="160855" answerConceptIds="160862,160863,160864,160865,160861,160860,160859,160858,160866,160867,160868,160869,160870,160871,160872,160857" /></td>													
+						</tr>
+					</obsgroup>
+				</template>
+				<render />
+				<render />
+				<render />
+				<render />
+				<render />
+				<render />
+				<render />
+				<render />
+				<render />
+				<render />
+			</repeat>
+			<tr>
+				<td>
+					<lookup complexExpression="#foreach($obs in $fn.latestObs(1282)) $obs.valueCoded.name #end" class="value" />
+				</td>
+				<td>
+					<lookup complexExpression="#foreach($obs in $fn.latestObs(1443)) $obs.valueText #end" class="value" />
+				</td>
+				<td>
+					<lookup complexExpression="#foreach($obs in $fn.latestObs(160855)) $obs.valueCoded.name #end" class="value" />
+				</td>
+			</tr>
+		</table>
+	</fieldset >
+<!--</td></tr>-->
+		<table class="baseline-aligned">
+			<tr>
+				<td>Progress Notes:</td>
+				<td><p></p></td>
+				<td class="comment"><obs conceptId="161011" style="textarea" cols="50" rows="5" /></td>
+			</tr>
+			<!--<tr>
+				<td>Comments:</td>
+				<td class="ref"><obs conceptId="161011" /></td>
+			</tr>-->
+			<tr>
+				<td>Disposition:</td>
+				<td><p></p></td>
+				<td class="ref"><obs conceptId="159488" answerConceptIds="1788,1654,1536" answerLabels="Referred,Admitted,Home" style="radio" /></td>
+			</tr>
+
+		</table>
+	</section>
+	<submit/>
+
+</htmlform>

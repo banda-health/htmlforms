@@ -1,0 +1,149 @@
+<htmlform>
+
+	<macros>
+		paperFormId = (Fill this in)
+		headerColor =#009d8e
+		fontOnHeaderColor = white
+	</macros>
+
+	<style>
+		.section {
+			border: 1px solid $headerColor;
+			padding: 2px;
+			text-align: left;
+			margin-bottom: 1em;
+		}
+		.sectionHeader {
+			background-color: $headerColor;
+			color: $fontOnHeaderColor;
+			display: block;
+			padding: 2px;
+			font-weight: bold;
+		}
+		table.baseline-aligned td {
+			vertical-align: baseline;
+		}
+		td.lookup {
+			background-color:yellow;
+		}
+	</style>
+
+	<span style="float:right">Paper Form ID: $paperFormId</span>
+	<h2>PHYSICAL EXAM FORM - LAB</h2>
+
+	<section headerLabel="1. Encounter Details">
+		<table class="baseline-aligned">
+			<tr>
+				<td>Date:</td>
+				<td><encounterDate default="today"/></td>
+				<td><pre>			</pre></td>
+				<td>Location:</td>
+				<td><encounterLocation default="Unknown Location" /></td>
+				<td><pre>			</pre></td>
+				<td>Provider:</td>
+				<td><encounterProvider default="currentUser" role="Provider" /></td>
+			</tr>
+		</table>
+	</section>
+
+	<section headerLabel="2. Patient Information">
+		<table class="baseline-aligned">
+			<tr>
+				<td>Name:</td>
+				<td><lookup class="value" expression="patient.personName"/></td>
+				<td><pre>		</pre></td>
+				<td>Manual ID:</td>
+				<td><lookup class="value" complexExpression="#foreach( $patId in $patientIdentifiers.get('Old Identification Number') ) $patId #end "/></td>
+				<td><pre>		</pre></td>
+				<td>Auto ID:</td>
+				<td><lookup class="value" complexExpression="#foreach( $patId in $patientIdentifiers.get('OpenMRS Identification Number') ) $patId #end"/></td>
+				<td><pre>		</pre></td>
+				<td>Gender:</td>
+				<td><lookup class="value" expression="patient.gender"/></td>
+			</tr>
+			
+		</table>
+	</section>
+
+
+	<section headerLabel="3. Lab Investigations">
+		<table class="baseline-aligned">
+			<tr>
+				<td>HbA1C:</td>
+				<td><obs conceptId="159644" /></td>
+				<td class="lookup"><lookup expression="fn.latestObs(159644).valueNumeric"/></td>
+			</tr>
+			<tr>
+				<td>RBS:</td>
+				<td><obs conceptId="887" /></td>
+				<td class="lookup"><lookup expression="fn.latestObs(887).valueNumeric"/></td>
+			</tr>
+			<tr>
+				<td>FBS:</td>
+				<td><obs conceptId="160912" /></td>
+				<td class="lookup"><lookup expression="fn.latestObs(160912).valueNumeric"/></td>
+			</tr>
+			<tr>
+				<td>Urine Glucose:</td>
+				<td><obs conceptId="159733" /></td>
+				<td class="lookup"><lookup expression="fn.latestObs(160912).valueNumeric"/></td>
+			</tr>
+			<tr>
+				<td>Na+:</td>
+				<td><obs conceptId="1132" /></td>
+				<td class="lookup"><lookup expression="fn.latestObs(1132).valueNumeric"/></td>
+			</tr>
+			<tr>
+				<td>K+:</td>
+				<td><obs conceptId="1133" /></td>
+				<td class="lookup"><lookup expression="fn.latestObs(1133).valueNumeric"/></td>
+			</tr>
+			<tr>
+				<td>Cr:</td>
+				<td><obs conceptId="790" /></td>
+				<td class="lookup"><lookup expression="fn.latestObs(790).valueNumeric"/></td>
+			</tr>
+			<tr>
+				<td>Hb:</td>
+				<td><obs conceptId="21" /></td>
+				<td class="lookup"><lookup expression="fn.latestObs(21).valueNumeric"/></td>
+			</tr>
+			<tr>
+				<td>WBC:</td>
+				<td><obs conceptId="678" /></td>
+				<td class="lookup"><lookup expression="fn.latestObs(678).valueNumeric"/></td>
+			</tr>
+			<tr>
+				<td>LDL:</td>
+				<td><obs conceptId="1008" /></td>
+				<td class="lookup"><lookup expression="fn.latestObs(1008).valueNumeric"/></td>
+			</tr>
+			<tr>
+				<td>Total Chol:</td>
+				<td><obs conceptId="1006" /></td>
+				<td class="lookup"><lookup expression="fn.latestObs(1006).valueNumeric"/></td>
+			</tr>
+			<tr>
+				<td colspan="3"><br /></td>
+			</tr>
+			<tr>
+				<td>Other:</td>
+				<td><obs conceptId="161011" rows="2" cols="20" /></td>
+				<td class="lookup"><lookup expression="fn.latestObs(161011).valueText"/></td>
+			</tr>
+			<tr>
+				<td>ECHO:</td>
+				<td><obs conceptId="159573" rows="2" cols="20" /></td>
+				<td class="lookup"><lookup expression="fn.latestObs(159573).valueText"/></td>
+			</tr>
+			<tr>
+				<td>ECG:</td>
+				<td><obs conceptId="161579" rows="2" cols="20" /></td>
+				<td class="lookup"><lookup expression="fn.latestObs(161579).valueText"/></td>
+			</tr>
+		</table>
+	</section>
+
+	<submit/>
+
+</htmlform>

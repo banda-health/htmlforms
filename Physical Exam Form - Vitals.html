@@ -1,0 +1,162 @@
+<htmlform>
+
+        <script type="text/javascript">
+            
+			if(jQuery) {
+				
+				$j(function() {
+				
+					$j("#bmi").attr("disabled",true);
+				});
+				
+				$j(function() {
+				
+						
+						function getBMI() {
+						
+							if($j(getValue("weight.value") != "")) {
+								if(getValue("height.value") != "") {
+							
+									var bmi = getValue("weight.value") / ( (getValue("height.value") / 100.0) * (getValue("height.value") / 100.0) );
+									setValue("bmi.value", bmi.toPrecision(3));
+								}
+							}
+						}//end getBMI
+						
+						getField("weight.value").change(getBMI);
+						getField("height.value").change(getBMI);
+						getField("weight.value").blur(getBMI);
+						getField("height.value").blur(getBMI);
+						getField("bmi.value").blur(getBMI);
+						
+						
+						beforeSubmit.push(function getBMI() {
+							getBMI();
+							return true;
+						});
+					
+				});
+            }
+        </script>
+	<macros>
+		paperFormId = (Fill this in)
+		headerColor =#009d8e
+		fontOnHeaderColor = white
+	</macros>
+	<style>
+		.section {
+			border: 1px solid $headerColor;
+			padding: 2px;
+			text-align: left;
+			margin-bottom: 1em;
+		}
+		.sectionHeader {
+			background-color: $headerColor;
+			color: $fontOnHeaderColor;
+			display: block;
+			padding: 2px;
+			font-weight: bold;
+		}
+		table.baseline-aligned td {
+			vertical-align: baseline;
+		}
+		td.lookup {
+			background-color:yellow;
+		}
+	</style>
+
+	<span style="float:right">Paper Form ID: $paperFormId</span>
+	<h2>PHYSICAL EXAM FORM - VITALS</h2>
+
+	<section headerLabel="1. Encounter Details">
+		<table class="baseline-aligned">
+			<tr>
+				<td>Date:</td>
+				<td><encounterDate default="today"/></td>
+				<td><pre>			</pre></td>
+				<td>Location:</td>
+				<td><encounterLocation default="Unknown Location" /></td>
+				<td><pre>			</pre></td>
+				<td>Provider:</td>
+				<td><encounterProvider default="currentUser" role="Provider" /></td>
+			</tr>
+		</table>
+	</section>
+
+	<section headerLabel="2. Patient Information">
+		<table class="baseline-aligned">
+			<tr>
+				<td>Name:</td>
+				<td><lookup class="value" expression="patient.personName"/></td>
+				<td><pre>		</pre></td>
+				<td>Manual ID:</td>
+				<td><lookup class="value" complexExpression="#foreach( $patId in $patientIdentifiers.get('Old Identification Number') ) $patId #end "/></td>
+				<td><pre>		</pre></td>
+				<td>Auto ID:</td>
+				<td><lookup class="value" complexExpression="#foreach( $patId in $patientIdentifiers.get('OpenMRS Identification Number') ) $patId #end"/></td>
+				<td><pre>		</pre></td>
+				<td>Gender:</td>
+				<td><lookup class="value" expression="patient.gender"/></td>
+			</tr>
+			
+		</table>
+	</section>
+
+
+        <section headerLabel="3. Vital Signs">
+		<table class="baseline-aligned">
+			<tr>
+				<td>Temperature(<sup>0</sup>C):</td>
+				<td><obs conceptId="5088" /></td>
+				<td class="lookup"><lookup expression="fn.latestObs(5088).valueNumeric"/></td>
+			</tr>
+			<tr>
+				<td>RR:</td>
+				<td><obs conceptId="5242" /></td>
+				<td class="lookup"><lookup expression="fn.earliestObs(5242).valueNumeric"/></td>
+			</tr>
+			<tr>
+				<td>HR:</td>
+				<td><obs conceptId="5087" /></td>
+				<td class="lookup"><lookup expression="fn.latestObs(5087).valueNumeric"/></td>
+			</tr>
+			<tr>
+				<td>Systolic / Diastolic:</td>
+				<td>
+                    <obs conceptId="5085" /> /
+                    <obs conceptId="5086" />
+                </td>
+				<td class="lookup"><lookup expression="fn.latestObs(5085).valueNumeric"/> / <lookup expression="fn.latestObs(5086).valueNumeric"/></td>
+			</tr>
+			<tr>
+				<td>Weight (KG):</td>
+				<td><obs conceptId="5089" id="weight" /></td>
+				<td class="lookup"><lookup expression="fn.latestObs(5089).valueNumeric"/></td>
+			</tr>
+			<tr>
+				<td>Blood Oxygen Saturation:</td>
+				<td><obs conceptId="5092" /></td>
+				<td class="lookup"><lookup expression="fn.latestObs(5092).valueNumeric"/></td>
+			</tr>
+			<tr>
+				<td>Waist (CM):</td>
+				<td><obs conceptId="161577" /></td>
+				<td class="lookup"><lookup expression="fn.latestObs(161577).valueNumeric"/></td>
+			</tr>
+			<tr>
+				<td>Height (CM):</td>
+				<td><obs conceptId="5090" id="height" /></td>
+				<td class="lookup"><lookup expression="fn.latestObs(5090).valueNumeric"/></td>
+			</tr>
+			<tr>
+				<td>Body Mass Index:</td>
+				<td><obs conceptId="1342" id="bmi" /></td>
+				<td class="lookup"><lookup expression="fn.latestObs(1342).valueNumeric"/></td>
+			</tr>
+			
+		</table>
+	</section>
+
+	<submit/>
+
+</htmlform>
