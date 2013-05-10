@@ -193,6 +193,12 @@ if(jQuery){
 			$j("#h_yes").attr("checked",true);
 			$j("#c_yes").attr("checked",true);
 			$j("#m_yes").attr("checked",true);
+			
+			$j(function() {
+			
+				$j("#dm").hide();
+				setValue("dm.value",119481);
+			});
 		});
 		
 }//end outmost if
@@ -270,7 +276,6 @@ if(jQuery){
 	</section>
 
         <section headerLabel="3. Medical Information">
-		<!--<table class="baseline-aligned">-->
 
 		<br />
 		<fieldset><legend>Family History</legend>
@@ -281,62 +286,53 @@ if(jQuery){
 			</tr>
 		</table>
 		</fieldset>
-		<!--
-			<tr>
-				<td colspan="2"><br /></td>
-			</tr>
-		-->	
 
 		<br />
 		<br />
+		
 		<fieldset><legend>Past Medical History</legend>
 		<table class="baseline-aligned">
 
 		<form>
 			<tr>
-				<td>Diagnosis Date of Diabetes Mellitus:</td>
-				<td><obs conceptId="161570" id="dd_dm" /></td>
+				<obsgroup groupingConceptId="160593">
+					<td>
+						<obs conceptId="160592" answerClasses="Diagnosis" style="autocomplete" id="dm"/>
+						Diagnosis Date of Diabetes Mellitus
+					</td>
+					<td><obs conceptId="159948" /></td>
+				</obsgroup>
+			</tr>
+                           
+            
+			<tr>
+				<obsgroup groupingConceptId="159947">
+					<td>
+						Myocardial Infarction
+						<obs conceptId="1284" answerClasses="Diagnosis" style="autocomplete" />
+					</td>
+					<td>Diagnosis Date <obs conceptId="159948" id="dd_dm" /></td>
+				</obsgroup>
 			</tr>
 			<tr>
-				<td>History of Myocardial Infarction:</td>
-				<td>
-					<span class="required">*</span><input type="radio" name="mi" id="m_yes" /> Yes
-					<input type="radio" name="mi" id="m_no" /> No
-					<span id="mi" class="d_date">Diagnosis Date: <obs conceptId="161571" id="dd_mi" /></span>
-				</td>
+				<obsgroup groupingConceptId="159947">
+					<td>
+						CerebroVascular Accident
+						<obs conceptId="1284" answerClasses="Diagnosis" style="autocomplete" />
+					</td>
+					<td>Diagnosis Date<obs conceptId="159948" id="dd_dm" /></td>
+				</obsgroup>
 			</tr>
-			<!--<tr id="mi">
-				<td>Diagnosis Date of Myocardial Infarction:</td>
-				<td><obs conceptId="161571" /></td>
-			</tr>-->
 			<tr>
-				<td>History of CVA:</td>
-				<td>
-					<span class="required">*</span><input type="radio" name="cva" id="c_yes" /> Yes
-					<input type="radio" name="cva" id="c_no" /> No
-					<span id = "cva" class="d_date">Diagnosis Date: <obs conceptId="161569" id="dd_cva" /> </span>
-				</td>
+				<obsgroup groupingConceptId="159947">
+					<td>
+						Hypertension
+						<obs conceptId="1284" answerClasses="Diagnosis" style="autocomplete" />
+					</td>
+					<td>Diagnosis Date <obs conceptId="159948" id="dd_dm" /></td>
+				</obsgroup>
 			</tr>
-			<!--<tr id="cva">
-				<span>
-				<td>Diagnosis Date of CVA:</td>
-				<td>
-					  <obs conceptId="161569" /> 
-				</td>
-				</span>
-			</tr>-->
-			<tr>
-				<td>History of Hypertension:</td>
-				<td>
-					<span class="required">*</span><input type="radio" name="htn" id="h_yes" /> Yes
-					<input type="radio" name="htn" id="h_no" /> No
-					<span id="htn" class="d_date">Diagnosis Date: <obs conceptId="161605" id="dd_htn" /></span>
-				</td>
-			</tr>
-			<!--<tr id="htn" >
-				<td>History of Hypertension:</td>
-				<td><obs conceptId="161572" answerConceptIds="1065,1066" answerLabels="Yes,No" style="radio"/></td>
-			</tr>-->
+			
 		</form>
 
 		</table>
@@ -348,8 +344,7 @@ if(jQuery){
 		<table class="baseline-aligned">
 			<tr>
 				<td>Amputation:</td>
-				<td><obs conceptId="161568" answerConceptIds="161567,161566,1066" 
-                                          answerLabels="Yes - DM Related,Yes DM not Related,No" style="radio" /></td>
+				<td><obs conceptId="161568" answerConceptIds="161567,161566,1066" answerLabels="Yes - DM Related,Yes DM not Related,No" style="radio" /></td>
 			</tr>
 		</table>
 		</fieldset>
