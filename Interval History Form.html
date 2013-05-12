@@ -207,15 +207,16 @@
 		</table>
 	</td>
 	<td>
-		<table border="1" style="position:absolute; top:71%">
+		<ifMode mode="ENTER">
+		<table border="1" style="position:relative; ">
 			<tr>
 				<th style="background-color: #696969; color: #ffffff;">Drug Prescribed</th>
 				<th style="background-color: #696969; color: #ffffff;">Dose Prescribed</th>
 				<th style="background-color: #696969; color: #ffffff;">Frequency Prescribed</th>
 			</tr>
 			<tr>
-			<ifMode mode="ENTER">
-				<td colspan="3"  class="lookup">
+			
+				<td class="lookup">
 				
 					<lookup complexExpression="#foreach($enc in $fn.allEncounters(null))
 								
@@ -227,11 +228,8 @@
 										
 									
 												#if($obs.concept.conceptId == 1282)
-													 $obs.valueCoded.name, 
-												#elseif($obs.concept.conceptId == 1443)
-													 $obs.valueNumeric, 
-												#elseif($obs.concept.conceptId == 160855)
-													 $obs.valueCoded.name, 
+													 $obs.valueCoded.name
+													 &lt;br &gt;
 												#end
 																		
 									#end
@@ -240,11 +238,58 @@
 									#break
 								#end
 							#end" class="value" />
-				</td>		
-				</ifMode>
+				</td>
+				<td class="lookup">
+				
+					<lookup complexExpression="#foreach($enc in $fn.allEncounters(null))
+								
+								#if($form == $enc.form.formId)
+								
+									#set($latestEnc = $fn.latestEncounter($enc.encounterType))
+									
+									#foreach($obs in $latestEnc.obs)
+										
+									
+												#if($obs.concept.conceptId == 1443)
+													 $obs.valueNumeric
+													 &lt;br &gt;
+												#end
+																		
+									#end
+
+								
+									#break
+								#end
+							#end" class="value" />
+				</td>
+				<td class="lookup">
+				
+					<lookup complexExpression="#foreach($enc in $fn.allEncounters(null))
+								
+								#if($form == $enc.form.formId)
+								
+									#set($latestEnc = $fn.latestEncounter($enc.encounterType))
+									
+									#foreach($obs in $latestEnc.obs)
+										
+									
+												#if($obs.concept.conceptId == 160855)
+													 $obs.valueCoded.name
+													 &lt;br &gt;
+												#end
+																		
+									#end
+
+								
+									#break
+								#end
+							#end" class="value" />
+				</td>
+				
 			</tr>
 
 		</table>
+		</ifMode>
 	</td>
 </tr>
 </table>
