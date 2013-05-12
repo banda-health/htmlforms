@@ -1,0 +1,221 @@
+<htmlform>
+
+	<macros>
+		paperFormId = (Fill this in)
+		headerColor =#009d8e
+		fontOnHeaderColor = white
+	</macros>
+	
+	<script type="text/javascript">
+		if(jQuery) {
+		
+			$j(function(){
+				$j('.pharma').hide();
+			});
+			$j(function(){
+				$j('.type').hide();
+			});
+		}
+	</script>
+
+	<style>
+		.section {
+			border: 1px solid $headerColor;
+			padding: 2px;
+			text-align: left;
+			margin-bottom: 1em;
+		}
+		.sectionHeader {
+			background-color: $headerColor;
+			color: $fontOnHeaderColor;
+			display: block;
+			padding: 2px;
+			font-weight: bold;
+		}
+		table.baseline-aligned td {
+			vertical-align: baseline;
+		}
+	</style>
+
+
+	<span style="float:right">Paper Form ID: $paperFormId</span>
+	<h2>INTERVAL HISTORY FORM (v1)</h2>
+
+	<section headerLabel="1. Encounter Details">
+		<table class="baseline-aligned">
+			<tr>
+				<td>Date:</td>
+				<td><encounterDate default="today"/></td>
+				<td><pre>			</pre></td>
+				<td>Location:</td>
+				<td><encounterLocation default="Unknown Location" /></td>
+				<td><pre>			</pre></td>
+				<td>Provider:</td>
+				<td><encounterProvider default="currentUser" role="Provider" /></td>
+				<td><pre>			</pre></td>
+				<td class="type">Type:</td>
+				<td class="type"><encounterType default="Interval History" /></td>
+			</tr>
+		</table>
+	</section>
+
+	<section headerLabel="2. Patient Information">
+		<table class="baseline-aligned">
+			<tr>
+				<td>Name:</td>
+				<td><lookup class="value" expression="patient.personName"/></td>
+				<td><pre>		</pre></td>
+				<td>Manual ID:</td>
+				<td><lookup class="value" complexExpression="#foreach( $patId in $patientIdentifiers.get('Old Identification Number') ) $patId #end "/></td>
+				<td><pre>		</pre></td>
+				<td>Auto ID:</td>
+				<td><lookup class="value" complexExpression="#foreach( $patId in $patientIdentifiers.get('OpenMRS Identification Number') ) $patId #end"/></td>
+				<td><pre>		</pre></td>
+				<td>Gender:</td>
+				<td><lookup class="value" expression="patient.gender"/></td>
+			</tr>
+			
+		</table>
+	</section>
+
+
+        <section headerLabel="3. Interval History">
+		<table class="baseline-aligned">
+			<tr>
+				<th style="background-color: #696969; color: #ffffff;">Question</th>
+				<th style="background-color: #696969; color: #ffffff;">Answer</th>
+				<th style="background-color: #696969; color: #ffffff;">Previous Answers</th>
+			</tr>
+			<tr>
+				<td>Type of visit</td>
+				<td>
+					<obs conceptId="160530" answerConceptIds="161602,160523" answerLabels="First visit,Return visit" style="radio"/>
+				</td>
+				<td>
+					<lookup class="value" expression="fn.latestObs(160530).valueCoded.name"/>
+				</td>
+			</tr>
+			
+			<tr>
+				<td>Glucose monitoring at home</td>
+				<td><obs conceptId="161573" answerConceptIds="1065,1066" answerLabels="Yes,No" style="radio"/></td>
+				<td>
+					<lookup class="value" expression="fn.latestObs(161573).valueCoded.name"/>
+				</td>
+			</tr>
+			
+			<tr>
+				<td>Symptoms of hypoglycemia</td>
+				<td><obs conceptId="161603" answerConceptIds="1065,1066" answerLabels="Yes,No" style="radio"/></td>
+				<td>
+					<lookup class="value" expression="fn.latestObs(161603).valueCoded.name"/>
+				</td>
+			</tr>
+			<tr><td colspan="3"><br /></td></tr>
+			<tr>
+				<td>Other symptoms</td>
+				<td>
+					<obs conceptId="1728" answerConceptId="147104" answerLabel="Blurred vision" style="checkbox"/><br />
+					<obs conceptId="1728" answerConceptId="136394" answerLabel="JVD" style="checkbox"/><br />
+					<obs conceptId="1728" answerConceptId="150528" answerLabel="Numbness" style="checkbox"/><br />
+					<obs conceptId="1728" answerConceptId="129171" answerLabel="Tingling" style="checkbox"/><br />
+					<obs conceptId="1728" answerConceptId="6005" answerLabel="Focal weakness" style="checkbox"/>
+				</td>
+				<td colspan="2"><lookup complexExpression="#foreach($obs in $fn.allObs(1728)) $obs.valueCoded.name &lt;br /&gt; #end" class="value" /></td>
+			</tr>
+			<tr><td colspan="3"><br /></td></tr>
+			<tr>
+				<td>Adherence to Drugs:</td>
+				<td><obs conceptId="161563" answerConceptIds="159405,159406,159407,1107" answerLabels="Good,Fair,Poor,None" style="radio" /></td>
+				<td>
+					<lookup class="value" expression="fn.latestObs(161563).valueCoded.name"/>
+				</td>
+			</tr>
+			
+		</table>
+	</section>
+
+<section headerLabel="4. Other Medications">
+
+
+
+<table>
+<tr><td>
+		<table>	
+			<tr>
+				<th style="background-color: #696969; color: #ffffff;">Drug Prescribed</th>
+				<th style="background-color: #696969; color: #ffffff;">Dose Prescribed</th>
+				<th style="background-color: #696969; color: #ffffff;" class="pharma">Dispensed Units</th>
+				<th style="background-color: #696969; color: #ffffff;">Frequency Prescribed</th>
+			</tr>
+			<repeat>
+				<template>
+					<obsgroup groupingConceptId="1442">
+						<tr>
+							<td><obs conceptId="1282" style="autocomplete" answerClasses="Drug"/></td>
+							<td><obs conceptId="1443" labetText=""/></td>
+							<td class="pharma"><obs conceptId="1444" size="5" /></td>
+							<td><obs conceptId="160855" answerConceptIds="160862,160863,160864,160865,160861,160860,160859,160858,160866,160867,160868,160869,160870,160871,160872,160857" /></td>													
+						</tr>
+					</obsgroup>
+				</template>
+				<render />
+				<render />
+				<render />
+				<render />
+				<render />
+				<render />
+				<render />
+				<render />
+				
+			</repeat>
+			
+		</table>
+	</td>
+	<td>
+		<table border="1" style="position:absolute; top:71%">
+			<tr>
+				<th style="background-color: #696969; color: #ffffff;">Drug Prescribed</th>
+				<th style="background-color: #696969; color: #ffffff;">Dose Prescribed</th>
+				<th style="background-color: #696969; color: #ffffff;">Frequency Prescribed</th>
+			</tr>
+			<tr>
+				<td colspan="3">
+				
+					<lookup complexExpression="#foreach($enc in $fn.allEncounters(null))
+								
+								#if($form == $enc.form.formId)
+								
+									#set($latestEnc = $fn.latestEncounter($enc.encounterType))
+									
+									#foreach($obs in $latestEnc.obs)
+										
+									
+												#if($obs.concept.conceptId == 1282)
+													 $obs.valueCoded.name 
+												#elseif($obs.concept.conceptId == 1443)
+													 $obs.valueNumeric 
+												#elseif($obs.concept.conceptId == 160855)
+													 $obs.valueCoded.name 
+												#end
+										&lt;br &gt;									
+									#end
+
+								
+									#break
+								#end
+							#end" class="value" />
+				</td>												
+			</tr>
+
+		</table>
+	</td>
+</tr>
+</table>
+
+
+	</section>
+
+	<submit/>
+
+</htmlform>

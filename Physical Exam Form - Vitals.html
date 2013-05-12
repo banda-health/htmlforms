@@ -36,6 +36,9 @@
 						});
 					
 				});
+				$j(function(){
+					$j('.type').hide();
+				});
             }
         </script>
 	<macros>
@@ -79,6 +82,9 @@
 				<td><pre>			</pre></td>
 				<td>Provider:</td>
 				<td><encounterProvider default="currentUser" role="Provider" /></td>
+				<td><pre>			</pre></td>
+				<td class="type">Type:</td>
+				<td class="type"><encounterType default="VITALS" /></td>
 			</tr>
 		</table>
 	</section>

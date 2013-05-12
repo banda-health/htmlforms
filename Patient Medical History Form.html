@@ -199,6 +199,10 @@ if(jQuery){
 				$j("#dm").hide();
 				setValue("dm.value",119481);
 			});
+			
+			$j(function(){
+				$j('.type').hide();
+			});
 		});
 		
 }//end outmost if
@@ -251,6 +255,9 @@ if(jQuery){
 				<td><pre>			</pre></td>
 				<td>Provider:</td>
 				<td><encounterProvider default="currentUser" role="Provider" /></td>
+				<td><pre>			</pre></td>
+				<td class="type">Type:</td>
+				<td class="type"><encounterType default="PATHIST" /></td>
 				
 			</tr>
 		</table>

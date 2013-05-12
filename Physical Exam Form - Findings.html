@@ -83,8 +83,12 @@ if(jQuery){
 $j(function() {
 
 	$j("#freetext").hide();
+	$j("#break").hide();
 	$j("#c_murmur").hide();
 	$j("#c_no_murmur").hide();
+	$j(function(){
+		$j('.type').hide();
+	});
 	
 	$j("#murmur").click(function() {
 	
@@ -92,10 +96,12 @@ $j(function() {
 	
 			setValue("c_murmur.value",562);
 			$j("#freetext").show();
+			$j("#break").show();
 		}
 		else {
 		
 			$j("#freetext").hide();
+			$j("#break").hide();
 		}
 	});
 	
@@ -155,6 +161,9 @@ $j(function() {
 				<td><pre>			</pre></td>
 				<td>Provider:</td>
 				<td><encounterProvider default="currentUser" role="Provider" /></td>
+				<td><pre>			</pre></td>
+				<td class="type">Type:</td>
+				<td class="type"><encounterType default="FINDINGS" /></td>
 			</tr>
 		</table>
 	</section>
@@ -232,7 +241,7 @@ $j(function() {
 					</form></p>
 					
 					<obs conceptId="161011" cols="40" rows="5" id="freetext" />
-					<obs conceptId="1124" answerConceptId="550" answerLabel="S3 Gallop" style="checkbox" />
+					<br id="break" /><obs conceptId="1124" answerConceptId="550" answerLabel="S3 Gallop" style="checkbox" />
 					<obs conceptId="1124" answerConceptId="130560" answerLabel="Pericardial Frictonal Rub" style="checkbox" />
                 </td>
 			</tr>
