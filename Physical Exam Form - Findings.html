@@ -83,7 +83,6 @@ if(jQuery){
 $j(function() {
 
 	$j("#freetext").hide();
-	$j("#break").hide();
 	$j("#c_murmur").hide();
 	$j("#c_no_murmur").hide();
 	$j(function(){
@@ -96,12 +95,10 @@ $j(function() {
 	
 			setValue("c_murmur.value",562);
 			$j("#freetext").show();
-			$j("#break").show();
 		}
 		else {
 		
 			$j("#freetext").hide();
-			$j("#break").hide();
 		}
 	});
 	
@@ -196,6 +193,30 @@ $j(function() {
                     <obs conceptId="1122" answerConceptId="516" answerLabel="Pale Conjuctiva" style="checkbox" /><br />
                     <obs conceptId="1122" answerConceptId="5192" answerLabel="Icteric Sclera" style="checkbox" />
                 </td>
+				<ifMode mode="ENTER">
+				<td class="lookup">
+					<lookup complexExpression="#foreach($enc in $fn.allEncounters(null))
+								
+								#if($form == $enc.form.formId)
+								
+									#set($latestEnc = $fn.latestEncounter($enc.encounterType))
+									
+									#foreach($obs in $latestEnc.obs)
+										
+									
+												#if($obs.concept.conceptId == 1122)
+													 $obs.valueCoded.name 
+													 &lt;br &gt;
+												#end
+																			
+									#end
+
+								
+									#break
+								#end
+							#end" class="value" />
+				</td>
+				</ifMode>
 			</tr>
                 <tr>
                     <td colspan="2"><br /></td>
@@ -206,6 +227,30 @@ $j(function() {
                     <obs conceptId="161578" answerConceptId="159011" answerLabel="Thyromegaly" style="checkbox" /><br />
                     <obs conceptId="161578" answerConceptId="136394" answerLabel="Jugular Venous Distension" style="checkbox" />
                 </td>
+				<ifMode mode="ENTER">
+				<td class="lookup">
+					<lookup complexExpression="#foreach($enc in $fn.allEncounters(null))
+								
+								#if($form == $enc.form.formId)
+								
+									#set($latestEnc = $fn.latestEncounter($enc.encounterType))
+									
+									#foreach($obs in $latestEnc.obs)
+										
+									
+												#if($obs.concept.conceptId == 161578)
+													 $obs.valueCoded.name 
+													 &lt;br &gt;
+												#end
+																			
+									#end
+
+								
+									#break
+								#end
+							#end" class="value" />
+				</td>
+				</ifMode>
 			</tr>
                 <tr>
                     <td colspan="2"><br /></td>
@@ -224,6 +269,30 @@ $j(function() {
                         <obs conceptId="1123" answerConceptId="159441" answerLabel="Accessory Muscle Use" style="checkbox" />
 					</span>
                 </td>
+				<ifMode mode="ENTER">
+				<td class="lookup">
+					<lookup complexExpression="#foreach($enc in $fn.allEncounters(null))
+								
+								#if($form == $enc.form.formId)
+								
+									#set($latestEnc = $fn.latestEncounter($enc.encounterType))
+									
+									#foreach($obs in $latestEnc.obs)
+										
+									
+												#if($obs.concept.conceptId == 1123)
+													 $obs.valueCoded.name 
+													 &lt;br &gt;
+												#end
+																			
+									#end
+
+								
+									#break
+								#end
+							#end" class="value" />
+				</td>
+				</ifMode>
 			</tr>
                         <tr>
                                <td colspan="2"><br /></td>
@@ -241,9 +310,33 @@ $j(function() {
 					</form></p>
 					
 					<obs conceptId="161011" cols="40" rows="5" id="freetext" />
-					<br id="break" /><obs conceptId="1124" answerConceptId="550" answerLabel="S3 Gallop" style="checkbox" />
+					<br/><obs conceptId="1124" answerConceptId="550" answerLabel="S3 Gallop" style="checkbox" />
 					<obs conceptId="1124" answerConceptId="130560" answerLabel="Pericardial Frictonal Rub" style="checkbox" />
                 </td>
+				<ifMode mode="ENTER">
+				<td class="lookup">
+					<lookup complexExpression="#foreach($enc in $fn.allEncounters(null))
+								
+								#if($form == $enc.form.formId)
+								
+									#set($latestEnc = $fn.latestEncounter($enc.encounterType))
+									
+									#foreach($obs in $latestEnc.obs)
+										
+									
+												#if($obs.concept.conceptId == 1124)
+													 $obs.valueCoded.name, 
+													 
+												#end
+																			
+									#end
+
+								
+									#break
+								#end
+							#end" class="value" />
+				</td>
+				</ifMode>
 			</tr>
             <tr>
                 <td colspan="2"><br /></td>
@@ -265,6 +358,30 @@ $j(function() {
 					</span>
 
 				</td>
+				<ifMode mode="ENTER">
+				<td class="lookup">
+					<lookup complexExpression="#foreach($enc in $fn.allEncounters(null))
+								
+								#if($form == $enc.form.formId)
+								
+									#set($latestEnc = $fn.latestEncounter($enc.encounterType))
+									
+									#foreach($obs in $latestEnc.obs)
+										
+									
+												#if($obs.concept.conceptId == 1125)
+													 $obs.valueCoded.name, 
+													 
+												#end
+																			
+									#end
+
+								
+									#break
+								#end
+							#end" class="value" />
+				</td>
+				</ifMode>
 			</tr>
             <tr>
                 <td colspan="2"><br /></td>
@@ -274,6 +391,11 @@ $j(function() {
 				<td>
                     <obs conceptId="161576" answerConceptIds="159534,5135,150528,1067" answerLabels="Normal Sensation,Decreased Sensation,Numbness,Not Tested" style="radio" />
                 </td>
+				<ifMode mode="ENTER">
+					<td class="lookup">
+						<lookup expression="fn.latestObs(161576).valueCoded.name" class="value" />
+					</td>
+				</ifMode>
 			</tr>
 			
 		</table>

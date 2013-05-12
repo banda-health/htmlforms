@@ -101,6 +101,9 @@ if(jQuery){
                 td.point {
                         padding-left:1.0cm;
                 }
+				td.lookup {
+			background-color:yellow;
+		}
 
 	</style>
 	<span style="float:right">Paper Form ID: $paperFormId</span>
@@ -253,41 +256,7 @@ if(jQuery){
                 <tr>
                     <td>Other Referrals:</td>
                 <td class="ref">
-                <repeat>
-                    <template>
-                        <div id="{n}-toggleContainer" style="display:none;">
-                            <table>
-                                <tr>
-
-                                    <td>
-                                        <obs conceptId="161589" answerClasses="{concept}" style="autocomplete" />
-                                    </td>
-                                    <td><button id="{n}-addEntry" class="addEntry">Add</button><button id="{n}-removeEntry" class="removeEntry">Remove</button></td>
-                                </tr>
-                            </table>
-                        </div>
-                    </template>
-                    <render n="41" concept="Misc Order"/>
-                    <render n="42" concept="Misc Order"/>
-                    <render n="43" concept="Misc Order"/>
-                    <render n="44" concept="Misc Order"/>
-                    <render n="45" concept="Misc Order"/>
-                    <render n="46" concept="Misc Order"/>
-                    <render n="47" concept="Misc Order"/>
-                    <render n="48" concept="Misc Order"/>
-                    <render n="49" concept="Misc Order"/>
-                    <render n="50" concept="Misc Order"/>
-                    <render n="51" concept="Misc Order"/>
-                    <render n="52" concept="Misc Order"/>
-                    <render n="53" concept="Misc Order"/>
-                    <render n="54" concept="Misc Order"/>
-                    <render n="55" concept="Misc Order"/>
-                    <render n="56" concept="Misc Order"/>
-                    <render n="57" concept="Misc Order"/>
-                    <render n="58" concept="Misc Order"/>
-                    <render n="59" concept="Misc Order"/>
-                    <render n="60" concept="Misc Order"/>
-                </repeat>
+					<obs conceptId="160632" cols="10" rows="2" />
                 </td></tr>           
             </obsgroup>        
 			
@@ -336,7 +305,7 @@ if(jQuery){
 				<th style="background-color: #696969; color: #ffffff;">Frequency Prescribed</th>
 			</tr>
 			<tr>
-				<td colspan="3">
+				<td colspan="3" class="lookup">
 				
 					<lookup complexExpression="#foreach($enc in $fn.allEncounters(null))
 								

@@ -83,75 +83,118 @@
 			<tr>
 				<td>HbA1C:</td>
 				<td><obs conceptId="159644" /></td>
-				<td class="lookup"><lookup expression="fn.latestObs(159644).valueNumeric"/></td>
+				<ifMode mode="ENTER">
+					<td class="lookup">
+						<lookup expression="fn.latestObs(159644).valueNumeric"/>
+					</td>
+				</ifMode>
 			</tr>
 			<tr>
 				<td>RBS:</td>
 				<td><obs conceptId="887" /></td>
-				<td class="lookup"><lookup expression="fn.latestObs(887).valueNumeric"/></td>
+				<ifMode mode="ENTER">
+					<td class="lookup">
+						<lookup expression="fn.latestObs(887).valueNumeric"/>
+					</td>
+				</ifMode>
 			</tr>
 			<tr>
 				<td>FBS:</td>
 				<td><obs conceptId="160912" /></td>
-				<td class="lookup"><lookup expression="fn.latestObs(160912).valueNumeric"/></td>
+				<ifMode mode="ENTER">
+					<td class="lookup">
+						<lookup expression="fn.latestObs(160912).valueNumeric"/>
+					</td>
+				</ifMode>
 			</tr>
 			<tr>
 				<td>Urine Glucose:</td>
 				<td><obs conceptId="159733" /></td>
-				<td class="lookup"><lookup expression="fn.latestObs(160912).valueNumeric"/></td>
+				<ifMode mode="ENTER">
+					<td class="lookup">
+						<lookup expression="fn.latestObs(160912).valueNumeric"/>
+					</td>
+				</ifMode>
 			</tr>
 			<tr>
 				<td>Na+:</td>
 				<td><obs conceptId="1132" /></td>
-				<td class="lookup"><lookup expression="fn.latestObs(1132).valueNumeric"/></td>
+				<ifMode mode="ENTER">
+					<td class="lookup">
+						<lookup expression="fn.latestObs(1132).valueNumeric"/>
+					</td>
+				</ifMode>
 			</tr>
 			<tr>
 				<td>K+:</td>
 				<td><obs conceptId="1133" /></td>
-				<td class="lookup"><lookup expression="fn.latestObs(1133).valueNumeric"/></td>
+				<ifMode mode="ENTER">
+					<td class="lookup">
+						<lookup expression="fn.latestObs(1133).valueNumeric"/>
+					</td>
+				</ifMode>
 			</tr>
 			<tr>
 				<td>Cr:</td>
 				<td><obs conceptId="790" /></td>
-				<td class="lookup"><lookup expression="fn.latestObs(790).valueNumeric"/></td>
+				<ifMode mode="ENTER">
+					<td class="lookup">
+						<lookup expression="fn.latestObs(790).valueNumeric"/>
+					</td>
+				</ifMode>
 			</tr>
 			<tr>
 				<td>Hb:</td>
 				<td><obs conceptId="21" /></td>
-				<td class="lookup"><lookup expression="fn.latestObs(21).valueNumeric"/></td>
+				<ifMode mode="ENTER">
+					<td class="lookup">
+						<lookup expression="fn.latestObs(21).valueNumeric"/>
+					</td>
+				</ifMode>
 			</tr>
 			<tr>
 				<td>WBC:</td>
 				<td><obs conceptId="678" /></td>
-				<td class="lookup"><lookup expression="fn.latestObs(678).valueNumeric"/></td>
+				<ifMode mode="ENTER">
+					<td class="lookup">
+						<lookup expression="fn.latestObs(678).valueNumeric"/>
+					</td>
+				</ifMode>
 			</tr>
 			<tr>
 				<td>LDL:</td>
 				<td><obs conceptId="1008" /></td>
-				<td class="lookup"><lookup expression="fn.latestObs(1008).valueNumeric"/></td>
+				<ifMode mode="ENTER">
+					<td class="lookup">
+						<lookup expression="fn.latestObs(1008).valueNumeric"/>
+					</td>
+				</ifMode>
 			</tr>
 			<tr>
 				<td>Total Chol:</td>
 				<td><obs conceptId="1006" /></td>
-				<td class="lookup"><lookup expression="fn.latestObs(1006).valueNumeric"/></td>
+				<ifMode mode="ENTER">
+					<td class="lookup">
+						<lookup expression="fn.latestObs(1006).valueNumeric"/>
+					</td>
+				</ifMode>
 			</tr>
 			<tr>
 				<td colspan="3"><br /></td>
 			</tr>
 			<tr>
-				<td>Other:</td>
-				<td><obs conceptId="161011" rows="2" cols="20" /></td>
-				<td class="lookup"><lookup expression="fn.latestObs(161011).valueText"/></td>
-			</tr>
-			<tr>
 				<td>ECHO:</td>
 				<td><obs conceptId="159573" rows="2" cols="20" /></td>
-				<td class="lookup"><lookup expression="fn.latestObs(159573).valueText"/></td>
+				<ifMode mode="ENTER">
+					<td class="lookup"><lookup expression="fn.latestObs(159573).valueText"/></td>
+				</ifMode>
 			</tr>
 			<tr>
 				<td>ECG:</td>
 				<td><obs conceptId="161579" rows="2" cols="20" /></td>
-				<td class="lookup"><lookup expression="fn.latestObs(161579).valueText"/></td>
+				<ifMode mode="ENTER">
+					<td class="lookup"><lookup expression="fn.latestObs(161579).valueText"/></td>
+				</ifMode>
 			</tr>
 		</table>
 	</section>

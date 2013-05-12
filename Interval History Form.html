@@ -35,6 +35,9 @@
 		table.baseline-aligned td {
 			vertical-align: baseline;
 		}
+		td.lookup {
+			background-color:yellow;
+		}
 	</style>
 
 
@@ -54,7 +57,7 @@
 				<td><encounterProvider default="currentUser" role="Provider" /></td>
 				<td><pre>			</pre></td>
 				<td class="type">Type:</td>
-				<td class="type"><encounterType default="Interval History" /></td>
+				<td class="type"><encounterType default="INTHIST" /></td>
 			</tr>
 		</table>
 	</section>
@@ -91,25 +94,31 @@
 				<td>
 					<obs conceptId="160530" answerConceptIds="161602,160523" answerLabels="First visit,Return visit" style="radio"/>
 				</td>
-				<td>
+				<ifMode mode="ENTER">
+				<td class="lookup">
 					<lookup class="value" expression="fn.latestObs(160530).valueCoded.name"/>
 				</td>
+				</ifMode>
 			</tr>
 			
 			<tr>
 				<td>Glucose monitoring at home</td>
 				<td><obs conceptId="161573" answerConceptIds="1065,1066" answerLabels="Yes,No" style="radio"/></td>
-				<td>
+				<ifMode mode="ENTER">
+				<td class="lookup">
 					<lookup class="value" expression="fn.latestObs(161573).valueCoded.name"/>
 				</td>
+				</ifMode>
 			</tr>
 			
 			<tr>
 				<td>Symptoms of hypoglycemia</td>
 				<td><obs conceptId="161603" answerConceptIds="1065,1066" answerLabels="Yes,No" style="radio"/></td>
-				<td>
+				<ifMode mode="ENTER">
+				<td class="lookup">
 					<lookup class="value" expression="fn.latestObs(161603).valueCoded.name"/>
 				</td>
+				</ifMode>
 			</tr>
 			<tr><td colspan="3"><br /></td></tr>
 			<tr>
@@ -121,15 +130,40 @@
 					<obs conceptId="1728" answerConceptId="129171" answerLabel="Tingling" style="checkbox"/><br />
 					<obs conceptId="1728" answerConceptId="6005" answerLabel="Focal weakness" style="checkbox"/>
 				</td>
-				<td colspan="2"><lookup complexExpression="#foreach($obs in $fn.allObs(1728)) $obs.valueCoded.name &lt;br /&gt; #end" class="value" /></td>
+				<ifMode mode="ENTER">
+				<td class="lookup">
+					<lookup complexExpression="#foreach($enc in $fn.allEncounters(null))
+								
+								#if($form == $enc.form.formId)
+								
+									#set($latestEnc = $fn.latestEncounter($enc.encounterType))
+									
+									#foreach($obs in $latestEnc.obs)
+										
+									
+												#if($obs.concept.conceptId == 1728)
+													 $obs.valueCoded.name 
+													 &lt;br &gt;
+												#end
+																			
+									#end
+
+								
+									#break
+								#end
+							#end" class="value" />
+				</td>
+				</ifMode>
 			</tr>
 			<tr><td colspan="3"><br /></td></tr>
 			<tr>
 				<td>Adherence to Drugs:</td>
 				<td><obs conceptId="161563" answerConceptIds="159405,159406,159407,1107" answerLabels="Good,Fair,Poor,None" style="radio" /></td>
-				<td>
+				<ifMode mode="ENTER">
+				<td class="lookup">
 					<lookup class="value" expression="fn.latestObs(161563).valueCoded.name"/>
 				</td>
+				</ifMode>
 			</tr>
 			
 		</table>
@@ -180,7 +214,8 @@
 				<th style="background-color: #696969; color: #ffffff;">Frequency Prescribed</th>
 			</tr>
 			<tr>
-				<td colspan="3">
+			<ifMode mode="ENTER">
+				<td colspan="3"  class="lookup">
 				
 					<lookup complexExpression="#foreach($enc in $fn.allEncounters(null))
 								
@@ -192,20 +227,21 @@
 										
 									
 												#if($obs.concept.conceptId == 1282)
-													 $obs.valueCoded.name 
+													 $obs.valueCoded.name, 
 												#elseif($obs.concept.conceptId == 1443)
-													 $obs.valueNumeric 
+													 $obs.valueNumeric, 
 												#elseif($obs.concept.conceptId == 160855)
-													 $obs.valueCoded.name 
+													 $obs.valueCoded.name, 
 												#end
-										&lt;br &gt;									
+																		
 									#end
 
 								
 									#break
 								#end
 							#end" class="value" />
-				</td>												
+				</td>		
+				</ifMode>
 			</tr>
 
 		</table>

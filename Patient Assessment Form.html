@@ -148,6 +148,9 @@
 		table.baseline-aligned td {
 			vertical-align: baseline;
 		}
+		td.lookup {
+			background-color:yellow;
+		}
 	</style>
 
 	<span style="float:right">Paper Form ID: $paperFormId</span>
@@ -211,6 +214,28 @@
                         <obs conceptId="161582" answerConceptId="114212" answerLabel="Peripheral Vascular Disease" style="checkbox" /><br />
                         <obs conceptId="161582" answerConceptId="113257" answerLabel="Retinopathy" style="checkbox" />
                 </td>
+				<td class="lookup">
+					<lookup complexExpression="#foreach($enc in $fn.allEncounters(null))
+								
+								#if($form == $enc.form.formId)
+								
+									#set($latestEnc = $fn.latestEncounter($enc.encounterType))
+									
+									#foreach($obs in $latestEnc.obs)
+										
+									
+												#if($obs.concept.conceptId == 161582)
+													 $obs.valueCoded.name 
+													 &lt;br &gt;
+												#end
+																			
+									#end
+
+								
+									#break
+								#end
+							#end" class="value" />
+				</td>
 			</tr>
                         <tr>
 				<td colspan="2"><br /></td>
@@ -218,18 +243,37 @@
 			<tr>
 				<td>Diabetic Foot Ulcer Active:</td>
 				<td><obs conceptId="161580" answerConceptIds="1065,1066,161598" answerLabels="Yes,No,No Foot Ulcer" style="radio" /></td>
+				<ifMode mode="ENTER">
+				<td class="lookup">
+					<lookup expression="fn.latestObs(161580).valueCoded.name" class="value" />
+				</td>
+				</ifMode>
 			</tr>
 			<tr>
 				<td>Diabetic Foot Ulcer Ever Healed:</td>
 				<td><obs conceptId="161583" answerConceptIds="1065,1066" answerLabels="Yes,No" style="radio" /></td>
+				<ifMode mode="ENTER">
+				<td class="lookup">
+					<lookup expression="fn.latestObs(161583).valueCoded.name" class="value" />
+				</td>
+				</ifMode>
 			</tr>
 			<tr>
 				<td>Amputation due to Diabetic Foot:</td>
 				<td><obs conceptId="161581" answerConceptIds="1065,1066" answerLabels="Yes,No" style="radio" /></td>
+				<ifMode mode="ENTER">
+				<td class="lookup">
+					<lookup expression="fn.latestObs(161581).valueCoded.name" class="value" />
+				</td>
+				</ifMode>
 			</tr>
 			<tr>
 				<td>Obesity:</td>
-				<td><lookup expression="fn.latestObs(1342).valueNumeric"/></td>
+				<ifMode mode="ENTER">
+				<td class="lookup">
+					<lookup expression="fn.latestObs(1342).valueNumeric" class="value" />
+				</td>
+				</ifMode>
 			</tr>
                         <tr>
 				<td colspan="2"><br /></td>
@@ -269,7 +313,32 @@
                     <render n="9" concept="Diagnosis"/>
                     <render n="10" concept="Diagnosis"/>
                 </repeat>
-                </td></tr>
+                </td>
+				<ifMode mode="ENTER">
+				<td class="lookup">
+					<lookup complexExpression="#foreach($enc in $fn.allEncounters(null))
+								
+								#if($form == $enc.form.formId)
+								
+									#set($latestEnc = $fn.latestEncounter($enc.encounterType))
+									
+									#foreach($obs in $latestEnc.obs)
+										
+									
+												#if($obs.concept.conceptId == 1284)
+													 $obs.valueCoded.name 
+													 &lt;br &gt;
+												#end
+																			
+									#end
+
+								
+									#break
+								#end
+							#end" class="value" />
+				</td>
+				</ifMode>
+				</tr>
                 <tr><th>Problems resolved:</th></tr>
                 <tr><td>
                 <repeat>
@@ -296,7 +365,32 @@
                     <render n="19" concept="Diagnosis"/>
                     <render n="20" concept="Diagnosis"/>
                 </repeat>
-                </td></tr>
+                </td>
+				<ifMode mode="ENTER">
+				<td class="lookup">
+					<lookup complexExpression="#foreach($enc in $fn.allEncounters(null))
+								
+								#if($form == $enc.form.formId)
+								
+									#set($latestEnc = $fn.latestEncounter($enc.encounterType))
+									
+									#foreach($obs in $latestEnc.obs)
+										
+									
+												#if($obs.concept.conceptId == 6097)
+													 $obs.valueCoded.name 
+													 &lt;br &gt;
+												#end
+																			
+									#end
+
+								
+									#break
+								#end
+							#end" class="value" />
+				</td>
+				</ifMode>
+				</tr>
             </obsgroup>
         </table>
     </section>
