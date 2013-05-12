@@ -114,17 +114,30 @@
 			<tr>
 				<td>Temperature(<sup>0</sup>C):</td>
 				<td><obs conceptId="5088" /></td>
-				<td class="lookup"><lookup expression="fn.latestObs(5088).valueNumeric"/></td>
+				<ifMode mode="ENTER">
+					<td class="lookup">
+						<lookup expression="fn.latestObs(5088).valueNumeric"/>
+					</td>
+				</ifMode>
 			</tr>
 			<tr>
 				<td>RR:</td>
 				<td><obs conceptId="5242" /></td>
-				<td class="lookup"><lookup expression="fn.earliestObs(5242).valueNumeric"/></td>
+				
+				<ifMode mode="ENTER">
+					<td class="lookup">
+						<lookup expression="fn.earliestObs(5242).valueNumeric"/>
+					</td>
+				</ifMode>
 			</tr>
 			<tr>
 				<td>HR:</td>
 				<td><obs conceptId="5087" /></td>
-				<td class="lookup"><lookup expression="fn.latestObs(5087).valueNumeric"/></td>
+				<ifMode mode="ENTER">
+					<td class="lookup">
+						<lookup expression="fn.latestObs(5087).valueNumeric"/>
+					</td>
+				</ifMode>
 			</tr>
 			<tr>
 				<td>Systolic / Diastolic:</td>
@@ -132,32 +145,56 @@
                     <obs conceptId="5085" /> /
                     <obs conceptId="5086" />
                 </td>
-				<td class="lookup"><lookup expression="fn.latestObs(5085).valueNumeric"/> / <lookup expression="fn.latestObs(5086).valueNumeric"/></td>
+				<ifMode mode="ENTER">
+					<td class="lookup">
+						<lookup expression="fn.latestObs(5085).valueNumeric"/> / <lookup expression="fn.latestObs(5086).valueNumeric"/>
+					</td>
+				</ifMode>
 			</tr>
 			<tr>
 				<td>Weight (KG):</td>
 				<td><obs conceptId="5089" id="weight" /></td>
-				<td class="lookup"><lookup expression="fn.latestObs(5089).valueNumeric"/></td>
+				<ifMode mode="ENTER">	
+					<td class="lookup">
+						<lookup expression="fn.latestObs(5089).valueNumeric"/>
+					</td>
+				</ifMode>
 			</tr>
 			<tr>
 				<td>Blood Oxygen Saturation:</td>
 				<td><obs conceptId="5092" /></td>
-				<td class="lookup"><lookup expression="fn.latestObs(5092).valueNumeric"/></td>
+				<ifMode mode="ENTER">
+					<td class="lookup">
+						<lookup expression="fn.latestObs(5092).valueNumeric"/>
+					</td>
+				</ifMode>
 			</tr>
 			<tr>
 				<td>Waist (CM):</td>
 				<td><obs conceptId="161577" /></td>
-				<td class="lookup"><lookup expression="fn.latestObs(161577).valueNumeric"/></td>
+				<ifMode mode="ENTER">
+					<td class="lookup">
+						<lookup expression="fn.latestObs(161577).valueNumeric"/>
+					</td>
+				</ifMode>
 			</tr>
 			<tr>
 				<td>Height (CM):</td>
 				<td><obs conceptId="5090" id="height" /></td>
-				<td class="lookup"><lookup expression="fn.latestObs(5090).valueNumeric"/></td>
+				<ifMode mode="ENTER">
+					<td class="lookup">
+						<lookup expression="fn.latestObs(5090).valueNumeric"/>
+					</td>
+				</ifMode>
 			</tr>
 			<tr>
 				<td>Body Mass Index:</td>
 				<td><obs conceptId="1342" id="bmi" /></td>
-				<td class="lookup"><lookup expression="fn.latestObs(1342).valueNumeric"/></td>
+				<!--<ifMode mode="ENTER">-->
+					<td class="lookup">
+						<lookup expression="fn.latestObs(1342).valueNumeric"/>
+					</td>
+				<!--</ifMode>-->
 			</tr>
 			
 		</table>
