@@ -295,9 +295,8 @@ if(jQuery){
 	</section>
 
 	<section headerLabel="5. Plan Information">
-		<!--<table class="baseline-aligned">
-		<tr><td colspan="3">-->
-            <fieldset>
+		<table>
+<tr><td>
 		<table>	
 			<tr>
 				<th style="background-color: #696969; color: #ffffff;">Drug Prescribed</th>
@@ -324,23 +323,51 @@ if(jQuery){
 				<render />
 				<render />
 				<render />
-				<render />
-				<render />
+				
 			</repeat>
-			<tr>
-				<td>
-					<lookup complexExpression="#foreach($obs in $fn.latestObs(1282)) $obs.valueCoded.name #end" class="value" />
-				</td>
-				<td>
-					<lookup complexExpression="#foreach($obs in $fn.latestObs(1443)) $obs.valueText #end" class="value" />
-				</td>
-				<td>
-					<lookup complexExpression="#foreach($obs in $fn.latestObs(160855)) $obs.valueCoded.name #end" class="value" />
-				</td>
-			</tr>
+			
 		</table>
-	</fieldset >
-<!--</td></tr>-->
+	</td>
+	<td>
+		<table border="1" style="position:absolute; top:71%">
+			<tr>
+				<th style="background-color: #696969; color: #ffffff;">Drug Prescribed</th>
+				<th style="background-color: #696969; color: #ffffff;">Dose Prescribed</th>
+				<th style="background-color: #696969; color: #ffffff;">Frequency Prescribed</th>
+			</tr>
+			<tr>
+				<td colspan="3">
+				
+					<lookup complexExpression="#foreach($enc in $fn.allEncounters(null))
+								
+								#if($form == $enc.form.formId)
+								
+									#set($latestEnc = $fn.latestEncounter($enc.encounterType))
+									
+									#foreach($obs in $latestEnc.obs)
+										
+									
+												#if($obs.concept.conceptId == 1282)
+													 $obs.valueCoded.name 
+												#elseif($obs.concept.conceptId == 1443)
+													 $obs.valueNumeric 
+												#elseif($obs.concept.conceptId == 160855)
+													 $obs.valueCoded.name 
+												#end
+										&lt;br &gt;									
+									#end
+
+								
+									#break
+								#end
+							#end" class="value" />
+				</td>												
+			</tr>
+
+		</table>
+	</td>
+</tr>
+</table>
 		<table class="baseline-aligned">
 			<tr>
 				<td>Progress Notes:</td>
