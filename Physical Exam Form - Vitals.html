@@ -7,6 +7,7 @@
 				$j(function() {
 				
 					$j("#bmi").attr("disabled",true);
+					$j("#w28").attr("disabled",true);
 				});
 				
 				$j(function() {
@@ -25,16 +26,8 @@
 						
 						getField("weight.value").change(getBMI);
 						getField("height.value").change(getBMI);
-						getField("weight.value").blur(getBMI);
-						getField("height.value").blur(getBMI);
 						getField("bmi.value").blur(getBMI);
 						
-						
-						beforeSubmit.push(function getBMI() {
-							getBMI();
-							return true;
-						});
-					
 				});
 				$j(function(){
 					$j('.type').hide();

@@ -151,10 +151,20 @@ if(jQuery){
 			<tr>
 				<td>Nutrition Counseling:</td>
 				<td class="point"><obs conceptId="1380" answerConceptIds="1065,1066" answerLabels="Done,Not Done" style="radio" /></td>
+				<ifMode mode="ENTER">
+					<td class="lookup">
+						<lookup expression="fn.latestObs(1380).valueNumeric"/>
+					</td>
+				</ifMode>
 			</tr>
 			<tr>
 				<td>Exercise Counseling:</td>
-				<td class="point"><obs conceptId="e38a3f87-feb3-4a28-bd25-7602832c2ed1" answerConceptIds="1065,1066" answerLabels="Done,Not Done" style="radio" /></td>
+				<td class="point"><obs conceptId="161587" answerConceptIds="1065,1066" answerLabels="Done,Not Done" style="radio" /></td>
+				<ifMode mode="ENTER">
+					<td class="lookup">
+						<lookup expression="fn.latestObs(161587).valueNumeric"/>
+					</td>
+				</ifMode>
 			</tr>
 			<tr>
 				<td>Foot care teaching:</td>
@@ -163,14 +173,29 @@ if(jQuery){
 			<tr>
 				<td>Smoking counseling:</td>
 				<td class="point"><obs conceptId="1455" answerConceptIds="1065,1066" answerLabels="Done,Not Done" style="radio" /></td>
+				<ifMode mode="ENTER">
+					<td class="lookup">
+						<lookup expression="fn.latestObs(1455).valueNumeric"/>
+					</td>
+				</ifMode>
 			</tr>
 			<tr>
 				<td>Signs of DKA:</td>
-				<td class="point"><obs conceptId="091fba4c-df7c-40c1-a7e5-8d97999f0fd3" answerConceptIds="1065,1066" answerLabels="Yes,No" style="radio" /></td>
+				<td class="point"><obs conceptId="161590" answerConceptIds="1065,1066" answerLabels="Yes,No" style="radio" /></td>
+				<ifMode mode="ENTER">
+					<td class="lookup">
+						<lookup expression="fn.latestObs(161590).valueNumeric"/>
+					</td>
+				</ifMode>
 			</tr>
 			<tr>
 				<td>Signs of Hypoglycemia:</td>
-				<td class="point"><obs conceptId="e47a3ee3-352f-4bce-bb44-adf483a0e49f" answerConceptIds="1065,1066" answerLabels="Yes,No" style="radio" /></td>
+				<td class="point"><obs conceptId="161603" answerConceptIds="1065,1066" answerLabels="Yes,No" style="radio" /></td>
+				<ifMode mode="ENTER">
+					<td class="lookup">
+						<lookup expression="fn.latestObs(161603).valueNumeric"/>
+					</td>
+				</ifMode>
 			</tr>
         <obsgroup groupingConceptId="161593">
                 <tr>
@@ -229,7 +254,12 @@ if(jQuery){
                                 <option value="Surgical Option 3">Surgical Option 3</option>
                                 </select>
                                 <obs conceptId="1673" id="surgical_c" />
-                        </td>
+                </td>
+				<ifMode mode="ENTER">
+					<td class="lookup">
+						<lookup expression="fn.latestObs(1673).valueNumeric"/>
+					</td>
+				</ifMode>
 			</tr>
 			<tr>
 				<td>Ophthalmology:</td>
@@ -239,7 +269,12 @@ if(jQuery){
                                 <option value="Outside Ophthalmology">Outside Ophthalmology</option>
                                 </select>
                                 <obs conceptId="1763" id="ophthalmology_c" />
-                                </td>
+                </td>
+				<ifMode mode="ENTER">
+					<td class="lookup">
+						<lookup expression="fn.latestObs(1763).valueNumeric"/>
+					</td>
+				</ifMode>
 			</tr>
 			<tr>
 				<td>Dental:</td>
@@ -250,14 +285,25 @@ if(jQuery){
                                 <option value="Dental Option 3">Dental Option 3</option>
                                 </select>
                                 <obs conceptId="1772" id="dental_c" />
-                                </td>
+                </td>
+				<ifMode mode="ENTER">
+					<td class="lookup">
+						<lookup expression="fn.latestObs(1772).valueNumeric"/>
+					</td>
+				</ifMode>
 			</tr>
             <obsgroup groupingConceptId="161592">
                 <tr>
                     <td>Other Referrals:</td>
-                <td class="ref">
-					<obs conceptId="160632" cols="30" rows="2" />
-                </td></tr>           
+					<td class="ref">
+						<obs conceptId="160632" cols="30" rows="2" />
+					</td>
+					<ifMode mode="ENTER">
+						<td class="lookup">
+							<lookup expression="fn.latestObs(160632).valueNumeric"/>
+						</td>
+					</ifMode>
+				</tr>           
             </obsgroup>        
 			
 		</table>
@@ -389,11 +435,21 @@ if(jQuery){
 				<td>Progress Notes:</td>
 				<td><p></p></td>
 				<td class="comment"><obs conceptId="161011" style="textarea" cols="50" rows="5" /></td>
+				<ifMode mode="ENTER">
+					<td class="lookup">
+						<lookup expression="fn.latestObs(161011).valueNumeric"/>
+					</td>
+				</ifMode>
 			</tr>
 			<tr>
 				<td>Disposition:</td>
 				<td><p></p></td>
 				<td class="ref"><obs conceptId="159488" answerConceptIds="1788,1654,1536" answerLabels="Referred,Admitted,Home" style="radio" /></td>
+				<ifMode mode="ENTER">
+					<td class="lookup">
+						<lookup expression="fn.latestObs(159488).valueNumeric"/>
+					</td>
+				</ifMode>
 			</tr>
 
 		</table>
