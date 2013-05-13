@@ -101,10 +101,6 @@ if(jQuery){
                 td.point {
                         padding-left:1.0cm;
                 }
-				td.lookup {
-			background-color:yellow;
-		}
-
 	</style>
 	<span style="float:right">Paper Form ID: $paperFormId</span>
 	<h2>PATIENT PLAN FORM (v1)</h2>
@@ -153,7 +149,7 @@ if(jQuery){
 				<td class="point"><obs conceptId="1380" answerConceptIds="1065,1066" answerLabels="Done,Not Done" style="radio" /></td>
 				<ifMode mode="ENTER">
 					<td class="lookup">
-						<lookup expression="fn.latestObs(1380).valueNumeric"/>
+						<lookup expression="fn.latestObs(1380).valueNumeric" class="value"/>
 					</td>
 				</ifMode>
 			</tr>
@@ -162,7 +158,7 @@ if(jQuery){
 				<td class="point"><obs conceptId="161587" answerConceptIds="1065,1066" answerLabels="Done,Not Done" style="radio" /></td>
 				<ifMode mode="ENTER">
 					<td class="lookup">
-						<lookup expression="fn.latestObs(161587).valueNumeric"/>
+						<lookup expression="fn.latestObs(161587).valueNumeric" class="value"/>
 					</td>
 				</ifMode>
 			</tr>
@@ -175,7 +171,7 @@ if(jQuery){
 				<td class="point"><obs conceptId="1455" answerConceptIds="1065,1066" answerLabels="Done,Not Done" style="radio" /></td>
 				<ifMode mode="ENTER">
 					<td class="lookup">
-						<lookup expression="fn.latestObs(1455).valueNumeric"/>
+						<lookup expression="fn.latestObs(1455).valueNumeric" class="value"/>
 					</td>
 				</ifMode>
 			</tr>
@@ -184,7 +180,7 @@ if(jQuery){
 				<td class="point"><obs conceptId="161590" answerConceptIds="1065,1066" answerLabels="Yes,No" style="radio" /></td>
 				<ifMode mode="ENTER">
 					<td class="lookup">
-						<lookup expression="fn.latestObs(161590).valueNumeric"/>
+						<lookup expression="fn.latestObs(161590).valueNumeric" class="value"/>
 					</td>
 				</ifMode>
 			</tr>
@@ -193,7 +189,7 @@ if(jQuery){
 				<td class="point"><obs conceptId="161603" answerConceptIds="1065,1066" answerLabels="Yes,No" style="radio" /></td>
 				<ifMode mode="ENTER">
 					<td class="lookup">
-						<lookup expression="fn.latestObs(161603).valueNumeric"/>
+						<lookup expression="fn.latestObs(161603).valueNumeric" class="value"/>
 					</td>
 				</ifMode>
 			</tr>
@@ -257,7 +253,7 @@ if(jQuery){
                 </td>
 				<ifMode mode="ENTER">
 					<td class="lookup">
-						<lookup expression="fn.latestObs(1673).valueNumeric"/>
+						<lookup expression="fn.latestObs(1673).valueNumeric" class="value"/>
 					</td>
 				</ifMode>
 			</tr>
@@ -272,7 +268,7 @@ if(jQuery){
                 </td>
 				<ifMode mode="ENTER">
 					<td class="lookup">
-						<lookup expression="fn.latestObs(1763).valueNumeric"/>
+						<lookup expression="fn.latestObs(1763).valueNumeric" class="value"/>
 					</td>
 				</ifMode>
 			</tr>
@@ -288,7 +284,7 @@ if(jQuery){
                 </td>
 				<ifMode mode="ENTER">
 					<td class="lookup">
-						<lookup expression="fn.latestObs(1772).valueNumeric"/>
+						<lookup expression="fn.latestObs(1772).valueNumeric" class="value"/>
 					</td>
 				</ifMode>
 			</tr>
@@ -300,7 +296,7 @@ if(jQuery){
 					</td>
 					<ifMode mode="ENTER">
 						<td class="lookup">
-							<lookup expression="fn.latestObs(160632).valueNumeric"/>
+							<lookup expression="fn.latestObs(160632).valueNumeric" class="value"/>
 						</td>
 					</ifMode>
 				</tr>           
@@ -437,7 +433,7 @@ if(jQuery){
 				<td class="comment"><obs conceptId="161011" style="textarea" cols="50" rows="5" /></td>
 				<ifMode mode="ENTER">
 					<td class="lookup">
-						<lookup expression="fn.latestObs(161011).valueNumeric"/>
+						<lookup expression="fn.latestObs(161011).valueNumeric" class="value"/>
 					</td>
 				</ifMode>
 			</tr>
@@ -447,7 +443,7 @@ if(jQuery){
 				<td class="ref"><obs conceptId="159488" answerConceptIds="1788,1654,1536" answerLabels="Referred,Admitted,Home" style="radio" /></td>
 				<ifMode mode="ENTER">
 					<td class="lookup">
-						<lookup expression="fn.latestObs(159488).valueNumeric"/>
+						<lookup expression="fn.latestObs(159488).valueNumeric" class="value"/>
 					</td>
 				</ifMode>
 			</tr>

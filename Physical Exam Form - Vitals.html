@@ -56,9 +56,6 @@
 		table.baseline-aligned td {
 			vertical-align: baseline;
 		}
-		td.lookup {
-			background-color:yellow;
-		}
 	</style>
 
 	<span style="float:right">Paper Form ID: $paperFormId</span>
@@ -109,7 +106,7 @@
 				<td><obs conceptId="5088" /></td>
 				<ifMode mode="ENTER">
 					<td class="lookup">
-						<lookup expression="fn.latestObs(5088).valueNumeric"/>
+						<lookup expression="fn.latestObs(5088).valueNumeric" class="value"/>
 					</td>
 				</ifMode>
 			</tr>
@@ -119,7 +116,7 @@
 				
 				<ifMode mode="ENTER">
 					<td class="lookup">
-						<lookup expression="fn.earliestObs(5242).valueNumeric"/>
+						<lookup expression="fn.earliestObs(5242).valueNumeric" class="value"/>
 					</td>
 				</ifMode>
 			</tr>
@@ -128,7 +125,7 @@
 				<td><obs conceptId="5087" /></td>
 				<ifMode mode="ENTER">
 					<td class="lookup">
-						<lookup expression="fn.latestObs(5087).valueNumeric"/>
+						<lookup expression="fn.latestObs(5087).valueNumeric" class="value"/>
 					</td>
 				</ifMode>
 			</tr>
@@ -140,7 +137,7 @@
                 </td>
 				<ifMode mode="ENTER">
 					<td class="lookup">
-						<lookup expression="fn.latestObs(5085).valueNumeric"/> / <lookup expression="fn.latestObs(5086).valueNumeric"/>
+						<lookup expression="fn.latestObs(5085).valueNumeric" class="value"/> / <lookup expression="fn.latestObs(5086).valueNumeric" class="value"/>
 					</td>
 				</ifMode>
 			</tr>
@@ -149,7 +146,7 @@
 				<td><obs conceptId="5089" id="weight" /></td>
 				<ifMode mode="ENTER">	
 					<td class="lookup">
-						<lookup expression="fn.latestObs(5089).valueNumeric"/>
+						<lookup expression="fn.latestObs(5089).valueNumeric" class="value"/>
 					</td>
 				</ifMode>
 			</tr>
@@ -158,7 +155,7 @@
 				<td><obs conceptId="5092" /></td>
 				<ifMode mode="ENTER">
 					<td class="lookup">
-						<lookup expression="fn.latestObs(5092).valueNumeric"/>
+						<lookup expression="fn.latestObs(5092).valueNumeric" class="value"/>
 					</td>
 				</ifMode>
 			</tr>
@@ -167,7 +164,7 @@
 				<td><obs conceptId="161577" /></td>
 				<ifMode mode="ENTER">
 					<td class="lookup">
-						<lookup expression="fn.latestObs(161577).valueNumeric"/>
+						<lookup expression="fn.latestObs(161577).valueNumeric" class="value"/>
 					</td>
 				</ifMode>
 			</tr>
@@ -176,7 +173,7 @@
 				<td><obs conceptId="5090" id="height" /></td>
 				<ifMode mode="ENTER">
 					<td class="lookup">
-						<lookup expression="fn.latestObs(5090).valueNumeric"/>
+						<lookup expression="fn.latestObs(5090).valueNumeric" class="value"/>
 					</td>
 				</ifMode>
 			</tr>
@@ -185,7 +182,7 @@
 				<td><obs conceptId="1342" id="bmi" /></td>
 				<!--<ifMode mode="ENTER">-->
 					<td class="lookup">
-						<lookup expression="fn.latestObs(1342).valueNumeric"/>
+						<lookup expression="fn.latestObs(1342).valueNumeric" class="value"/>
 					</td>
 				<!--</ifMode>-->
 			</tr>

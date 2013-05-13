@@ -225,9 +225,6 @@ if(jQuery){
 		
 			color:red;
 		}
-		td.lookup {
-			background-color:yellow;
-		}
 	</style>
 
 	<span style="float:right">Paper Form ID: $paperFormId</span>
@@ -281,7 +278,7 @@ if(jQuery){
 				<td><obs conceptId="140228" style="radio" answerConceptIds="1065,1066,1067" answerLabels="Yes,No,Unknown" defaultValue="1067" /></td>
 				<ifMode mode="ENTER">
 					<td class="lookup">
-						<lookup expression="fn.latestObs(140228).valueNumeric"/>
+						<lookup expression="fn.latestObs(140228).valueNumeric" class="value"/>
 					</td>
 				</ifMode>
 			</tr>
@@ -408,7 +405,7 @@ if(jQuery){
 				<td><obs conceptId="161568" answerConceptIds="161567,161566,1066" answerLabels="Yes - DM Related,Yes DM not Related,No" style="radio" /></td>
 				<ifMode mode="ENTER">
 					<td class="lookup">
-						<lookup expression="fn.latestObs(161568).valueNumeric"/>
+						<lookup expression="fn.latestObs(161568).valueNumeric" class="value"/>
 					</td>
 				</ifMode>
 			</tr>
@@ -427,7 +424,7 @@ if(jQuery){
 				<td><obs conceptId="152722" answerConceptIds="1065,1066,1067" answerLabels="Yes,No,Unknown" style="radio" /></td>
 				<ifMode mode="ENTER">
 					<td class="lookup">
-						<lookup expression="fn.latestObs(152722).valueNumeric"/>
+						<lookup expression="fn.latestObs(152722).valueNumeric" class="value"/>
 					</td>
 				</ifMode>
 			</tr>
@@ -436,7 +433,7 @@ if(jQuery){
 				<td><obs conceptId="161262" /></td>
 				<ifMode mode="ENTER">
 					<td class="lookup">
-						<lookup expression="fn.latestObs(161262).valueNumeric"/>
+						<lookup expression="fn.latestObs(161262).valueNumeric" class="value"/>
 					</td>
 				</ifMode>
 			</tr>
