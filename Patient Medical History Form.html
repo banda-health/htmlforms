@@ -48,15 +48,7 @@ if(jQuery){
  
  
  group.find("#checkboxAll").find("input").click(
-     /*  This was tricky... A number of things needed to happen
-        Basically, This is supposed to treat a group of inputs as if
-        were all one big checkbox. It is designed so that a checkbox
-         can be next to an input, and the user clicks the input, the
-        checkbox checks as well. But, when the user clicks the checkbox,
-         the browser marks the checkbox as checked. Therefore, when we check
-         if the checkbox is already checked, it always respondes true...
-         We needed to have 2 cases: when the clicking action is on the first checkbox
-         and when the action is on any other.  */
+    
     function(){
          var flip;
          var checked = $j(this).siblings(":checkbox:first").attr("checked");
@@ -194,12 +186,6 @@ if(jQuery){
 			$j("#c_yes").attr("checked",true);
 			$j("#m_yes").attr("checked",true);
 			
-			$j(function() {
-			
-				$j("#dm").hide();
-				setValue("dm.value",119481);
-			});
-			
 			$j(function(){
 				$j('.type').hide();
 			});
@@ -292,7 +278,12 @@ if(jQuery){
 		<table class="baseline-aligned">
 			<tr>
 				<td>Family History of Diabetes Mellitus:</td>
-				<td><obs conceptId="140228" style="radio" answerConceptIds="1065,1066,1067" answerLabels="Yes,No,Unknown" /></td>
+				<td><obs conceptId="140228" style="radio" answerConceptIds="1065,1066,1067" answerLabels="Yes,No,Unknown" defaultValue="1067" /></td>
+				<ifMode mode="ENTER">
+					<td class="lookup">
+						<lookup expression="fn.latestObs(140228).valueNumeric"/>
+					</td>
+				</ifMode>
 			</tr>
 		</table>
 		</fieldset>
@@ -303,22 +294,24 @@ if(jQuery){
 		<fieldset><legend>Past Medical History</legend>
 		<table class="baseline-aligned">
 
-		<form>
-			<tr>
-				<obsgroup groupingConceptId="160593">
+		<form>   
+            <tr>
+				<obsgroup groupingConceptId="159947">
 					<td>
-						<obs conceptId="160592" answerClasses="Diagnosis" style="autocomplete" id="dm"/>
-						Diagnosis Date of Diabetes Mellitus
+						Diabetes Mellitus
 					</td>
-					<td><obs conceptId="159948" /></td>
+					<td>
+						<obs conceptId="1284" answerClasses="Diagnosis" style="autocomplete" />
+					</td>
+					<td>Diagnosis Date <obs conceptId="159948" id="dd_dm" /></td>
 				</obsgroup>
 			</tr>
-                           
-            
 			<tr>
 				<obsgroup groupingConceptId="159947">
 					<td>
 						Myocardial Infarction
+					</td>
+					<td>
 						<obs conceptId="1284" answerClasses="Diagnosis" style="autocomplete" />
 					</td>
 					<td>Diagnosis Date <obs conceptId="159948" id="dd_dm" /></td>
@@ -328,20 +321,78 @@ if(jQuery){
 				<obsgroup groupingConceptId="159947">
 					<td>
 						CerebroVascular Accident
+					</td>
+					<td>
 						<obs conceptId="1284" answerClasses="Diagnosis" style="autocomplete" />
 					</td>
-					<td>Diagnosis Date<obs conceptId="159948" id="dd_dm" /></td>
+					<td>Diagnosis Date <obs conceptId="159948" id="dd_dm" /></td>
 				</obsgroup>
 			</tr>
 			<tr>
 				<obsgroup groupingConceptId="159947">
 					<td>
 						Hypertension
+					</td>
+					<td>
 						<obs conceptId="1284" answerClasses="Diagnosis" style="autocomplete" />
 					</td>
 					<td>Diagnosis Date <obs conceptId="159948" id="dd_dm" /></td>
 				</obsgroup>
 			</tr>
+			<ifMode mode="ENTER">
+		
+			<tr>
+				<td></td>
+				<td class="lookup">
+				
+					<lookup complexExpression="#foreach($enc in $fn.allEncounters(null))
+								
+								#if($form == $enc.form.formId)
+								
+									#set($latestEnc = $fn.latestEncounter($enc.encounterType))
+									
+									#foreach($obs in $latestEnc.obs)
+										
+									
+												#if($obs.concept.conceptId == 1284)
+													 $obs.valueCoded.name
+													 &lt;br &gt;
+												#end
+																		
+									#end
+
+								
+									#break
+								#end
+							#end" class="value" />
+				</td>
+				<td class="lookup">
+				
+					<lookup complexExpression="#foreach($enc in $fn.allEncounters(null))
+								
+								#if($form == $enc.form.formId)
+								
+									#set($latestEnc = $fn.latestEncounter($enc.encounterType))
+									
+									#foreach($obs in $latestEnc.obs)
+										
+									
+												#if($obs.concept.conceptId == 159948)
+													 $obs.valueDate
+													 &lt;br &gt;
+												#end
+																		
+									#end
+
+								
+									#break
+								#end
+							#end" class="value" />
+				</td>
+				
+			</tr>
+
+		</ifMode>
 			
 		</form>
 
@@ -355,6 +406,11 @@ if(jQuery){
 			<tr>
 				<td>Amputation:</td>
 				<td><obs conceptId="161568" answerConceptIds="161567,161566,1066" answerLabels="Yes - DM Related,Yes DM not Related,No" style="radio" /></td>
+				<ifMode mode="ENTER">
+					<td class="lookup">
+						<lookup expression="fn.latestObs(161568).valueNumeric"/>
+					</td>
+				</ifMode>
 			</tr>
 		</table>
 		</fieldset>
@@ -369,10 +425,20 @@ if(jQuery){
 			<tr>
 				<td>Smoker:</td>
 				<td><obs conceptId="152722" answerConceptIds="1065,1066,1067" answerLabels="Yes,No,Unknown" style="radio" /></td>
+				<ifMode mode="ENTER">
+					<td class="lookup">
+						<lookup expression="fn.latestObs(152722).valueNumeric"/>
+					</td>
+				</ifMode>
 			</tr>
 			<tr>
 				<td>Exercise Time (In Minutes/day):</td>
 				<td><obs conceptId="161262" /></td>
+				<ifMode mode="ENTER">
+					<td class="lookup">
+						<lookup expression="fn.latestObs(161262).valueNumeric"/>
+					</td>
+				</ifMode>
 			</tr>
 		</table>
 		</fieldset>
