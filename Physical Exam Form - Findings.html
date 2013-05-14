@@ -82,7 +82,7 @@ if(jQuery){
 //Define some logic here to hide the textfield beside the murmur concept
 $j(function() {
 
-	$j("#freetext").hide();
+	$j("#36").hide();
 	$j("#c_murmur").hide();
 	$j("#c_no_murmur").hide();
 	$j(function(){
@@ -94,11 +94,11 @@ $j(function() {
 		if($j("#murmur").attr("checked")) {
 	
 			setValue("c_murmur.value",562);
-			$j("#freetext").show();
+			$j("#w36").show();
 		}
 		else {
 		
-			$j("#freetext").hide();
+			$j("#w36").hide();
 		}
 	});
 	
@@ -108,7 +108,7 @@ $j(function() {
 	
 			setValue("c_no_murmur.value",159443);
 			$j("#w36").val("");
-			$j("#freetext").hide();
+			$j("#w36").hide();
 		}
 		
 	});
@@ -307,7 +307,7 @@ $j(function() {
 						<input type="radio" name="murmurGrp" id="murmur" /> Cardiac Murmur
 					</form></p>
 					
-					<obs conceptId="161011" cols="40" rows="5" id="freetext" />
+					<obs conceptId="161011" cols="40" rows="5" />
 					<br/><obs conceptId="1124" answerConceptId="550" answerLabel="S3 Gallop" style="checkbox" />
 					<obs conceptId="1124" answerConceptId="130560" answerLabel="Pericardial Frictonal Rub" style="checkbox" />
                 </td>
@@ -335,7 +335,7 @@ $j(function() {
 							#end
 							&lt;br &gt;
 							&lt;br &gt;" class="value" />
-							<span class="value" >Previous Cardiac Comment: <lookup expression="fn.latestObs(161011).valueText" /></span>
+							<span class="value" >Previous Cardiac Comment: <lookup expression="fn.latestObs(161011).valueText" class="value"/></span>
 				</td>
 				</ifMode>
 			</tr>

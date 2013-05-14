@@ -5,6 +5,13 @@
 		headerColor =#009d8e
 		fontOnHeaderColor = white
 	</macros>
+	<script type="text/javascript">
+	
+		$j(function(){
+			$j('.type').hide();
+		});
+	</script>
+	
 	<style>
 		.section {
 			border: 1px solid $headerColor;
@@ -41,6 +48,9 @@
 				<td><pre>			</pre></td>
 				<td>Provider:</td>
 				<td><encounterProvider default="currentUser" role="Provider" /></td>
+				<td><pre>			</pre></td>
+				<td class="type">Type:</td>
+				<td class="type"><encounterType default="NOTES" /></td>
 			</tr>
 		</table>
 	</section>
@@ -69,13 +79,23 @@
 		<table class="baseline-aligned">
 			<tr>
 				<th style="background-color: #696969; color: #ffffff;">Notes</th>
+
+			</tr>
+			<tr>
+				<td><obs conceptId="161011" cols="170" rows="10" /></td>
+				
+			</tr>
+			
+		</table>
+		<table class="baseline-aligned">
+			<tr>
 				<th style="background-color: #696969; color: #ffffff;">Previous Notes</th>
 			</tr>
 			<tr>
-				<td><obs conceptId="161011" cols="70" rows="20" /></td>
 				<ifMode mode="ENTER">
 					<td class="lookup">
-						<lookup expression="fn.allObs(161011).valueText"/>
+						<lookup complexExpression="#foreach($obs in $fn.allObs(161011)) 
+							$obs.valueText $obs.obsDatetime &lt;hr &gt; &lt;br &gt; #end" class="value"/>
 					</td>
 				</ifMode>
 			</tr>
