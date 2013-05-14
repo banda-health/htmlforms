@@ -6,8 +6,8 @@
 				
 				$j(function() {
 				
-					$j("#bmi").attr("disabled",true);
-					$j("#w28").attr("disabled",true);
+					
+					$j("#w28").attr("readonly",true);
 				});
 				
 				$j(function() {
@@ -19,7 +19,8 @@
 								if(getValue("height.value") != "") {
 							
 									var bmi = getValue("weight.value") / ( (getValue("height.value") / 100.0) * (getValue("height.value") / 100.0) );
-									setValue("bmi.value", bmi.toPrecision(3));
+									$j("#w28").val(bmi.toPrecision(3));
+									//setValue("bmi.value", bmi.toPrecision(3));
 								}
 							}
 						}//end getBMI
@@ -180,11 +181,11 @@
 			<tr>
 				<td>Body Mass Index:</td>
 				<td><obs conceptId="1342" id="bmi" /></td>
-				<!--<ifMode mode="ENTER">-->
+				<ifMode mode="ENTER">	
 					<td class="lookup">
 						<lookup expression="fn.latestObs(1342).valueNumeric" class="value"/>
 					</td>
-				<!--</ifMode>-->
+				</ifMode>
 			</tr>
 			
 		</table>

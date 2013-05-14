@@ -116,6 +116,7 @@ $j(function() {
 
 }
 </script>
+	
 	<macros>
 		paperFormId = (Fill this in)
 		headerColor =#009d8e
@@ -331,7 +332,10 @@ $j(function() {
 								
 									#break
 								#end
-							#end" class="value" />
+							#end
+							&lt;br &gt;
+							&lt;br &gt;" class="value" />
+							<span class="value" >Previous Cardiac Comment: <lookup expression="fn.latestObs(161011).valueText" /></span>
 				</td>
 				</ifMode>
 			</tr>
