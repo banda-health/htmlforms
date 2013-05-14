@@ -293,47 +293,47 @@ if(jQuery){
 
 		<form>   
             <tr>
-				<obsgroup groupingConceptId="159947">
+				<obsgroup groupingConceptId="1633">
 					<td>
 						Diabetes Mellitus
 					</td>
 					<td>
-						<obs conceptId="1284" answerClasses="Diagnosis" style="autocomplete" />
+						<obs conceptId="1628" answerClasses="Diagnosis" style="autocomplete" />
 					</td>
-					<td>Diagnosis Date <obs conceptId="159948" id="dd_dm" /></td>
+					<td>Diagnosis Date</td><td><obs conceptId="159948" id="dd_dm" /></td>
 				</obsgroup>
 			</tr>
 			<tr>
-				<obsgroup groupingConceptId="159947">
+				<obsgroup groupingConceptId="1633">
 					<td>
 						Myocardial Infarction
 					</td>
 					<td>
-						<obs conceptId="1284" answerClasses="Diagnosis" style="autocomplete" />
+						<obs conceptId="1628" answerClasses="Diagnosis" style="autocomplete" />
 					</td>
-					<td>Diagnosis Date <obs conceptId="159948" id="dd_dm" /></td>
+					<td>Diagnosis Date</td><td><obs conceptId="159948" id="dd_dm" /></td>
 				</obsgroup>
 			</tr>
 			<tr>
-				<obsgroup groupingConceptId="159947">
+				<obsgroup groupingConceptId="1633">
 					<td>
 						CerebroVascular Accident
 					</td>
 					<td>
-						<obs conceptId="1284" answerClasses="Diagnosis" style="autocomplete" />
+						<obs conceptId="1628" answerClasses="Diagnosis" style="autocomplete" />
 					</td>
-					<td>Diagnosis Date <obs conceptId="159948" id="dd_dm" /></td>
+					<td>Diagnosis Date</td><td><obs conceptId="159948" id="dd_dm" /></td>
 				</obsgroup>
 			</tr>
 			<tr>
-				<obsgroup groupingConceptId="159947">
+				<obsgroup groupingConceptId="1633">
 					<td>
 						Hypertension
 					</td>
 					<td>
-						<obs conceptId="1284" answerClasses="Diagnosis" style="autocomplete" />
+						<obs conceptId="1628" answerClasses="Diagnosis" style="autocomplete" />
 					</td>
-					<td>Diagnosis Date <obs conceptId="159948" id="dd_dm" /></td>
+					<td>Diagnosis Date</td><td><obs conceptId="159948" id="dd_dm" /></td>
 				</obsgroup>
 			</tr>
 			<ifMode mode="ENTER">
@@ -351,8 +351,8 @@ if(jQuery){
 									#foreach($obs in $latestEnc.obs)
 										
 									
-												#if($obs.concept.conceptId == 1284)
-													 $obs.valueCoded.name
+												#if($obs.concept.conceptId == 1628)
+													 $obs.valueCoded.name 
 													 &lt;br &gt;
 												#end
 																		
@@ -363,6 +363,7 @@ if(jQuery){
 								#end
 							#end" class="value" />
 				</td>
+				<td></td>
 				<td class="lookup">
 				
 					<lookup complexExpression="#foreach($enc in $fn.allEncounters(null))
@@ -415,7 +416,6 @@ if(jQuery){
 				<td colspan="2"><br /></td>
 			</tr>
 		
-		<br />
 		<br />
 		<fieldset><legend>Social History</legend>
 		<table class="baseline-aligned">
