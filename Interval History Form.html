@@ -175,9 +175,6 @@
 	</section>
 
 <section headerLabel="4. Other Medications">
-
-
-
 <table>
 <tr><td>
 		<table>	
@@ -221,7 +218,7 @@
 			</tr>
 			<tr>
 			
-				<td class="lookup">
+				<td class="lookup" colspan="3">
 				
 					<lookup complexExpression="#foreach($enc in $fn.allEncounters(null))
 								
@@ -233,56 +230,26 @@
 										
 									
 												#if($obs.concept.conceptId == 1282)
-													 $obs.valueCoded.name
+													 
+													 #foreach($obs2 in $obs.getRelatedObservations())
+														
+														#if($obs2.concept.conceptId == 1282)
+															 - $obs2.valueCoded.name - 
+														#end
+														
+														#if($obs2.concept.conceptId == 1443)
+															- $obs2.valueNumeric - 
+														#end
+														
+														#if($obs2.concept.conceptId == 160855)
+															- $obs2.valueCoded.name -
+														#end
+														
+													 #end
+													 &lt;br &gt;
 													 &lt;br &gt;
 												#end
-																		
-									#end
-
-								
-									#break
-								#end
-							#end" class="value" />
-				</td>
-				<td class="lookup">
-				
-					<lookup complexExpression="#foreach($enc in $fn.allEncounters(null))
-								
-								#if($form == $enc.form.formId)
-								
-									#set($latestEnc = $fn.latestEncounter($enc.encounterType))
-									
-									#foreach($obs in $latestEnc.obs)
-										
-									
-												#if($obs.concept.conceptId == 1443)
-													 $obs.valueNumeric
-													 &lt;br &gt;
-												#end
-																		
-									#end
-
-								
-									#break
-								#end
-							#end" class="value" />
-				</td>
-				<td class="lookup">
-				
-					<lookup complexExpression="#foreach($enc in $fn.allEncounters(null))
-								
-								#if($form == $enc.form.formId)
-								
-									#set($latestEnc = $fn.latestEncounter($enc.encounterType))
-									
-									#foreach($obs in $latestEnc.obs)
-										
-									
-												#if($obs.concept.conceptId == 160855)
-													 $obs.valueCoded.name
-													 &lt;br &gt;
-												#end
-																		
+												
 									#end
 
 								
@@ -299,9 +266,8 @@
 </tr>
 </table>
 
-
-	</section>
-
-	<submit/>
+</section>
+	
+<submit/>
 
 </htmlform>
