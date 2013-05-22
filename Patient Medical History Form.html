@@ -290,8 +290,9 @@ if(jQuery){
 		
 		<fieldset><legend>Past Medical History</legend>
 		<table class="baseline-aligned">
-
-		<form>   
+		<tr>
+		<td>
+			<table>
             <tr>
 				<obsgroup groupingConceptId="1633">
 					<td>
@@ -336,64 +337,69 @@ if(jQuery){
 					<td>Diagnosis Date</td><td><obs conceptId="159948" id="dd_dm" /></td>
 				</obsgroup>
 			</tr>
+			</table>
+		</td>
+		<td>
+		<table>
 			<ifMode mode="ENTER">
 		
 			<tr>
-				<td></td>
-				<td class="lookup">
+				<td colspan="2">
+					<ifMode mode="ENTER">
+					<table border="1" style="position:relative; ">
+						<tr>
+							<th style="background-color: #696969; color: #ffffff; text-align: center;">Previous Diagnoses</th>
+						</tr>
+						<tr>
+			
+							<td class="lookup">
 				
-					<lookup complexExpression="#foreach($enc in $fn.allEncounters(null))
+								<lookup complexExpression="#foreach($enc in $fn.allEncounters(null))
 								
-								#if($form == $enc.form.formId)
+											#if($form == $enc.form.formId)
 								
-									#set($latestEnc = $fn.latestEncounter($enc.encounterType))
+												#set($latestEnc = $fn.latestEncounter($enc.encounterType))
 									
-									#foreach($obs in $latestEnc.obs)
+												#foreach($obs in $latestEnc.obs)
 										
 									
-												#if($obs.concept.conceptId == 1628)
-													 $obs.valueCoded.name 
-													 &lt;br &gt;
-												#end
+															#if($obs.concept.conceptId == 1628)
+													 
+																#foreach($obs2 in $obs.getRelatedObservations()) 
+														
+																	#if($obs2.concept.conceptId == 1628)
+																		$obs2.valueCoded.name - 
+																	#end
+														
+																	#if($obs2.concept.conceptId == 159948)
+																		$obs2.valueDatetime 
+																	#end
+														
+																#end
+													 
+																&lt;br &gt;
+															#end
 																		
-									#end
+												#end
 
 								
-									#break
-								#end
-							#end" class="value" />
-				</td>
-				<td></td>
-				<td class="lookup">
+												#break
+											#end
+										#end" class="value" />
+							</td>
 				
-					<lookup complexExpression="#foreach($enc in $fn.allEncounters(null))
-								
-								#if($form == $enc.form.formId)
-								
-									#set($latestEnc = $fn.latestEncounter($enc.encounterType))
-									
-									#foreach($obs in $latestEnc.obs)
-										
-									
-												#if($obs.concept.conceptId == 159948)
-													 $obs.valueDatetime
-													 &lt;br &gt;
-												#end
-																		
-									#end
+						</tr>
 
-								
-									#break
-								#end
-							#end" class="value" />
+					</table>
+					</ifMode>
 				</td>
-				
 			</tr>
 
 		</ifMode>
 			
-		</form>
-
+		</table>
+		</td>
+		</tr>
 		</table>
 		</fieldset>
 		
