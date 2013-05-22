@@ -349,10 +349,11 @@ if(jQuery){
 					<table border="1" style="position:relative; ">
 						<tr>
 							<th style="background-color: #696969; color: #ffffff; text-align: center;">Previous Diagnoses</th>
+							<th style="background-color: #696969; color: #ffffff; text-align: center;">Diagnosis Dates</th>
 						</tr>
-						<tr>
+						<tr class="lookup">
 			
-							<td class="lookup">
+							<!--<td>-->
 				
 								<lookup complexExpression="#foreach($enc in $fn.allEncounters(null))
 								
@@ -364,20 +365,20 @@ if(jQuery){
 										
 									
 															#if($obs.concept.conceptId == 1628)
-													 
+															&lt;tr &gt;
 																#foreach($obs2 in $obs.getRelatedObservations()) 
 														
 																	#if($obs2.concept.conceptId == 1628)
-																		$obs2.valueCoded.name - 
+																		&lt;td style='padding: 2px;' class='lookup' &gt;$obs2.valueCoded.name&lt;/td&gt;
 																	#end
 														
 																	#if($obs2.concept.conceptId == 159948)
-																		$obs2.valueDatetime 
+																		&lt;td style='padding: 2px;' class='lookup' &gt;$obs2.valueDatetime &lt;/td&gt;
 																	#end
 														
 																#end
-													 
-																&lt;br &gt;
+															&lt;tr &gt;
+																
 															#end
 																		
 												#end
@@ -386,7 +387,7 @@ if(jQuery){
 												#break
 											#end
 										#end" class="value" />
-							</td>
+							<!--</td>-->
 				
 						</tr>
 
