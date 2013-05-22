@@ -101,6 +101,9 @@ if(jQuery){
                 td.point {
                         padding-left:1.0cm;
                 }
+		.lookup {
+			padding-left: 2cm;
+		}
 	</style>
 	<span style="float:right">Paper Form ID: $paperFormId</span>
 	<h2>PATIENT PLAN FORM (v1)</h2>
@@ -339,7 +342,7 @@ if(jQuery){
 			
 		</table>
 	</td>
-	<td>
+	<td class="lookup">
 		<ifMode mode="ENTER">
 		<table border="1" style="position:relative; ">
 			<tr>
@@ -347,7 +350,7 @@ if(jQuery){
 			</tr>
 			<tr>
 			
-				<td class="lookup" colspan="3">
+				<td colspan="3">
 				
 					<lookup complexExpression="#foreach($enc in $fn.allEncounters(null))
 								

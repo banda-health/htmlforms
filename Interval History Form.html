@@ -35,6 +35,9 @@
 		table.baseline-aligned td {
 			vertical-align: baseline;
 		}
+		.lookup {
+			padding-right: 5cm;
+		}
 	</style>
 
 
@@ -83,50 +86,43 @@
 		<table class="baseline-aligned">
 			<tr>
 				<th style="background-color: #696969; color: #ffffff;">Question</th>
-				<th style="background-color: #696969; color: #ffffff;">Answer</th>
 				<th style="background-color: #696969; color: #ffffff;">Previous Answers</th>
+				<th style="background-color: #696969; color: #ffffff;" class="lookup">Answer</th>
 			</tr>
 			<tr>
 				<td>Type of visit</td>
-				<td>
-					<obs conceptId="160530" answerConceptIds="161602,160523" answerLabels="First visit,Return visit" style="radio"/>
-				</td>
 				<ifMode mode="ENTER">
 				<td class="lookup">
 					<lookup class="value" expression="fn.latestObs(160530).valueCoded.name"/>
 				</td>
 				</ifMode>
+				<td>
+					<obs conceptId="160530" answerConceptIds="161602,160523" answerLabels="First visit,Follow up visit" style="radio"/>
+				</td>
 			</tr>
 			
 			<tr>
 				<td>Glucose monitoring at home</td>
-				<td><obs conceptId="161573" answerConceptIds="1065,1066" answerLabels="Yes,No" style="radio"/></td>
 				<ifMode mode="ENTER">
 				<td class="lookup">
 					<lookup class="value" expression="fn.latestObs(161573).valueCoded.name"/>
 				</td>
 				</ifMode>
+				<td><obs conceptId="161573" answerConceptIds="1065,1066" answerLabels="Yes,No" style="radio"/></td>
 			</tr>
 			
 			<tr>
 				<td>Symptoms of hypoglycemia</td>
-				<td><obs conceptId="161603" answerConceptIds="1065,1066" answerLabels="Yes,No" style="radio"/></td>
 				<ifMode mode="ENTER">
 				<td class="lookup">
 					<lookup class="value" expression="fn.latestObs(161603).valueCoded.name"/>
 				</td>
 				</ifMode>
+				<td><obs conceptId="161603" answerConceptIds="1065,1066" answerLabels="Yes,No" style="radio"/></td>
 			</tr>
 			<tr><td colspan="3"><br /></td></tr>
 			<tr>
 				<td>Other symptoms</td>
-				<td>
-					<obs conceptId="1728" answerConceptId="147104" answerLabel="Blurred vision" style="checkbox"/><br />
-					<obs conceptId="1728" answerConceptId="136394" answerLabel="JVD" style="checkbox"/><br />
-					<obs conceptId="1728" answerConceptId="150528" answerLabel="Numbness" style="checkbox"/><br />
-					<obs conceptId="1728" answerConceptId="129171" answerLabel="Tingling" style="checkbox"/><br />
-					<obs conceptId="1728" answerConceptId="6005" answerLabel="Focal weakness" style="checkbox"/>
-				</td>
 				<ifMode mode="ENTER">
 				<td class="lookup">
 					<lookup complexExpression="#foreach($enc in $fn.allEncounters(null))
@@ -151,25 +147,32 @@
 							#end" class="value" />
 				</td>
 				</ifMode>
+				<td>
+					<obs conceptId="1728" answerConceptId="147104" answerLabel="Blurred vision" style="checkbox"/><br />
+					<obs conceptId="1728" answerConceptId="136394" answerLabel="JVD" style="checkbox"/><br />
+					<obs conceptId="1728" answerConceptId="150528" answerLabel="Numbness" style="checkbox"/><br />
+					<obs conceptId="1728" answerConceptId="129171" answerLabel="Tingling" style="checkbox"/><br />
+					<obs conceptId="1728" answerConceptId="6005" answerLabel="Focal weakness" style="checkbox"/>
+				</td>
 			</tr>
 			<tr><td colspan="3"><br /></td></tr>
 			<tr>
 				<td>Adherence to Drugs:</td>
-				<td><obs conceptId="161563" answerConceptIds="159405,159406,159407,1107" answerLabels="Good,Fair,Poor,None" style="radio" /></td>
 				<ifMode mode="ENTER">
 				<td class="lookup">
 					<lookup class="value" expression="fn.latestObs(161563).valueCoded.name"/>
 				</td>
 				</ifMode>
+				<td><obs conceptId="161563" answerConceptIds="159405,159406,159407,1107" answerLabels="Good,Fair,Poor,None" style="radio" /></td>
 			</tr>
 			<tr>
 				<td>Exercise Time (In Minutes/day):</td>
-				<td><obs conceptId="161262" /></td>
 				<ifMode mode="ENTER">
 					<td class="lookup">
 						<lookup expression="fn.latestObs(161262).valueNumeric" class="value"/>
 					</td>
 				</ifMode>
+				<td><obs conceptId="161262" /></td>
 			</tr>
 		</table>
 	</section>

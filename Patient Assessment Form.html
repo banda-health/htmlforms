@@ -148,6 +148,13 @@
 		table.baseline-aligned td {
 			vertical-align: baseline;
 		}
+		.bmi_lkp {
+			font-weight:bold;
+		}
+		.lookup {
+			padding-left: 2cm;
+		}
+		
 	</style>
 
 	<span style="float:right">Paper Form ID: $paperFormId</span>
@@ -266,9 +273,11 @@
 			</tr>
 			<tr>
 				<td>Obesity:</td>
+				<td></td>
 				<ifMode mode="ENTER">
 				<td class="lookup">
-					<lookup expression="fn.latestObs(1342).valueNumeric" class="value" />
+					<span class="bmi_lkp">[BMI: ]<lookup expression="fn.latestObs(1342).valueNumeric" class="value" /></span> 
+					<span class="bmi_lkp">[25 - 29.9 (Overweight), > 29.9 (Obese)] </span>
 				</td>
 				</ifMode>
 			</tr>
