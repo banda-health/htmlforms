@@ -81,11 +81,20 @@
 	<section headerLabel="3. Lab Investigations">
 		<table class="baseline-aligned">
 			<tr>
+				<th style="background-color: #696969; color: #ffffff;">Question</th>
+				<th style="background-color: #696969; color: #ffffff;">Answer</th>
+				<th style="background-color: #696969; color: #ffffff;">Previous Answer</th>
+				<th style="background-color: #696969; color: #ffffff;" class="lookup">Date Recorded</th>
+			</tr>
+			<tr>
 				<td>HbA1C:</td>
 				<td><obs conceptId="159644" /></td>
 				<ifMode mode="ENTER">
 					<td class="lookup">
 						<lookup expression="fn.latestObs(159644).valueNumeric" class="value"/>
+					</td>
+					<td class="lookup">
+						<lookup expression="fn.latestObs(159644).obsDatetime" class="value"/>
 					</td>
 				</ifMode>
 			</tr>
@@ -96,6 +105,9 @@
 					<td class="lookup">
 						<lookup expression="fn.latestObs(887).valueNumeric" class="value"/>
 					</td>
+					<td class="lookup">
+						<lookup expression="fn.latestObs(887).obsDatetime" class="value"/>
+					</td>
 				</ifMode>
 			</tr>
 			<tr>
@@ -104,6 +116,9 @@
 				<ifMode mode="ENTER">
 					<td class="lookup">
 						<lookup expression="fn.latestObs(160912).valueNumeric" class="value"/>
+					</td>
+					<td class="lookup">
+						<lookup expression="fn.latestObs(160912).obsDatetime" class="value"/>
 					</td>
 				</ifMode>
 			</tr>
@@ -114,6 +129,9 @@
 					<td class="lookup">
 						<lookup expression="fn.latestObs(160912).valueNumeric" class="value"/>
 					</td>
+					<td class="lookup">
+						<lookup expression="fn.latestObs(160912).obsDatetime" class="value"/>
+					</td>
 				</ifMode>
 			</tr>
 			<tr>
@@ -122,6 +140,9 @@
 				<ifMode mode="ENTER">
 					<td class="lookup">
 						<lookup expression="fn.latestObs(1132).valueNumeric" class="value"/>
+					</td>
+					<td class="lookup">
+						<lookup expression="fn.latestObs(1132).obsDatetime" class="value"/>
 					</td>
 				</ifMode>
 			</tr>
@@ -132,6 +153,9 @@
 					<td class="lookup">
 						<lookup expression="fn.latestObs(1133).valueNumeric" class="value"/>
 					</td>
+					<td class="lookup">
+						<lookup expression="fn.latestObs(1133).obsDatetime" class="value"/>
+					</td>
 				</ifMode>
 			</tr>
 			<tr>
@@ -140,6 +164,9 @@
 				<ifMode mode="ENTER">
 					<td class="lookup">
 						<lookup expression="fn.latestObs(790).valueNumeric" class="value"/>
+					</td>
+					<td class="lookup">
+						<lookup expression="fn.latestObs(790).obsDatetime" class="value"/>
 					</td>
 				</ifMode>
 			</tr>
@@ -150,6 +177,9 @@
 					<td class="lookup">
 						<lookup expression="fn.latestObs(21).valueNumeric" class="value"/>
 					</td>
+					<td class="lookup">
+						<lookup expression="fn.latestObs(21).obsDatetime" class="value"/>
+					</td>
 				</ifMode>
 			</tr>
 			<tr>
@@ -158,6 +188,9 @@
 				<ifMode mode="ENTER">
 					<td class="lookup">
 						<lookup expression="fn.latestObs(678).valueNumeric" class="value"/>
+					</td>
+					<td class="lookup">
+						<lookup expression="fn.latestObs(678).obsDatetime" class="value"/>
 					</td>
 				</ifMode>
 			</tr>
@@ -168,6 +201,9 @@
 					<td class="lookup">
 						<lookup expression="fn.latestObs(1008).valueNumeric" class="value"/>
 					</td>
+					<td class="lookup">
+						<lookup expression="fn.latestObs(1008).obsDatetime" class="value"/>
+					</td>
 				</ifMode>
 			</tr>
 			<tr>
@@ -176,6 +212,9 @@
 				<ifMode mode="ENTER">
 					<td class="lookup">
 						<lookup expression="fn.latestObs(1006).valueNumeric" class="value"/>
+					</td>
+					<td class="lookup">
+						<lookup expression="fn.latestObs(1006).obsDatetime" class="value"/>
 					</td>
 				</ifMode>
 			</tr>
@@ -187,6 +226,7 @@
 				<td><obs conceptId="159573" rows="2" cols="20" /></td>
 				<ifMode mode="ENTER">
 					<td class="lookup"><lookup expression="fn.latestObs(159573).valueText" class="value"/></td>
+					<td class="lookup"><lookup expression="fn.latestObs(159573).obsDatetime" class="value"/></td>
 				</ifMode>
 			</tr>
 			<tr>
@@ -194,6 +234,7 @@
 				<td><obs conceptId="161579" rows="2" cols="20" /></td>
 				<ifMode mode="ENTER">
 					<td class="lookup"><lookup expression="fn.latestObs(161579).valueText" class="value"/></td>
+					<td class="lookup"><lookup expression="fn.latestObs(161579).obsDatetime" class="value"/></td>
 				</ifMode>
 			</tr>
 		</table>

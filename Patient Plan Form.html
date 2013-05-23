@@ -149,19 +149,21 @@ if(jQuery){
 		<table class="baseline-aligned">
 			<tr>
 				<td>Nutrition Counseling:</td>
-				<td class="point"><obs conceptId="1380" answerConceptIds="1065,1066" answerLabels="Done,Not Done" style="radio" /></td>
+				<td class="point"><obs conceptId="1380" answerConceptIds="1065,1066" answerLabels="Counseling,Not Counseling" style="radio" /></td>
 				<ifMode mode="ENTER">
 					<td class="lookup">
 						<lookup expression="fn.latestObs(1380).valueCoded.name" class="value"/>
+						<lookup expression="fn.latestObs(1380).obsDatetime" class="value"/>
 					</td>
 				</ifMode>
 			</tr>
 			<tr>
 				<td>Exercise Counseling:</td>
-				<td class="point"><obs conceptId="161587" answerConceptIds="1065,1066" answerLabels="Done,Not Done" style="radio" /></td>
+				<td class="point"><obs conceptId="161587" answerConceptIds="1065,1066" answerLabels="Counseling,Not Counseling" style="radio" /></td>
 				<ifMode mode="ENTER">
 					<td class="lookup">
 						<lookup expression="fn.latestObs(161587).valueCoded.name" class="value"/>
+						<lookup expression="fn.latestObs(161587).obsDatetime" class="value"/>
 					</td>
 				</ifMode>
 			</tr>
@@ -171,28 +173,31 @@ if(jQuery){
 			</tr>
 			<tr>
 				<td>Smoking counseling:</td>
-				<td class="point"><obs conceptId="1455" answerConceptIds="1065,1066" answerLabels="Done,Not Done" style="radio" /></td>
+				<td class="point"><obs conceptId="1455" answerConceptIds="1065,1066" answerLabels="Counseling,Not Counseling" style="radio" /></td>
 				<ifMode mode="ENTER">
 					<td class="lookup">
 						<lookup expression="fn.latestObs(1455).valueCoded.name" class="value"/>
+						<lookup expression="fn.latestObs(1455).obsDatetime" class="value"/>
 					</td>
 				</ifMode>
 			</tr>
 			<tr>
-				<td>Signs of DKA:</td>
+				<td>DKA Signs:</td>
 				<td class="point"><obs conceptId="161590" answerConceptIds="1065,1066" answerLabels="Yes,No" style="radio" /></td>
 				<ifMode mode="ENTER">
 					<td class="lookup">
 						<lookup expression="fn.latestObs(161590).valueCoded.name" class="value"/>
+						<lookup expression="fn.latestObs(161590).obsDatetime" class="value"/>
 					</td>
 				</ifMode>
 			</tr>
 			<tr>
-				<td>Signs of Hypoglycemia:</td>
+				<td>Hypoglycemia Signs:</td>
 				<td class="point"><obs conceptId="161603" answerConceptIds="1065,1066" answerLabels="Yes,No" style="radio" /></td>
 				<ifMode mode="ENTER">
 					<td class="lookup">
 						<lookup expression="fn.latestObs(161603).valueCoded.name" class="value"/>
+						<lookup expression="fn.latestObs(161603).obsDatetime" class="value"/>
 					</td>
 				</ifMode>
 			</tr>
@@ -248,15 +253,17 @@ if(jQuery){
 				<td>Surgical:</td>
 				<td class="comment">
                                 <select id="surgical">
-                                <option value="Surgical Option 1">Surgical Option 1</option>
-                                <option value="Surgical Option 2">Surgical Option 2</option>
-                                <option value="Surgical Option 3">Surgical Option 3</option>
+                                <option value="None">None</option>
+                                <option value="General surgery">General surgery</option>
+                                <option value="Plastic surgery">Plastic surgery</option>
+								<option value="Orthopaedic">Orthopaedic surgery</option>
                                 </select>
                                 <obs conceptId="1673" id="surgical_c" />
                 </td>
 				<ifMode mode="ENTER">
 					<td class="lookup">
 						<lookup expression="fn.latestObs(1673).valueText" class="value"/>
+						<lookup expression="fn.latestObs(1673).obsDatetime" class="value"/>
 					</td>
 				</ifMode>
 			</tr>
@@ -264,6 +271,7 @@ if(jQuery){
 				<td>Ophthalmology:</td>
 				<td class="comment">
                                 <select id="ophthalmology">
+								<option value="None">None</option>
                                 <option value="KH Eye Clinic">KH Eye Clinic</option>
                                 <option value="Outside Ophthalmology">Outside Ophthalmology</option>
                                 </select>
@@ -272,6 +280,7 @@ if(jQuery){
 				<ifMode mode="ENTER">
 					<td class="lookup">
 						<lookup expression="fn.latestObs(1763).valueText" class="value"/>
+						<lookup expression="fn.latestObs(1763).obsDatetime" class="value"/>
 					</td>
 				</ifMode>
 			</tr>
@@ -279,15 +288,16 @@ if(jQuery){
 				<td>Dental:</td>
 				<td class="comment">
                                 <select id="dental">
-                                <option value="Dental Option 1">Dental Option 1</option>
-                                <option value="Dental Option 2">Dental Option 2</option>
-                                <option value="Dental Option 3">Dental Option 3</option>
+                                <option value="None">None</option>
+                                <option value="Kijabe hospital dental">Kijabe hospital dental</option>
+                                <option value="Outside dental">Outside dental</option>
                                 </select>
                                 <obs conceptId="1772" id="dental_c" />
                 </td>
 				<ifMode mode="ENTER">
 					<td class="lookup">
 						<lookup expression="fn.latestObs(1772).valueText" class="value"/>
+						<lookup expression="fn.latestObs(1772).obsDatetime" class="value"/>
 					</td>
 				</ifMode>
 			</tr>
@@ -300,6 +310,7 @@ if(jQuery){
 					<ifMode mode="ENTER">
 						<td class="lookup">
 							<lookup expression="fn.latestObs(160632).valueText" class="value"/>
+							<lookup expression="fn.latestObs(160632).obsDatetime" class="value"/>
 						</td>
 					</ifMode>
 				</tr>           
@@ -376,7 +387,7 @@ if(jQuery){
 														#if($obs2.concept.conceptId == 160855)
 															- $obs2.valueCoded.name -
 														#end
-														
+														$obs2.obsDatetime
 													 #end
 													 &lt;br &gt;
 													 &lt;br &gt;
@@ -406,6 +417,7 @@ if(jQuery){
 				<ifMode mode="ENTER">
 					<td class="lookup">
 						<lookup expression="fn.latestObs(159488).valueCoded.name" class="value"/>
+						<lookup expression="fn.latestObs(159488).obsDatetime" class="value"/>
 					</td>
 				</ifMode>
 			</tr>

@@ -189,6 +189,11 @@ $j(function() {
         <section headerLabel="3. Exam Findings">
 		<table class="baseline-aligned">
 			<tr>
+				<th style="background-color: #696969; color: #ffffff;">Question</th>
+				<th style="background-color: #696969; color: #ffffff;" class="lookup">Answer</th>
+				<th style="background-color: #696969; color: #ffffff;">Previous Answers</th>
+			</tr>
+			<tr>
 				<td>HEENT:</td>
 				<td>
                     <obs conceptId="1122" answerConceptId="516" answerLabel="Pale Conjuctiva" style="checkbox" /><br />
@@ -206,7 +211,7 @@ $j(function() {
 										
 									
 												#if($obs.concept.conceptId == 1122)
-													 $obs.valueCoded.name 
+													 $obs.valueCoded.name - #Date $obs.obsDatetime
 													 &lt;br &gt;
 												#end
 																			
@@ -217,6 +222,7 @@ $j(function() {
 								#end
 							#end" class="value" />
 				</td>
+				<td></td>
 				</ifMode>
 			</tr>
                 <tr>
@@ -226,7 +232,6 @@ $j(function() {
 				<td>Neck:</td>
 				<td>
                     <obs conceptId="161578" answerConceptId="159011" answerLabel="Thyromegaly" style="checkbox" /><br />
-                    <obs conceptId="161578" answerConceptId="136394" answerLabel="Jugular Venous Distension" style="checkbox" />
                 </td>
 				<ifMode mode="ENTER">
 				<td class="lookup">
@@ -240,7 +245,7 @@ $j(function() {
 										
 									
 												#if($obs.concept.conceptId == 161578)
-													 $obs.valueCoded.name 
+													 $obs.valueCoded.name - #Date $obs.obsDatetime 
 													 &lt;br &gt;
 												#end
 																			
@@ -282,7 +287,7 @@ $j(function() {
 										
 									
 												#if($obs.concept.conceptId == 1123)
-													 $obs.valueCoded.name 
+													 $obs.valueCoded.name - #Date $obs.obsDatetime
 													 &lt;br &gt;
 												#end
 																			
@@ -310,7 +315,7 @@ $j(function() {
 						<input type="radio" name="murmurGrp" id="murmur" /> Cardiac Murmur
 					</form></p>
 					
-					<obs conceptId="161011" cols="40" rows="5" />
+					Comment on Murmur:<br /> <obs conceptId="161011" cols="40" rows="5" />
 					<br/><obs conceptId="1124" answerConceptId="550" answerLabel="S3 Gallop" style="checkbox" />
 					<obs conceptId="1124" answerConceptId="130560" answerLabel="Pericardial Frictonal Rub" style="checkbox" />
                 </td>
@@ -326,7 +331,7 @@ $j(function() {
 										
 									
 												#if($obs.concept.conceptId == 1124)
-													 $obs.valueCoded.name, 
+													 $obs.valueCoded.name - #Date $obs.obsDatetime, 
 													 
 												#end
 																			
@@ -338,7 +343,7 @@ $j(function() {
 							#end
 							&lt;br &gt;
 							&lt;br &gt;" class="value" />
-							<span class="value" >Previous Cardiac Comment: <lookup expression="fn.latestObs(161011).valueText" class="value"/></span>
+							<span class="value" >Previous Murmur Comment: <lookup complexExpression="$fn.latestObs(161011).valueText -- #Date: $fn.latestObs(161011).obsDatetime" class="value"/></span>
 				</td>
 				</ifMode>
 			</tr>
@@ -349,15 +354,15 @@ $j(function() {
 				<td>Abdominal:</td>
 				<td class="checkboxGroup">
                     <span id="checkboxAll">
-						<obs conceptId="1125" answerConceptId="1115" answerLabel="Normal" style="checkbox" />
-                        <obs conceptId="1125" answerConceptId="159486" answerLabel="Soft Abdomen" style="checkbox" />				
-                        <obs conceptId="1125" answerConceptId="159444" answerLabel="No Abdominal Tenderness" style="checkbox" />
-                        <obs conceptId="1125" answerConceptId="159445" answerLabel="No Hepatomegaly" style="checkbox" />
-                        <obs conceptId="1125" answerConceptId="159446" answerLabel="No Splenomegaly" style="checkbox" />
+						<obs conceptId="1125" answerConceptId="1115" answerLabel="Normal" style="checkbox" /><br />
+                        <obs conceptId="1125" answerConceptId="159486" answerLabel="Soft Abdomen" style="checkbox" /><br />				
+                        <obs conceptId="1125" answerConceptId="159444" answerLabel="No Abdominal Tenderness" style="checkbox" /><br />
+                        <obs conceptId="1125" answerConceptId="159445" answerLabel="No Hepatomegaly" style="checkbox" /><br />
+                        <obs conceptId="1125" answerConceptId="159446" answerLabel="No Splenomegaly" style="checkbox" /><br />
 					</span>
 
                     <span id="checkboxCheckbox">
-						<obs conceptId="1125" answerConceptId="5008" answerLabel="Hepatomegaly" style="checkbox" />
+						<obs conceptId="1125" answerConceptId="5008" answerLabel="Hepatomegaly" style="checkbox" /><br />
                         <obs conceptId="1125" answerConceptId="5009" answerLabel="Splenomegaly" style="checkbox" />
 					</span>
 
@@ -374,7 +379,7 @@ $j(function() {
 										
 									
 												#if($obs.concept.conceptId == 1125)
-													 $obs.valueCoded.name, 
+													 $obs.valueCoded.name - #Date $obs.obsDatetime &lt;br /&gt; 
 													 
 												#end
 																			
@@ -393,11 +398,11 @@ $j(function() {
 			<tr>
 				<td>Foot Filament Testing:</td>
 				<td>
-                    <obs conceptId="161576" answerConceptIds="159534,5135,150528,1067" answerLabels="Normal Sensation,Decreased Sensation,Numbness,Not Tested" style="radio" />
+                    <obs conceptId="161576" answerConceptIds="159534,5135,150528,1067" answerLabels="Normal Sensation,Decreased Sensation,Numbness,Not Tested" />
                 </td>
 				<ifMode mode="ENTER">
 					<td class="lookup">
-						<lookup expression="fn.latestObs(161576).valueCoded.name" class="value" />
+						<lookup complexExpression="$fn.latestObs(161576).valueCoded.name #Date: $fn.latestObs(161576).obsDatetime" class="value" />
 					</td>
 				</ifMode>
 			</tr>

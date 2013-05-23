@@ -7,9 +7,12 @@
           $j('#10-addEntry').remove();
           $j('#1-toggleContainer').show();
  
-          $j('#11-removeEntry').remove();
-          $j('#20-addEntry').remove();
-          $j('#11-toggleContainer').show();
+			//Enable only if problems resolved is unhidden
+          //$j('#11-removeEntry').remove();
+          //$j('#20-addEntry').remove();
+          //$j('#11-toggleContainer').show();
+		  
+		  $j('.resolved').hide();
         });
  
  
@@ -201,6 +204,11 @@
 	<section headerLabel="3. Clinical Asessment">
 		<table class="baseline-aligned">
 			<tr>
+				<th style="background-color: #696969; color: #ffffff;">Question</th>
+				<th style="background-color: #696969; color: #ffffff;" class="lookup">Answer</th>
+				<th style="background-color: #696969; color: #ffffff;">Previous Answers</th>
+			</tr>
+			<tr>
 				<td>Assessment:</td>
 				<td>
 				<span class="checkboxGroup">
@@ -229,7 +237,7 @@
 										
 									
 												#if($obs.concept.conceptId == 161582)
-													 $obs.valueCoded.name 
+													 $obs.valueCoded.name  - #Date $obs.obsDatetime 
 													 &lt;br &gt;
 												#end
 																			
@@ -251,6 +259,9 @@
 				<td class="lookup">
 					<lookup expression="fn.latestObs(161580).valueCoded.name" class="value" />
 				</td>
+				<td class="lookup">
+					<lookup expression="fn.latestObs(161580).obsDatetime" class="value" />
+				</td>
 				</ifMode>
 			</tr>
 			<tr>
@@ -259,6 +270,9 @@
 				<ifMode mode="ENTER">
 				<td class="lookup">
 					<lookup expression="fn.latestObs(161583).valueCoded.name" class="value" />
+				</td>
+				<td class="lookup">
+					<lookup expression="fn.latestObs(161583).obsDatetime" class="value" />
 				</td>
 				</ifMode>
 			</tr>
@@ -269,6 +283,9 @@
 				<td class="lookup">
 					<lookup expression="fn.latestObs(161581).valueCoded.name" class="value" />
 				</td>
+				<td class="lookup">
+					<lookup expression="fn.latestObs(161581).obsDatetime" class="value" />
+				</td>
 				</ifMode>
 			</tr>
 			<tr>
@@ -278,6 +295,9 @@
 				<td class="lookup">
 					<span class="bmi_lkp">[BMI: ]<lookup expression="fn.latestObs(1342).valueNumeric" class="value" /></span> 
 					<span class="bmi_lkp">[25 - 29.9 (Overweight), > 29.9 (Obese)] </span>
+				</td>
+				<td class="lookup">
+					<lookup expression="fn.latestObs(1342).obsDatetime" class="value" /> 
 				</td>
 				</ifMode>
 			</tr>
@@ -332,7 +352,7 @@
 										
 									
 												#if($obs.concept.conceptId == 1284)
-													 $obs.valueCoded.name 
+													 $obs.valueCoded.name - #Date $obs.obsDatetime
 													 &lt;br &gt;
 												#end
 																			
@@ -345,8 +365,8 @@
 				</td>
 				</ifMode>
 				</tr>
-                <tr><th>Problems resolved:</th></tr>
-                <tr><td>
+                <tr class="resolved"><th>Problems resolved:</th></tr>
+                <tr class="resolved"><td>
                 <repeat>
                     <template>
                         <div id="{n}-toggleContainer" style="display:none;">
