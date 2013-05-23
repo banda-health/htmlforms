@@ -297,111 +297,74 @@ if(jQuery){
 		<td>
 			<table>
             <tr>
-				<obsgroup groupingConceptId="1633">
 					<td>
 						Diabetes Mellitus
 					</td>
 					<td>
-						<obs conceptId="1628" answerClasses="Diagnosis" style="autocomplete" />
+						<obs conceptId="161607"  answerConceptIds="1065,1066" answerLabels="Yes,No" showDate="true" style="radio" />
 					</td>
-					<td>Diagnosis Date</td><td><obs conceptId="159948" id="dd_dm" /></td>
-				</obsgroup>
+					<ifMode mode="ENTER">
+					<td class="value">
+						<lookup expression="fn.latestObs(161607).valueCoded.name" />
+					</td>
+					<td class="value">
+						Diagnosis Date: <lookup expression="fn.latestObs(161607).obsDatetime" />
+					</td>
+					</ifMode>
 			</tr>
 			<tr>
-				<obsgroup groupingConceptId="1633">
-					<td>
-						Myocardial Infarction
-					</td>
-					<td>
-						<obs conceptId="1628" answerClasses="Diagnosis" style="autocomplete" />
-					</td>
-					<td>Diagnosis Date</td><td><obs conceptId="159948" id="dd_dm" /></td>
-				</obsgroup>
-			</tr>
-			<tr>
-				<obsgroup groupingConceptId="1633">
-					<td>
-						CerebroVascular Accident
-					</td>
-					<td>
-						<obs conceptId="1628" answerClasses="Diagnosis" style="autocomplete" />
-					</td>
-					<td>Diagnosis Date</td><td><obs conceptId="159948" id="dd_dm" /></td>
-				</obsgroup>
-			</tr>
-			<tr>
-				<obsgroup groupingConceptId="1633">
+				
 					<td>
 						Hypertension
 					</td>
 					<td>
-						<obs conceptId="1628" answerClasses="Diagnosis" style="autocomplete" />
+						<obs conceptId="161572" answerConceptIds="1065,1066" answerLabels="Yes,No" showDate="true" style="radio" />
 					</td>
-					<td>Diagnosis Date</td><td><obs conceptId="159948" id="dd_dm" /></td>
-				</obsgroup>
-			</tr>
-			</table>
-		</td>
-		<td class="lookup">
-		<table>
-			<ifMode mode="ENTER">
-		
-			<tr>
-				<td colspan="2">
 					<ifMode mode="ENTER">
-					<table border="1" style="position:relative; ">
-						<tr>
-							<th style="background-color: #696969; color: #ffffff; text-align: center;">Previous Diagnoses</th>
-							<th style="background-color: #696969; color: #ffffff; text-align: center;">Diagnosis Dates</th>
-						</tr>
-						<tr>
-			
-							<!--<td>-->
-				
-								<lookup complexExpression="#foreach($enc in $fn.allEncounters(null))
-								
-											#if($form == $enc.form.formId)
-								
-												#set($latestEnc = $fn.latestEncounter($enc.encounterType))
-									
-												#foreach($obs in $latestEnc.obs)
-										
-									
-															#if($obs.concept.conceptId == 1628)
-															&lt;tr &gt;
-																#foreach($obs2 in $obs.getRelatedObservations()) 
-														
-																	#if($obs2.concept.conceptId == 1628)
-																		&lt;td style='padding: 2px;' class='lookup' &gt;$obs2.valueCoded.name&lt;/td&gt;
-																	#end
-														
-																	#if($obs2.concept.conceptId == 159948)
-																		&lt;td style='padding: 2px;' class='lookup' &gt;$obs2.valueDatetime &lt;/td&gt;
-																	#end
-														
-																#end
-															&lt;tr &gt;
-																
-															#end
-																		
-												#end
-
-								
-												#break
-											#end
-										#end" class="value" />
-							<!--</td>-->
-				
-						</tr>
-
-					</table>
+					<td class="value">
+						<lookup expression="fn.latestObs(161572).valueCoded.name" />
+					</td>
+					<td class="value">
+						Diagnosis Date: <lookup expression="fn.latestObs(161572).obsDatetime" />
+					</td>
 					</ifMode>
-				</td>
 			</tr>
-
-		</ifMode>
+			<tr>
+				
+					<td>
+						Myocardial Infarction
+					</td>
+					<td>
+						<obs conceptId="161608" answerConceptIds="1065,1066" answerLabels="Yes,No" showDate="true" style="radio" />
+					</td>
+					<ifMode mode="ENTER">
+					<td class="value">
+						<lookup expression="fn.latestObs(161608).valueCoded.name" />
+					</td>
+					<td class="value">
+						Diagnosis Date: <lookup expression="fn.latestObs(161608).obsDatetime" />
+					</td>
+					</ifMode>
+			</tr>
+			<tr>
+				
+					<td>
+						CerebroVascular Accident
+					</td>
+					<td>
+						<obs conceptId="161564" answerConceptIds="1065,1066" answerLabels="Yes,No" showDate="true" style="radio" />
+					</td>
+					<ifMode mode="ENTER">
+					<td class="value">
+						<lookup expression="fn.latestObs(161564).valueCoded.name" />
+					</td>
+					<td class="value">
+						Diagnosis Date: <lookup expression="fn.latestObs(161564).obsDatetime" />
+					</td>
+					</ifMode>
+			</tr>
 			
-		</table>
+			</table>
 		</td>
 		</tr>
 		</table>
