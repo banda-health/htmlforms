@@ -29,7 +29,16 @@
 						getField("height.value").change(getBMI);
 						getField("bmi.value").blur(getBMI);
 						
+						beforeSubmit.push(function() {
+							if(getValue("bmi.value") > 50) {
+								alert("BMI cannot be greater than 50");
+								return false;
+							}
+							return true;
+						});
 				});
+				
+				
 				$j(function(){
 					$j('.type').hide();
 				});
