@@ -293,11 +293,9 @@
 				<td></td>
 				<ifMode mode="ENTER">
 				<td class="lookup">
-					<span class="bmi_lkp">[BMI: ]<lookup expression="fn.latestObs(1342).valueNumeric" class="value" /></span> 
-					<span class="bmi_lkp">[25 - 29.9 (Overweight), > 29.9 (Obese)] </span>
-				</td>
-				<td class="lookup">
-					<lookup expression="fn.latestObs(1342).obsDatetime" class="value" /> 
+					<span class="bmi_lkp">[BMI: <lookup expression="fn.latestObs(1342).valueNumeric" class="value" /> ]</span> 
+					<span class="bmi_lkp">[(25 - 29.90) => Overweight] [(> 29.9) => Obese] </span>
+					<lookup expression="fn.latestObs(1342).obsDatetime" class="value" />
 				</td>
 				</ifMode>
 			</tr>
