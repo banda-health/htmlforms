@@ -94,10 +94,10 @@
 				<td>Type of visit</td>
 				<ifMode mode="ENTER">
 				<td class="lookup">
-					<lookup class="value" expression="$fn.latestObs(160530).valueCoded.name"/>
+					<lookup class="value" expression="fn.latestObs(160530).valueCoded.name"/>
 				</td>
 				<td class="lookup">
-					<lookup class="value" expression="$fn.latestObs(160530).obsDatetime"/>
+					<lookup class="value" expression="fn.latestObs(160530).obsDatetime"/>
 				</td>
 				</ifMode>
 				<td>
@@ -109,10 +109,10 @@
 				<td>Glucose monitoring at home</td>
 				<ifMode mode="ENTER">
 				<td class="lookup">
-					<lookup class="value" expression="$fn.latestObs(161573).valueCoded.name"/>
+					<lookup class="value" expression="fn.latestObs(161573).valueCoded.name"/>
 				</td>
 				<td class="lookup">
-					<lookup class="value" expression="$fn.latestObs(161573).obsDatetime"/>
+					<lookup class="value" expression="fn.latestObs(161573).obsDatetime"/>
 				</td>
 				</ifMode>
 				<td><obs conceptId="161573" answerConceptIds="1065,1066" answerLabels="Yes,No" style="radio"/></td>
@@ -122,10 +122,10 @@
 				<td>Symptoms of hypoglycemia</td>
 				<ifMode mode="ENTER">
 				<td class="lookup">
-					<lookup class="value" expression="$fn.latestObs(161603).valueCoded.name"/>
+					<lookup class="value" expression="fn.latestObs(161603).valueCoded.name"/>
 				</td>
 				<td class="lookup">
-					<lookup class="value" expression="$fn.latestObs(161603).obsDatetime"/>
+					<lookup class="value" expression="fn.latestObs(161603).obsDatetime"/>
 				</td>
 				</ifMode>
 				<td><obs conceptId="161603" answerConceptIds="1065,1066" answerLabels="Yes,No" style="radio"/></td>
@@ -170,10 +170,10 @@
 				<td>Adherence to Drugs:</td>
 				<ifMode mode="ENTER">
 				<td class="lookup">
-					<lookup class="value" expression="$fn.latestObs(161563).valueCoded.name"/>
+					<lookup class="value" expression="fn.latestObs(161563).valueCoded.name"/>
 				</td>
 				<td class="lookup">
-					<lookup class="value" expression="$fn.latestObs(161563).obsDatetime"/>
+					<lookup class="value" expression="fn.latestObs(161563).obsDatetime"/>
 				</td>
 				</ifMode>
 				<td><obs conceptId="161563" answerConceptIds="159405,159406,159407,1107" answerLabels="Good,Fair,Poor,None" style="radio" /></td>
@@ -182,10 +182,10 @@
 				<td>Exercise Time (In Minutes/day):</td>
 				<ifMode mode="ENTER">
 					<td class="lookup">
-						<lookup expression="$fn.latestObs(161262).valueNumeric" class="value"/>
+						<lookup expression="fn.latestObs(161262).valueNumeric" class="value"/>
 					</td>
 					<td class="lookup">
-						<lookup expression="$fn.latestObs(161262).obsDatetime" class="value"/>
+						<lookup expression="fn.latestObs(161262).obsDatetime" class="value"/>
 					</td>
 				</ifMode>
 				<td><obs conceptId="161262" /></td>
@@ -193,7 +193,7 @@
 		</table>
 	</section>
 
-<section headerLabel="4. Other Medications">
+<section headerLabel="4. Current Medications">
 <table>
 <tr><td>
 		<table>	
@@ -261,8 +261,9 @@
 														#if($obs2.concept.conceptId == 160855)
 															- $obs2.valueCoded.name -
 														#end
-														#Date $obs2.obsDatetime
+														
 													 #end
+													 $obs.obsDatetime
 													 &lt;br &gt;
 													 &lt;br &gt;
 												#end

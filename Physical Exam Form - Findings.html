@@ -352,30 +352,10 @@ $j(function() {
 							&lt;br &gt;
 							&lt;br &gt;" class="value" />
 							
-							<span>
-							<lookup complexExpression="#foreach($enc in $fn.allEncounters(null))
-								
-								#if($form == $enc.form.formId)
-								
-									#set($latestEnc = $fn.latestEncounter($enc.encounterType))
-									
-									#foreach($obs in $latestEnc.obs)
-										
-									
-												#if($obs.concept.conceptId == 161011)
-													 $obs.valueText - #Date $obs.obsDatetime 
-													 
-												#end
-																			
-									#end
-
-								
-									#break
-								#end
-							#end
-							&lt;br &gt;
-							&lt;br &gt;" class="value" />
-							<!--<lookup expression="$fn.latestObs(161011).valueText" />  <lookup expression="$fn.latestObs(161011).obsDatetime" />-->
+							<span>							
+							<lookup expression="fn.latestObs(161011).valueText" class="value" />  
+							<br />
+							<lookup expression="fn.latestObs(161011).obsDatetime" class="value" />
 							</span>
 				</td>
 				</ifMode>
@@ -435,29 +415,8 @@ $j(function() {
                 </td>
 				<ifMode mode="ENTER">
 					<td class="lookup">
-					<lookup complexExpression="#foreach($enc in $fn.allEncounters(null))
-								
-								#if($form == $enc.form.formId)
-								
-									#set($latestEnc = $fn.latestEncounter($enc.encounterType))
-									
-									#foreach($obs in $latestEnc.obs)
-										
-									
-												#if($obs.concept.conceptId == 161576)
-													 $obs.valueCoded.name - #Date $obs.obsDatetime 
-													 
-												#end
-																			
-									#end
-
-								
-									#break
-								#end
-							#end
-							&lt;br &gt;
-							&lt;br &gt;" class="value" />
-						<!--<lookup expression="$fn.latestObs(161576).valueCoded.name" class="value"/>  <lookup expression="$fn.latestObs(161576).obsDatetime" class="value" />-->
+						<lookup expression="fn.latestObs(161576).valueCoded.name" class="value"/>  
+						<lookup expression="fn.latestObs(161576).obsDatetime" class="value" />
 					</td>
 				</ifMode>
 			</tr>

@@ -240,7 +240,33 @@ if(jQuery){
                     <render n="19" concept="Misc Order"/>
                     <render n="20" concept="Misc Order"/>
                 </repeat>
-                </td></tr>           
+                </td>
+				<ifMode mode="ENTER">
+				<td class="lookup">
+					<lookup complexExpression="#foreach($enc in $fn.allEncounters(null))
+								
+								#if($form == $enc.form.formId)
+								
+									#set($latestEnc = $fn.latestEncounter($enc.encounterType))
+									
+									#foreach($obs in $latestEnc.obs)
+										
+									
+												#if($obs.concept.conceptId == 161588)
+													 $obs.valueCoded.name - #Date $obs.obsDatetime
+													 &lt;br &gt;
+												#end
+																			
+									#end
+
+								
+									#break
+								#end
+							#end" class="value" />
+							
+				</td>
+				</ifMode>
+				</tr>           
             </obsgroup>
 			
 		</table>
@@ -387,8 +413,9 @@ if(jQuery){
 														#if($obs2.concept.conceptId == 160855)
 															- $obs2.valueCoded.name -
 														#end
-														$obs2.obsDatetime
+														
 													 #end
+													 $obs.obsDatetime
 													 &lt;br &gt;
 													 &lt;br &gt;
 												#end
@@ -413,7 +440,7 @@ if(jQuery){
 			<tr>
 				<td>Disposition:</td>
 				<td><p></p></td>
-				<td class="ref"><obs conceptId="159488" answerConceptIds="1788,1654,1536" answerLabels="Referred,Admitted,Home" style="radio" /></td>
+				<td class="ref"><obs conceptId="159488" answerConceptIds="161589,1654,1536" answerLabels="Referred,Admitted,Home" style="radio" /></td>
 				<ifMode mode="ENTER">
 					<td class="lookup">
 						<lookup expression="fn.latestObs(159488).valueCoded.name" class="value"/>

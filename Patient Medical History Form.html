@@ -117,74 +117,113 @@ if(jQuery){
 		
 		$j(function(){
 			
-			//Configration for hypertension
-			$j("#h_no").click(function() {
-				if($j("#h_no").attr("checked")) {
+			$j("#dm_date").hide();
+			$j("#htn_date").hide();
+			$j("#mi_date").hide();
+			$j("#cva_date").hide();
+			
+			//Configration for DM
+			$j("#w12_1").click(function() {
+				if($j("#w12_1").attr("checked")) {
 					
-					$j("#htn").hide();
+					$j("#dm_date").hide();
+					setValue("dm.value","");
 				}
 			});
-			$j("#h_yes").click(function() {
-				if($j("#h_yes").attr("checked")) {
+			$j("#w12_0").click(function() {
+				if($j("#w12_0").attr("checked")) {
 				
-					$j("#htn").show();
+					$j("#dm_date").show();
 				}
 			});
 			
-			//configuration for cva 
-			$j("#c_no").click(function() {
-				if($j("#c_no").attr("checked")) {
+			//Configration for HTN
+			$j("#w16_1").click(function() {
+				if($j("#w16_1").attr("checked")) {
 					
-					$j("#cva").hide();
+					$j("#htn_date").hide();
+					setValue("htn.value","");
 				}
 			});
-			$j("#c_yes").click(function() {
-				if($j("#c_yes").attr("checked")) {
+			$j("#w16_0").click(function() {
+				if($j("#w16_0").attr("checked")) {
 				
-					$j("#cva").show();
+					$j("#htn_date").show();
 				}
 			});
 			
-			//configuration for Myocardial Infarction
-			$j("#m_no").click(function() {
-				if($j("#m_no").attr("checked")) {
+			//Configration for CVA
+			$j("#w24_1").click(function() {
+				if($j("#w24_1").attr("checked")) {
 					
-					$j("#mi").hide();
+					$j("#cva_date").hide();
+					setValue("cva.value","");
 				}
 			});
-			$j("#m_yes").click(function() {
-				if($j("#m_yes").attr("checked")) {
+			$j("#w24_0").click(function() {
+				if($j("#w24_0").attr("checked")) {
 				
-					$j("#mi").show();
+					$j("#cva_date").show();
 				}
 			});
 			
+			//Configration for MI
+			$j("#w20_1").click(function() {
+				if($j("#w20_1").attr("checked")) {
+					
+					$j("#mi_date").hide();
+					setValue("mi.value","");
+				}
+			});
+			$j("#w20_0").click(function() {
+				if($j("#w20_0").attr("checked")) {
+				
+					$j("#mi_date").show();
+				}
+			});
+			
+			//If yes is selected in past medical history, date must be provided
 			beforeSubmit.push(function() {
 			
-				if(($j("#m_yes").attr("checked"))) {
-					
-					
-					if( getValue("dd_mi.value") == "" ) {alert("MI");return false;}
+				//CVA
+				if($j("#w24_0").attr("checked")) {
+					var cva = getValue("cva.value");
+					if(cva.length == 0) {
+						alert("Date of Myocardial infarction must be entered");
+						return false;
+					}
 				}
-				else if(($j("#c_yes").attr("checked"))) {
-					
-					if( getValue("dd_cva.value") == "" ) {alert("CVA");return false;}
-				}
-				else if(($j("#h_yes").attr("checked"))) {
-					
-					if( getValue("dd_htn.value") == "" ) {alert("HTN");return false;}
-				}
-				else {
 				
-					return true;
+				//MI
+				if($j("#w20_0").attr("checked")) {
+					var mi = getValue("mi.value");
+					if(mi.length==0) {
+						alert("Date of Myocardial infarction must be entered");
+						return false;
+					}
 				}
+				
+				//HTN
+				if($j("#w16_0").attr("checked")) {
+					var htn = getValue("htn.value");
+					if(htn.length==0) {
+						alert("Date of Hypertension must be entered");
+						return false;
+					}
+				}
+				
+				//DM
+				if($j("#w12_0").attr("checked")) {
+					var dm = getValue("dm.value");
+					if(dm.length==0) {
+						alert("Date of Diabetes Mellitus must be entered");
+						return false;
+					}
+				}
+				
 				return true;
 			});
 			
-			//Preselect the following input fields for validation
-			$j("#h_yes").attr("checked",true);
-			$j("#c_yes").attr("checked",true);
-			$j("#m_yes").attr("checked",true);
 			
 			$j(function(){
 				$j('.type').hide();
@@ -297,71 +336,204 @@ if(jQuery){
 		<td>
 			<table>
             <tr>
+				<obsgroup groupingConceptId="161609">
 					<td>
 						Diabetes Mellitus
 					</td>
 					<td>
-						<obs conceptId="161607"  answerConceptIds="1065,1066" answerLabels="Yes,No" showDate="true" style="radio" />
+						<obs conceptId="119481"  answerConceptIds="1065,1066" answerLabels="Yes,No" style="radio" />
+					</td>
+					<td id="dm_date">
+						<obs conceptId="159948" id="dm" />
 					</td>
 					<ifMode mode="ENTER">
 					<td class="value">
-						<lookup expression="fn.latestObs(161607).valueCoded.name" />
-					</td>
-					<td class="value">
-						Diagnosis Date: <lookup expression="fn.latestObs(161607).obsDatetime" />
+						<lookup complexExpression="#foreach($enc in $fn.allEncounters(null))
+								
+								#if($form == $enc.form.formId)
+								
+									#set($latestEnc = $fn.latestEncounter($enc.encounterType))
+									
+									#foreach($obs in $latestEnc.obs)
+										
+									
+												#if($obs.concept.conceptId == 119481)
+													 
+													 #foreach($obs2 in $obs.getRelatedObservations())
+														
+														#if($obs2.concept.conceptId == 119481)
+															 - $obs2.valueCoded.name - 
+														#end
+														
+														#if($obs2.concept.conceptId == 159948)
+															- $obs2.valueDatetime - 
+														#end
+														
+													 #end
+													 
+													 &lt;br &gt;
+													 &lt;br &gt;
+												#end
+												
+									#end
+
+								
+									#break
+								#end
+							#end" class="value" />
 					</td>
 					</ifMode>
+				</obsgroup>
 			</tr>
 			<tr>
-				
+				<obsgroup groupingConceptId="161611">
 					<td>
 						Hypertension
 					</td>
 					<td>
-						<obs conceptId="161572" answerConceptIds="1065,1066" answerLabels="Yes,No" showDate="true" style="radio" />
+						<obs conceptId="161572" answerConceptIds="1065,1066" answerLabels="Yes,No" style="radio" />
+					</td>
+					<td id="htn_date">
+						<obs conceptId="159948" id="htn" />
 					</td>
 					<ifMode mode="ENTER">
 					<td class="value">
-						<lookup expression="fn.latestObs(161572).valueCoded.name" />
-					</td>
-					<td class="value">
-						Diagnosis Date: <lookup expression="fn.latestObs(161572).obsDatetime" />
+						<lookup complexExpression="#foreach($enc in $fn.allEncounters(null))
+								
+								#if($form == $enc.form.formId)
+								
+									#set($latestEnc = $fn.latestEncounter($enc.encounterType))
+									
+									#foreach($obs in $latestEnc.obs)
+										
+									
+												#if($obs.concept.conceptId == 161572)
+													 
+													 #foreach($obs2 in $obs.getRelatedObservations())
+														
+														#if($obs2.concept.conceptId == 161572)
+															 - $obs2.valueCoded.name - 
+														#end
+														
+														#if($obs2.concept.conceptId == 159948)
+															- $obs2.valueDatetime - 
+														#end
+														
+													 #end
+													 
+													 &lt;br &gt;
+													 &lt;br &gt;
+												#end
+												
+									#end
+
+								
+									#break
+								#end
+							#end" class="value" />
 					</td>
 					</ifMode>
+				</obsgroup>
 			</tr>
 			<tr>
-				
+				<obsgroup groupingConceptId="161610">
 					<td>
 						Myocardial Infarction
 					</td>
 					<td>
-						<obs conceptId="161608" answerConceptIds="1065,1066" answerLabels="Yes,No" showDate="true" style="radio" />
+						<obs conceptId="161608" answerConceptIds="1065,1066" answerLabels="Yes,No" style="radio" />
+					</td>
+					<td id="mi_date">
+						<obs conceptId="159948" id="mi" />
 					</td>
 					<ifMode mode="ENTER">
 					<td class="value">
-						<lookup expression="fn.latestObs(161608).valueCoded.name" />
-					</td>
-					<td class="value">
-						Diagnosis Date: <lookup expression="fn.latestObs(161608).obsDatetime" />
+						<lookup complexExpression="#foreach($enc in $fn.allEncounters(null))
+								
+								#if($form == $enc.form.formId)
+								
+									#set($latestEnc = $fn.latestEncounter($enc.encounterType))
+									
+									#foreach($obs in $latestEnc.obs)
+										
+									
+												#if($obs.concept.conceptId == 161608)
+													 
+													 #foreach($obs2 in $obs.getRelatedObservations())
+														
+														#if($obs2.concept.conceptId == 161608)
+															 - $obs2.valueCoded.name - 
+														#end
+														
+														#if($obs2.concept.conceptId == 159948)
+															- $obs2.valueDatetime - 
+														#end
+														
+													 #end
+													 
+													 &lt;br &gt;
+													 &lt;br &gt;
+												#end
+												
+									#end
+
+								
+									#break
+								#end
+							#end" class="value" />
 					</td>
 					</ifMode>
+				</obsgroup>
 			</tr>
 			<tr>
-				
+				<obsgroup groupingConceptId="161612">
 					<td>
 						CerebroVascular Accident
 					</td>
 					<td>
-						<obs conceptId="161564" answerConceptIds="1065,1066" answerLabels="Yes,No" showDate="true" style="radio" />
+						<obs conceptId="161564" answerConceptIds="1065,1066" answerLabels="Yes,No" style="radio" />
+					</td>
+					<td id="cva_date">
+						<obs conceptId="159948" id="cva" />
 					</td>
 					<ifMode mode="ENTER">
 					<td class="value">
-						<lookup expression="fn.latestObs(161564).valueCoded.name" />
-					</td>
-					<td class="value">
-						Diagnosis Date: <lookup expression="fn.latestObs(161564).obsDatetime" />
+						<lookup complexExpression="#foreach($enc in $fn.allEncounters(null))
+								
+								#if($form == $enc.form.formId)
+								
+									#set($latestEnc = $fn.latestEncounter($enc.encounterType))
+									
+									#foreach($obs in $latestEnc.obs)
+										
+									
+												#if($obs.concept.conceptId == 161564)
+													 
+													 #foreach($obs2 in $obs.getRelatedObservations())
+														
+														#if($obs2.concept.conceptId == 161564)
+															 - $obs2.valueCoded.name - 
+														#end
+														
+														#if($obs2.concept.conceptId == 159948)
+															- $obs2.valueDatetime - 
+														#end
+														
+													 #end
+													 
+													 &lt;br &gt;
+													 &lt;br &gt;
+												#end
+												
+									#end
+
+								
+									#break
+								#end
+							#end" class="value" />
 					</td>
 					</ifMode>
+				</obsgroup>
 			</tr>
 			
 			</table>

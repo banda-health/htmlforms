@@ -257,9 +257,7 @@
 				<td><obs conceptId="161580" answerConceptIds="1065,1066,161598" answerLabels="Yes,No,No Foot Ulcer" style="radio" /></td>
 				<ifMode mode="ENTER">
 				<td class="lookup">
-					<lookup expression="fn.latestObs(161580).valueCoded.name" class="value" />
-				</td>
-				<td class="lookup">
+					<lookup expression="fn.latestObs(161580).valueCoded.name" class="value" /> 
 					<lookup expression="fn.latestObs(161580).obsDatetime" class="value" />
 				</td>
 				</ifMode>
@@ -269,9 +267,7 @@
 				<td><obs conceptId="161583" answerConceptIds="1065,1066" answerLabels="Yes,No" style="radio" /></td>
 				<ifMode mode="ENTER">
 				<td class="lookup">
-					<lookup expression="fn.latestObs(161583).valueCoded.name" class="value" />
-				</td>
-				<td class="lookup">
+					<lookup expression="fn.latestObs(161583).valueCoded.name" class="value" /> 
 					<lookup expression="fn.latestObs(161583).obsDatetime" class="value" />
 				</td>
 				</ifMode>
@@ -281,9 +277,7 @@
 				<td><obs conceptId="161581" answerConceptIds="1065,1066" answerLabels="Yes,No" style="radio" /></td>
 				<ifMode mode="ENTER">
 				<td class="lookup">
-					<lookup expression="fn.latestObs(161581).valueCoded.name" class="value" />
-				</td>
-				<td class="lookup">
+					<lookup expression="fn.latestObs(161581).valueCoded.name" class="value" /> 
 					<lookup expression="fn.latestObs(161581).obsDatetime" class="value" />
 				</td>
 				</ifMode>
@@ -348,7 +342,7 @@
 									#foreach($obs in $latestEnc.obs)
 										
 									
-												#if($obs.concept.conceptId == 1284)
+												#if($obs.concept.conceptId == 6042)
 													 $obs.valueCoded.name - #Date $obs.obsDatetime
 													 &lt;br &gt;
 												#end
@@ -359,6 +353,7 @@
 									#break
 								#end
 							#end" class="value" />
+							
 				</td>
 				</ifMode>
 				</tr>
