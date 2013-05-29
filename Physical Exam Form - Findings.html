@@ -82,7 +82,6 @@ if(jQuery){
 //Define some logic here to hide the textfield beside the murmur concept
 $j(function() {
 
-	$j("#36").hide();
 	$j("#c_murmur").hide();
 	$j("#c_no_murmur").hide();
 	$j(function(){
@@ -93,24 +92,31 @@ $j(function() {
 	
 		if($j("#murmur").attr("checked")) {
 	
-			setValue("c_murmur.value",562);
-			$j("#w36").show();
+			$j("#w34").show();
+			$j("#commentLabel").show();
 		}
 		else {
 		
-			$j("#w36").hide();
+			$j("#w34").hide();
+			$j("#commentLabel").hide();
 		}
 	});
 	
 	$j("#no_murmur").click(function() {
 	
 		if($j("#no_murmur").attr("checked")) {
-	
-			setValue("c_no_murmur.value",159443);
-			$j("#w36").val("");
-			$j("#w36").hide();
+			$j("#w34").val("");
+			$j("#w34").hide();
+			$j("#commentLabel").hide();
 		}
 		
+	});
+	beforeSubmit.push(function() {
+	
+		if($j("#murmur").attr("checked")) { setValue("c_murmur.value",562); }
+		else if($j("#no_murmur").attr("checked")) { setValue("c_no_murmur.value",159443); }
+		
+		return true;
 	});
 });
 
@@ -315,7 +321,7 @@ $j(function() {
 						<input type="radio" name="murmurGrp" id="murmur" /> Cardiac Murmur
 					</form></p>
 					
-					Comment on Murmur:<br /> <obs conceptId="161011" cols="40" rows="5" />
+					<span id="commentLabel">Comment on Murmur:</span><br /> <obs conceptId="161011" cols="40" rows="5" />
 					<br/><obs conceptId="1124" answerConceptId="550" answerLabel="S3 Gallop" style="checkbox" />
 					<obs conceptId="1124" answerConceptId="130560" answerLabel="Pericardial Frictonal Rub" style="checkbox" />
                 </td>
@@ -331,7 +337,33 @@ $j(function() {
 										
 									
 												#if($obs.concept.conceptId == 1124)
-													 $obs.valueCoded.name - #Date $obs.obsDatetime, 
+													 $obs.valueCoded.name - #Date $obs.obsDatetime 
+													 &lt;br &gt;
+												#end
+																			
+									#end
+
+								
+									#break
+								#end
+							#end
+							&lt;br &gt;
+							&lt;br &gt;
+							&lt;br &gt;
+							&lt;br &gt;" class="value" />
+							
+							<span>
+							<lookup complexExpression="#foreach($enc in $fn.allEncounters(null))
+								
+								#if($form == $enc.form.formId)
+								
+									#set($latestEnc = $fn.latestEncounter($enc.encounterType))
+									
+									#foreach($obs in $latestEnc.obs)
+										
+									
+												#if($obs.concept.conceptId == 161011)
+													 $obs.valueText - #Date $obs.obsDatetime 
 													 
 												#end
 																			
@@ -343,7 +375,8 @@ $j(function() {
 							#end
 							&lt;br &gt;
 							&lt;br &gt;" class="value" />
-							<span class="value" >Previous Murmur Comment: <lookup complexExpression="$fn.latestObs(161011).valueText -- #Date: $fn.latestObs(161011).obsDatetime" class="value"/></span>
+							<!--<lookup expression="$fn.latestObs(161011).valueText" />  <lookup expression="$fn.latestObs(161011).obsDatetime" />-->
+							</span>
 				</td>
 				</ifMode>
 			</tr>
@@ -402,7 +435,29 @@ $j(function() {
                 </td>
 				<ifMode mode="ENTER">
 					<td class="lookup">
-						<lookup complexExpression="$fn.latestObs(161576).valueCoded.name #Date: $fn.latestObs(161576).obsDatetime" class="value" />
+					<lookup complexExpression="#foreach($enc in $fn.allEncounters(null))
+								
+								#if($form == $enc.form.formId)
+								
+									#set($latestEnc = $fn.latestEncounter($enc.encounterType))
+									
+									#foreach($obs in $latestEnc.obs)
+										
+									
+												#if($obs.concept.conceptId == 161576)
+													 $obs.valueCoded.name - #Date $obs.obsDatetime 
+													 
+												#end
+																			
+									#end
+
+								
+									#break
+								#end
+							#end
+							&lt;br &gt;
+							&lt;br &gt;" class="value" />
+						<!--<lookup expression="$fn.latestObs(161576).valueCoded.name" class="value"/>  <lookup expression="$fn.latestObs(161576).obsDatetime" class="value" />-->
 					</td>
 				</ifMode>
 			</tr>
