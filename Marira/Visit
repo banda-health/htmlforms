@@ -1,0 +1,104 @@
+<htmlform formUuid="47c98949-1e7d-4a3d-a417-7ba4f96d07d7" formName="Visit Note" formEncounterType="d7151f82-c1f3-4152-a605-2f9ea7414a79" formVersion="1.0">
+
+    <style type="text/css">
+        #who-when-where {
+            margin-bottom: 6px;
+            border-bottom: 1px solid #ccc;
+        }
+
+        #who-when-where p {
+            display: inline-block;
+            padding-right: 20px;
+        }
+
+        #where > input[type=text] {
+            display: inline-block;
+        }
+
+        .field-error {
+            color: #ff6666;
+            font-size: 1.1em;
+            display: block;
+        }
+
+        <ifMode mode="VIEW" include="false">
+            #data-collection {
+                display: inline-block;
+                width: 58%;
+                vertical-align: top;
+            }
+
+            #encounter-diagnoses-target {
+                display: inline-block;
+                width: 40%;
+                vertical-align: top;
+            }
+
+            #encounter-diagnoses-app {
+                margin-bottom: 20px;
+            }
+        </ifMode>
+    </style>
+
+    <ifMode mode="VIEW" include="false">
+        <h2><uimessage code="referenceapplication.visitNote.title"/></h2>
+
+        <div id="who-when-where">
+            <p id="who">
+                <label><uimessage code="coreapps.patientDashBoard.provider"/></label>
+                <span><encounterProvider default="currentUser" required="true"  /></span>
+            </p>
+            <p id="when">
+                <label><uimessage code="coreapps.patientDashBoard.location"/></label>
+                <span><encounterLocation default="SessionAttribute:emrContext.sessionLocationId"/></span>
+            </p>
+            <p id="where">
+                <label><uimessage code="coreapps.patientDashBoard.date"/></label>
+                <span><encounterDate id="encounterDate" default="now" /></span>
+            </p>
+        </div>
+    </ifMode>
+
+    <div id="data-collection">
+
+        <encounterDiagnoses required="true" selectedDiagnosesTarget="#encounter-diagnoses-target"/>
+
+        <p>
+            <label><uimessage code="coreapps.consult.freeTextComments"/></label>
+            <obs conceptId="CIEL:162169" style="textarea" rows="5"/>
+        </p>
+
+    </div>
+
+    <div id="encounter-diagnoses-target">
+    </div>
+
+    <ifMode mode="VIEW" include="false">
+        <div id="buttons">
+            <submit submitClass="confirm right" submitCode="general.save"/>
+            <button type="button" class="cancel"><uimessage code="general.cancel"/></button>
+        </div>
+    </ifMode>
+   
+    <ifMode mode="EDIT" include="false">
+        <lookup complexExpression="
+            #set( $encounter = 0 )
+            #foreach ( $enc in $fn.allEncounters(null) )
+                  #if( $enc.encounterType.uuid == 'd7151f82-c1f3-4152-a605-2f9ea7414a79' )
+                      #if( $enc.visit.visitId == $visit.visitId )
+                          #set( $encounter = $enc)
+                      #end
+                   #end
+            #end
+
+            #if( $encounter != 0)
+                &lt;script type=&quot;text/javascript&quot;>
+                        if (window.location.href.indexOf('/module/htmlformentry/htmlForm.form') == -1 ||
+                            window.location.href.indexOf('/htmlformentryui/htmlform/enterHtmlFormWithStandardUi.page') == -1) {
+                            window.location.href = window.location.protocol + &quot;//&quot; + window.location.host + &quot;/&quot;+ OPENMRS_CONTEXT_PATH + &quot;/htmlformentryui/htmlform/editHtmlFormWithStandardUi.page?patientId=$encounter.patientId&amp;visitId=$visit.visitId&amp;formUuid=	47c98949-1e7d-4a3d-a417-7ba4f96d07d7&amp;encounterId=$encounter.encounterId&amp;returnUrl=%2F&quot; + OPENMRS_CONTEXT_PATH + &quot;%2Fcoreapps%2Fclinicianfacing%2Fpatient.page%3FpatientId%3D$encounter.patientId&quot;;
+                        }
+                &lt;/script>
+            #end"/>
+    </ifMode>
+
+</htmlform>
