@@ -51,17 +51,13 @@
         </div>
     </ifMode>
     <div id="data-collection">
-        <encounterDiagnoses required="true" selectedDiagnosesTarget="#encounter-diagnoses-target"/>
+        <encounterDiagnoses required="false" selectedDiagnosesTarget="#encounter-diagnoses-target"/>
         <p>
             <label><uimessage code="Chief Complaint"/></label>
-            <obs conceptId="CIEL:160531" style="textarea" rows="5"/>
+            <obs conceptId="CIEL:160531" style="textarea" rows="1"/>
         </p>
         <p>
-            <label><uimessage code="Lab"/></label>
-            <obs conceptId="CIEL:161577" style="textarea" rows="5"/>
-        </p>
-        <p>
-            <label><uimessage code="Prescription"/></label>
+            <label><uimessage code="Clinical Note"/></label>
             <obs conceptId="CIEL:162169" style="textarea" rows="5"/>
         </p>
     </div>
