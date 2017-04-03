@@ -1,4 +1,4 @@
-<htmlform formUuid="0cbe224a-bc08-418a-9f6b-9d2d2bdab211" formName="Audit Data Form" formEncounterType="4973ecc3-b5fa-4e72-991b-37d73a2f7638" formVersion="1.0">
+<htmlform formUuid="667dc18e-740f-44ce-ae0a-5ba6b33308b0" formName="Audit Data Form" formEncounterType="7dc1632c-f947-474f-b92c-7add68019aec" formVersion="1.0">
 <div id="EncounterDetails" style="visibility: hidden; display: none;">
 <section headerLabel="Encounter Details">
   <br/>
@@ -10,38 +10,46 @@
  </div>
  <div id="Visit Attributes" style="visibility: visible; display: block;">
  <table>
-  <tr>
-  	<td>  
-		Primary Service <obs conceptId="164143" answerConceptIds="161627,160449,151478,160472,160455" answerLabels="Internal Medicine,General Surgery,Plastic Surgery,OB/GYN,Neurosurgery,ENT" />
+ <tr>
+  <td>
+    Date of Admission: <lookup expression="visit.startDatetime"/>
+  </td>
+  <td>
+    <obs conceptId="1641" labelText="Date of Discharge:" allowTime="false"/>
+  </td>
+ </tr>
+ <tr>
+  <td>
+    <obs conceptId="164166" labelText="PALLIATIVE CONSULT&lt;br/&gt;" answerSeparator=" " answerConceptIds="1065,1066,1067" answerLabels="Yes,No,Unknown" style="radio"/>
+  </td>
+  <td>
+    <obs conceptId="164164" labelText="PRE-OP RISK ASSESSMENT ONLY?&lt;br/&gt;" answerSeparator=" " answerConceptIds="1065,1066,1067" answerLabels="Yes,No,Unknown" style="radio"/>
+  </td>
+  <td>
+    <obs conceptId="164168" labelText="ICU stay during admission?&lt;br/&gt;" answerSeparator=" " answerConceptIds="1065,1066,1067" answerLabels="Yes,No,Unknown" style="radio"/>
+  </td>
+ </tr>
+ <tr>
+ 	<td>  
+		<obs conceptId="164167" labelText="HDU stay during admission?&lt;br/&gt;" answerSeparator=" " answerConceptIds="1065,1066,1067" answerLabels="Yes,No,Unknown" style="radio"/>
 	</td>
-  	<td>
-		<obs conceptId="164144" labelText="PRE-OP RISK ASSESSMENT ONLY?&lt;br/&gt;" answerSeparator=" " answerConceptIds="1065,1066,1067" answerLabels="Yes,No,Unknown" style="radio"/>
+ 	<td>
+		<obs conceptId="164165" labelText="HDU CO-MGMT ONLY?&lt;br/&gt;" answerSeparator=" " answerConceptIds="1065,1066,1067" answerLabels="Yes,No,Unknown" style="radio"/>
 	</td>
-	<td>
-		<obs conceptId="164145" labelText="ICU stay during admission?&lt;br/&gt;" answerSeparator=" " answerConceptIds="1065,1066,1067" answerLabels="Yes,No,Unknown" style="radio"/>
-	</td>
+  <td>
+    <obs conceptId="1169" labelText="HIV+:&lt;br/&gt;" answerSeparator=" " answerConceptIds="703,664,1067" answerLabels="Yes,No,Unknown" style="radio"/>
+  </td>
 	</tr>
   <tr>
-  	<td>  
-		<obs conceptId="164146" labelText="HDU stay during admission?&lt;br/&gt;" answerSeparator=" " answerConceptIds="1065,1066,1067" answerLabels="Yes,No,Unknown" style="radio"/>
-	</td>
-   	<td>
-		<obs conceptId="164147" labelText="HDU CO-MGMT ONLY?&lt;br/&gt;" answerSeparator=" " answerConceptIds="1065,1066,1067" answerLabels="Yes,No,Unknown" style="radio"/>
-	</td>
-	<td>
-		<obs conceptId="164148" labelText="PALLIATIVE CONSULT&lt;br/&gt;" answerSeparator=" " answerConceptIds="1065,1066,1067" answerLabels="Yes,No,Unknown" style="radio"/>
-	</td>
-  </tr>
-  <tr>
-  	<td>
-		<obs conceptId="1169" labelText="HIV+:&lt;br/&gt;" answerSeparator=" " answerConceptIds="703,664,1067" answerLabels="Yes,No,Unknown" style="radio"/>
-	</td>
+  <td>  
+    <obs conceptId="5497" labelText="CD4:"/>
+  </td>
   	<td>
 		<obs conceptId="159644" labelText="HbA1c:" />
 	</td>
 	<td>  
-		<obs conceptId="5497" labelText="CD4:"/>
-	</td>
+    <obs conceptId="161630" labelText="Type of inpatient service" answerConceptIds="161627,161623,160465,160452,160456,160472,160455,160476" answerLabels="General medicine service,Surgery service,Orthopedic department,Plastic Surgery Department,Obstetrics and gynecology department,Neurosurgery department,Ear nose and throat department,Urology department" />
+  </td>
   </tr>
   </table>
   </div>
@@ -51,7 +59,7 @@
                 <table width="100%">
                     <tr>
                         <td>
-                            Discharge Diagnosis: <obs conceptId="1642" answerClasses="Diagnosis" style="autocomplete" />
+                            <obs conceptId="1642" labelText="Discharge Diagnosis:" answerClasses="Diagnosis" style="autocomplete" />
                         </td>
                     </tr>
                     </table>
@@ -74,7 +82,7 @@
         <lookup complexExpression="
             #set( $encounter = 0 )
             #foreach ( $enc in $fn.allEncounters(null) )
-                  #if( $enc.encounterType.uuid == '4973ecc3-b5fa-4e72-991b-37d73a2f7638')
+                  #if( $enc.encounterType.uuid == '7dc1632c-f947-474f-b92c-7add68019aec')
                       #if( $enc.visit.visitId == $visit.visitId )
                           #set( $encounter = $enc)
                       #end
@@ -84,7 +92,7 @@
                 &lt;script type=&quot;text/javascript&quot;>
                         if (window.location.href.indexOf('/module/htmlformentry/htmlForm.form') == -1 ||
                             window.location.href.indexOf('/htmlformentryui/htmlform/enterHtmlFormWithStandardUi.page') == -1) {
-                            window.location.href = window.location.protocol + &quot;//&quot; + window.location.host + &quot;/&quot;+ OPENMRS_CONTEXT_PATH + &quot;/htmlformentryui/htmlform/editHtmlFormWithStandardUi.page?patientId=$encounter.patientId&amp;visitId=$visit.visitId&amp;formUuid=0cbe224a-bc08-418a-9f6b-9d2d2bdab211&amp;encounterId=$encounter.encounterId&amp;returnUrl=%2F&quot; + OPENMRS_CONTEXT_PATH + &quot;%2Fcoreapps%2Fclinicianfacing%2Fpatient.page%3FpatientId%3D$encounter.patientId&quot;;
+                            window.location.href = window.location.protocol + &quot;//&quot; + window.location.host + &quot;/&quot;+ OPENMRS_CONTEXT_PATH + &quot;/htmlformentryui/htmlform/editHtmlFormWithStandardUi.page?patientId=$encounter.patientId&amp;visitId=$visit.visitId&amp;formUuid=667dc18e-740f-44ce-ae0a-5ba6b33308b0&amp;encounterId=$encounter.encounterId&amp;returnUrl=%2F&quot; + OPENMRS_CONTEXT_PATH + &quot;%2Fcoreapps%2Fclinicianfacing%2Fpatient.page%3FpatientId%3D$encounter.patientId&quot;;
                         }
                 &lt;/script>
             #end"/>
