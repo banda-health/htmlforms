@@ -1,0 +1,43 @@
+<htmlform>
+<fieldset>
+		<legend>Eye Clinic Visits</legend>
+	<p>
+	<label>Date:</label><br/>
+	<input type="date" name="date"></input>
+	</p>
+	<p>
+	<label>Clinic:</label><br/>
+	<select name="clinic">
+		<option value="main">Main</option>
+		<option value="naivasha">Naivasha</option>
+		<option value="marira">Marira</option>
+		<option value="outreach">Outreach</option>
+	</select>
+	</p>
+	<p>
+	<label>New Patient:</label><br/>
+		<input type="radio" name="newpatient" value="followup" checked="checked">Followup</input><br/>
+		<input type="radio" name="newpatient" value="new"></input>New<br/>
+		<input type="radio" name="unknown" value="unknown">Unknown</input><br/>
+	</p>
+	<p>
+	<label>Referral?</label>
+	<select name="referral">
+		<option value="none">None</option>
+		<option value="tenwek">Tenwek</option>
+		<option value="kikuyu">Kikuyu</option>
+		<option value="kenyatta">Kenyatta</option>
+		<option value="lionsNairobi">Lions Nairobi</option>
+		<option value="other">Other referral</option>
+	</select>
+	<p>
+	<label>Surgery planned at KH?</label><br/>
+		<input type="radio" name="1065" value="yes">Yes</input><br/>
+		<input type="radio" name="1066" value="no">No</input><br/>
+		<input type="radio" name="1067" value="unknown">Unknown</input>
+	</p>
+	</p>
+	</fieldset>
+	<br/>
+	<input type="submit" value="Submit"></input><button type="button" onclick="alert ('Are you sure you want to Cancel')">Cancel</button>
+</htmlform>
