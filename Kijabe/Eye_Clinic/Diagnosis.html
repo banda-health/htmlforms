@@ -1,0 +1,107 @@
+<htmlform>
+<fieldset>
+		<legend>Diagnosis</legend>
+	<p>
+	<label>Visual Acuity - Right Eye:</label><br/>
+	<select name="vaRightEye">
+	    <option value="6/6">6/6</option>
+		<option value="6/9">6/9</option>
+		<option value="6/12">6/12</option>
+		<option value="6/18">6/18</option>
+		<option value="6/24">6/24</option>
+		<option value="6/36">6/36</option>
+		<option value="6/60">6/60</option>
+		<option value="HM">HM</option>
+		<option value="PL">PL</option>
+		<option value="NPL">NPL</option>
+	</select>
+	</p>
+	<p>
+	<label>Visual Acuity - Left Eye:</label><br/>
+	<select name="vaLeftEye">
+	    <option value="6/6">6/6</option>
+		<option value="6/9">6/9</option>
+		<option value="6/12">6/12</option>
+		<option value="6/18">6/18</option>
+		<option value="6/24">6/24</option>
+		<option value="6/36">6/36</option>
+		<option value="6/60">6/60</option>
+		<option value="HM">HM</option>
+		<option value="PL">PL</option>
+		<option value="NPL">NPL</option>
+	</select>
+	</p>
+	<p>
+	<label>Diagnosis</label><br/>
+	<input type="text" name="diagnosis"></input>
+	</p>
+	<p>
+	<label>Dx2:</label><br/>
+	<input type="text" name="dx2"></input>
+	</p>
+	<p>
+	<label>Medication:</label><br/>
+	    <input type="checkbox" name="med1" value="on">Dexamethasone and Chloramphenicol eye droxps</input><br/>
+		<input type="checkbox" name="med2" value="on">Prednisolone drops 1%</input><br/>
+		<input type="checkbox" name="med3" value="on">Ciprofloxacin drops 0.3%</input><br/>
+		<input type="checkbox" name="med4" value="on">Ofloxacin drops 0.3%</input><br/>
+		<input type="checkbox" name="med5" value="on">Gentamycin 0.3%</input><br/>
+		<input type="checkbox" name="med6" value="on">Zinc sulfate drops .3%</input><br/>
+		<input type="checkbox" name="med7" value="on">Sodium cromoglycate drops 2%</input><br/>
+		<input type="checkbox" name="med8" value="on">Timolol 0.55</input><br/>
+		<input type="checkbox" name="med9" value="on">Artificial tears drops 0.7%</input><br/>
+		<input type="checkbox" name="med10" value="on">Tetracycline oint 10mg</input><br/>
+		<input type="checkbox" name="med11" value="on">Acyclovir</input><br/>
+		<input type="checkbox" name="med12" value="on">Tetracaine 0.5%</input><br/>
+		<input type="checkbox" name="med13" value="on">Tropicamide 1%</input><br/>
+		<input type="checkbox" name="med14" value="on">Atropine 1% maxtral oint 3.5g</input><br/>
+		<input type="checkbox" name="med15" value="on">Dexamethasone and gentamycin 3%</input><br/>
+		<input type="checkbox" name="none" value="none">None</input><br/>
+	</p>
+	<p>
+	<label>Labs:</label><br/>
+		  <input type="checkbox" name="lab1" value="eye swab">culture and sensitivity, eye swab</input><br/>
+		  <input type="checkbox" name="lab2" value="gram staining">gram staining for eye discharges</input><br/>
+	</p>
+	<p>
+	<label>Pre-Op Dx:</label><br/>
+	<select name="preOpDx">
+	    <option value="6/6">6/6</option>
+		<option value="6/9">6/9</option>
+		<option value="6/12">6/12</option>
+		<option value="6/18">6/18</option>
+		<option value="6/24">6/24</option>
+		<option value="6/36">6/36</option>
+		<option value="6/60">6/60</option>
+		<option value="HM">HM</option>
+		<option value="PL">PL</option>
+		<option value="NPL">NPL</option>
+	</select>
+	</p>
+	<p>
+	<label>Post-Op Dx:</label><br/>
+	<select name="postOpDx">
+	    <option value="6/6">6/6</option>
+		<option value="6/9">6/9</option>
+		<option value="6/12">6/12</option>
+		<option value="6/18">6/18</option>
+		<option value="6/24">6/24</option>
+		<option value="6/36">6/36</option>
+		<option value="6/60">6/60</option>
+		<option value="HM">HM</option>
+		<option value="PL">PL</option>
+		<option value="NPL">NPL</option>
+	</select>
+	</p>
+	</fieldset>
+	<br/>
+	<fieldset>
+		<legend>Inpatient Diagnosis</legend>
+		<label>Discharge Diagnosis 1</label><br/>
+		<input type="text" name="dischargeDiagnosis1"></input><br/>
+		<label>Discharge Diagnosis 2</label><br/>
+		<input type="text" name="dischargeDiagnosis2"></input><br/>
+	</fieldset>
+	<br/>
+	<input type="submit" value="Submit"></input><button type="button" onclick="alert ('Are you sure you want to Cancel')">Cancel</button>
+</htmlform>

@@ -1,0 +1,65 @@
+<htmlform>
+	<fieldset>
+		<legend>Eye Surgery Data</legend>
+	<p>
+	<label>Date:</label><br/>
+	<input type="date" name="date"></input>
+	</p>
+	<p>
+	<label>KH Procedure 1:</label><br/>
+	<select name="procedure1">
+		<option value="main">Main</option>
+		<option value="naivasha">Naivasha</option>
+		<option value="marira">Marira</option>
+		<option value="outreach">Outreach</option>
+	</select>
+	</p>
+	<p>
+	<label>KH Procedure 1 Eye?</label><br/>
+	<label>Which Eye was operated on?</label><br/>
+	<select name="procedure1eyeOperated">
+		<option value="Right">Right</option>
+		<option value="Left">Left</option>
+		<option value="Both">Both</option>
+		<option value="NA">NA</option>
+	</select>
+	</p>
+	<p>
+	<label>KH Procedure 2:</label><br/>
+	<select name="procedure2">
+		<option value="main">Main</option>
+		<option value="naivasha">Naivasha</option>
+		<option value="marira">Marira</option>
+		<option value="outreach">Outreach</option>
+	</select>
+	</p>
+	<p>
+	<label>KH Procedure 2 Eye?</label><br/>
+	<label>Which Eye was operated on?</label><br/>
+	<select name="procedure2eyeOperated">
+		<option value="Right">Right</option>
+		<option value="Left">Left</option>
+		<option value="Both">Both</option>
+		<option value="NA">NA</option>
+	</select>
+	</p>
+	</fieldset>
+	<br/>
+	<fieldset>
+		<legend>Complication Record</legend>
+		<p>
+		<label>Complication of Surgery</label><br/>
+		<input type="text" name="surgeryComplication"></input>
+		</p>
+		<p>
+		<label>Date of Complication:</label><br/>
+		<input type="date" name="date"></input>
+		</p>
+		<p>
+		<label>Complication of which procedure</label><br/>
+		<input type="text" name="procedureComplication"></input>
+		</p>
+	</fieldset>
+	<br/>
+	<input type="submit" value="Submit"></input><button type="button" onclick="alert ('Are you sure you want to Cancel')">Cancel</button>
+</htmlform>
