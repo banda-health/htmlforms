@@ -10,15 +10,18 @@
  </div>
  <div id="Visit Attributes" style="visibility: visible; display: block;">
  <table>
- <tr>
+  <tr>
   <td>
     Date of Admission: <lookup expression="visit.startDatetime"/>
   </td>
   <td>
     <obs conceptId="1641" labelText="Date of Discharge:" allowTime="false"/>
   </td>
- </tr>
- <tr>
+  <td>
+    <obs conceptId="164173" labelText="Death in Hospital:&lt;br/&gt;" answerSeparator=" " answerConceptIds="1065,1066" answerLabels="Yes,No" style="radio"/>
+  </td>
+  </tr>
+  <tr>
   <td>
     <obs conceptId="164166" labelText="PALLIATIVE CONSULT&lt;br/&gt;" answerSeparator=" " answerConceptIds="1065,1066,1067" answerLabels="Yes,No,Unknown" style="radio"/>
   </td>
@@ -28,8 +31,8 @@
   <td>
     <obs conceptId="164168" labelText="ICU stay during admission?&lt;br/&gt;" answerSeparator=" " answerConceptIds="1065,1066,1067" answerLabels="Yes,No,Unknown" style="radio"/>
   </td>
- </tr>
- <tr>
+  </tr>
+  <tr>
  	<td>  
 		<obs conceptId="164167" labelText="HDU stay during admission?&lt;br/&gt;" answerSeparator=" " answerConceptIds="1065,1066,1067" answerLabels="Yes,No,Unknown" style="radio"/>
 	</td>
