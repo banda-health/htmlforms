@@ -15,43 +15,43 @@
     Date of Admission: <lookup expression="visit.startDatetime"/>
   </td>
   <td>
-    <obs conceptId="1641" labelText="Date of Discharge:" allowTime="false"/>
+    <obs conceptId="164174" labelText="Is the Audit Data Complete?&lt;br/&gt;" defaultObsDatetime="now" answerSeparator=" " answerConceptIds="1065,1066" answerLabels="Yes,No" style="radio"/>
   </td>
   <td>
-    <obs conceptId="164173" labelText="Death in Hospital:&lt;br/&gt;" answerSeparator=" " answerConceptIds="1065,1066" answerLabels="Yes,No" style="radio"/>
+    <obs conceptId="164173" labelText="Death in Hospital:&lt;br/&gt;" defaultObsDatetime="now" answerSeparator=" " answerConceptIds="1065,1066" answerLabels="Yes,No" style="radio"/>
   </td>
   </tr>
   <tr>
   <td>
-    <obs conceptId="164166" labelText="PALLIATIVE CONSULT&lt;br/&gt;" answerSeparator=" " answerConceptIds="1065,1066,1067" answerLabels="Yes,No,Unknown" style="radio"/>
+    <obs conceptId="164166" labelText="PALLIATIVE CONSULT&lt;br/&gt;" defaultObsDatetime="now" answerSeparator=" " answerConceptIds="1065,1066,1067" answerLabels="Yes,No,Unknown" style="radio"/>
   </td>
   <td>
-    <obs conceptId="164164" labelText="PRE-OP RISK ASSESSMENT ONLY?&lt;br/&gt;" answerSeparator=" " answerConceptIds="1065,1066,1067" answerLabels="Yes,No,Unknown" style="radio"/>
+    <obs conceptId="164164" labelText="PRE-OP RISK ASSESSMENT ONLY?&lt;br/&gt;" defaultObsDatetime="now" answerSeparator=" " answerConceptIds="1065,1066,1067" answerLabels="Yes,No,Unknown" style="radio"/>
   </td>
   <td>
-    <obs conceptId="164168" labelText="ICU stay during admission?&lt;br/&gt;" answerSeparator=" " answerConceptIds="1065,1066,1067" answerLabels="Yes,No,Unknown" style="radio"/>
+    <obs conceptId="164168" labelText="ICU stay during admission?&lt;br/&gt;" defaultObsDatetime="now" answerSeparator=" " answerConceptIds="1065,1066,1067" answerLabels="Yes,No,Unknown" style="radio"/>
   </td>
   </tr>
   <tr>
  	<td>  
-		<obs conceptId="164167" labelText="HDU stay during admission?&lt;br/&gt;" answerSeparator=" " answerConceptIds="1065,1066,1067" answerLabels="Yes,No,Unknown" style="radio"/>
+		<obs conceptId="164167" labelText="HDU stay during admission?&lt;br/&gt;" defaultObsDatetime="now" answerSeparator=" " answerConceptIds="1065,1066,1067" answerLabels="Yes,No,Unknown" style="radio"/>
 	</td>
  	<td>
-		<obs conceptId="164165" labelText="HDU CO-MGMT ONLY?&lt;br/&gt;" answerSeparator=" " answerConceptIds="1065,1066,1067" answerLabels="Yes,No,Unknown" style="radio"/>
+		<obs conceptId="164165" labelText="HDU CO-MGMT ONLY?&lt;br/&gt;" defaultObsDatetime="now" answerSeparator=" " answerConceptIds="1065,1066,1067" answerLabels="Yes,No,Unknown" style="radio"/>
 	</td>
   <td>
-    <obs conceptId="1169" labelText="HIV+:&lt;br/&gt;" answerSeparator=" " answerConceptIds="703,664,1067" answerLabels="Yes,No,Unknown" style="radio"/>
+    <obs conceptId="1169" labelText="HIV+:&lt;br/&gt;" defaultObsDatetime="now" answerSeparator=" " answerConceptIds="703,664,1067" answerLabels="Yes,No,Unknown" style="radio"/>
   </td>
 	</tr>
   <tr>
   <td>  
-    <obs conceptId="5497" labelText="CD4:"/>
+    <obs conceptId="5497" labelText="CD4:" defaultObsDatetime="now"/>
   </td>
   	<td>
-		<obs conceptId="159644" labelText="HbA1c:" />
+		<obs conceptId="159644" labelText="HbA1c:" defaultObsDatetime="now"/>
 	</td>
 	<td>  
-    <obs conceptId="161630" labelText="Type of inpatient service" answerConceptIds="161627,161623,160465,160452,160456,160472,160455,160476" answerLabels="General medicine service,Surgery service,Orthopedic department,Plastic Surgery Department,Obstetrics and gynecology department,Neurosurgery department,Ear nose and throat department,Urology department" />
+    <obs conceptId="161630" labelText="Type of inpatient service" defaultObsDatetime="now" answerConceptIds="161627,161623,160465,160452,160456,160472,160455,160476" answerLabels="General medicine service,Surgery service,Orthopedic department,Plastic Surgery Department,Obstetrics and gynecology department,Neurosurgery department,Ear nose and throat department,Urology department" />
   </td>
   </tr>
   </table>
@@ -62,7 +62,7 @@
                 <table width="100%">
                     <tr>
                         <td>
-                            <obs conceptId="1642" labelText="Discharge Diagnosis:" answerClasses="Diagnosis" style="autocomplete" />
+                            <obs conceptId="1642" labelText="Discharge Diagnosis:" defaultObsDatetime="now" answerClasses="Diagnosis" style="autocomplete" />
                         </td>
                     </tr>
                     </table>
