@@ -1,85 +1,66 @@
 <htmlform>
-
-	<macros>
-		paperFormId = (Fill this in)
-		headerColor =#009d8e
-		fontOnHeaderColor = white
-	</macros>
-	<script type="text/javascript">
-	
-		$j(function(){
-			$j('.type').hide();
-		});
-	</script>
-	
-	<style>
-		.section {
-			border: 1px solid $headerColor;
-			padding: 2px;
-			text-align: left;
-			margin-bottom: 1em;
-		}
-		.sectionHeader {
-			background-color: $headerColor;
-			color: $fontOnHeaderColor;
-			display: block;
-			padding: 2px;
-			font-weight: bold;
-		}
-		table.baseline-aligned td {
-			vertical-align: baseline;
-		}
-		td.lookup {
-			background-color:yellow;
+	<style type="text/css">
+	td{
+    word-wrap:break-word
+	}
+	td.lookup {
+			
+			color: #eeeeee;
 		}
 	</style>
 
-	<h2>Lab and Prescription Order</h2>
-		<div id="EncounterDetails" style="visibility: hidden; display: none;">
-		<section headerLabel="Encounter Details">
-  		<br/>
-  		<br/>
-    	Date: <encounterDate default="today"/> <br/>
-    	Location: <encounterLocation default="SessionAttribute:emrContext.sessionLocationId"/>
-    	Provider: <encounterProvider default="currentUser"/>
- 		</section>
- 		</div>
-        <section headerLabel="Lab and Prescription">
-		<table class="baseline-aligned">
+	<h2 style="color: #00463f">Lab and Prescription Order</h2>
+
+	<div id="EncounterDetails" style="visibility: hidden; display: none;">
+	<section headerLabel="Encounter Details">
+  	<br/>
+  	<br/>
+    Date: <encounterDate default="today"/> <br/>
+    Location: <encounterLocation default="SessionAttribute:emrContext.sessionLocationId"/>
+    Provider: <encounterProvider default="currentUser"/>
+ 	</section>
+ 	</div>
+        <section>
+		<table style="table-layout: fixed;100%">
 			<tr>
-				<th style="background-color: #696969; color: #ffffff;">Lab Order</th>
-				<th style="background-color: #696969; color: #ffffff;">Previous Lab Order</th>
+				<th align="left" style="background-color: #f3f3f3; color: #00463f;">Lab Order</th>
+				<th align="left" style="background-color: #f3f3f3; color: #00463f;">Previous Lab Order</th>
 
 			</tr>
 			<tr>
-				<td><obs conceptId="164148" cols="20" rows="5" /></td>
-			
+				<td><obs conceptId="164148" cols="48" rows="5" /></td>
 				<ifMode mode="ENTER">
-					<td class="lookup">
-						<lookup complexExpression="#foreach($obs in $fn.allObs(164148)) 
-							$obs.valueText &lt;br &gt; [#Date: $obs.obsDatetime] &lt;hr &gt; &lt;br &gt; #end" class="value"/>
-					</td>
+				<td class="lookup" valign="bottom">
+					<lookup expression="fn.latestObs(164148).obsDatetime" class="value"/> 
+					<lookup expression="fn.latestObs(164148).valueText" class="value"/>
+				</td> 
 				</ifMode>
 			</tr>
+			
 		</table>
-		<table class="baseline-aligned">
+		<table style="table-layout: fixed;100%">
 			<tr>
-				<th style="background-color: #696969; color: #ffffff;">Prescription</th>
-				<th style="background-color: #696969; color: #ffffff;">Previous Prescription</th>
+				<th align="left" style="background-color: #f3f3f3; color: #00463f;">Prescription</th>
+				<th align="left" style="background-color: #f3f3f3; color: #00463f;">Previous Prescription</th>
 			</tr>
 			<tr>
-				<td><obs conceptId="164149" cols="20" rows="5" /></td>
-			
-				<ifMode mode="ENTER">
-					<td class="lookup">
-						<lookup complexExpression="#foreach($obs in $fn.allObs(164149)) 
-							$obs.valueText &lt;br &gt; [#Date: $obs.obsDatetime] &lt;hr &gt; &lt;br &gt; #end" class="value"/>
-					</td>
+				<td><obs conceptId="164149" cols="48" rows="5" /></td>
+					<ifMode mode="ENTER">
+					<td class="lookup" valign="top">
+					<lookup expression="fn.latestObs(164149).obsDatetime" class="value"/> 
+					<lookup expression="fn.latestObs(164149).valueText" class="value"/>
+				</td> 
 				</ifMode>
 			</tr>
+			
 		</table>
 	</section>
 
-	<submit/>
+	<ifMode mode="VIEW" include="false">
+        <div id="buttons">
+            <submit submitClass="confirm right" submitCode="general.save"/>
+            <button type="button" class="cancel"><uimessage code="general.cancel"/></button>
+        </div>
+    </ifMode>
 
 </htmlform>
