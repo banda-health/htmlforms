@@ -1,0 +1,66 @@
+<htmlform>
+	<style type="text/css">
+	td{
+    word-wrap:break-word
+	}
+	td.lookup {
+			
+			color: #eeeeee;
+		}
+	</style>
+
+	<h2 style="color: #00463f">Lab and Prescription Order</h2>
+
+	<div id="EncounterDetails" style="visibility: hidden; display: none;">
+	<section headerLabel="Encounter Details">
+  	<br/>
+  	<br/>
+    Date: <encounterDate default="today"/> <br/>
+    Location: <encounterLocation default="SessionAttribute:emrContext.sessionLocationId"/>
+    Provider: <encounterProvider default="currentUser"/>
+ 	</section>
+ 	</div>
+        <section>
+		<table style="table-layout: fixed;100%">
+			<tr>
+				<th align="left" style="background-color: #f3f3f3; color: #00463f;">Lab Order</th>
+				<th align="left" style="background-color: #f3f3f3; color: #00463f;">Previous Lab Order</th>
+
+			</tr>
+			<tr>
+				<td><obs conceptId="164147" cols="48" rows="5" /></td>
+				<ifMode mode="ENTER">
+				<td class="lookup" valign="top">
+					<lookup expression="fn.latestObs(164147).obsDatetime" class="value"/> 
+					<lookup expression="fn.latestObs(164147).valueText" class="value"/>
+				</td> 
+				</ifMode>
+			</tr>
+			
+		</table>
+		<table style="table-layout: fixed;100%">
+			<tr>
+				<th align="left" style="background-color: #f3f3f3; color: #00463f;">Prescription</th>
+				<th align="left" style="background-color: #f3f3f3; color: #00463f;">Previous Prescription</th>
+			</tr>
+			<tr>
+				<td><obs conceptId="164146" cols="48" rows="5" /></td>
+					<ifMode mode="ENTER">
+					<td class="lookup" valign="top">
+					<lookup expression="fn.latestObs(164146).obsDatetime" class="value"/> 
+					<lookup expression="fn.latestObs(164146).valueText" class="value"/>
+				</td> 
+				</ifMode>
+			</tr>
+			
+		</table>
+	</section>
+
+	<ifMode mode="VIEW" include="false">
+        <div id="buttons">
+            <submit submitClass="confirm right" submitCode="general.save"/>
+            <button type="button" class="cancel"><uimessage code="general.cancel"/></button>
+        </div>
+    </ifMode>
+
+</htmlform>
