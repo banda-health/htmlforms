@@ -1,4 +1,9 @@
 <htmlform formUuid="667dc18e-740f-44ce-ae0a-5ba6b33308b0" formName="Audit Data Form" formEncounterType="7dc1632c-f947-474f-b92c-7add68019aec" formVersion="1.0">
+  <style>
+    td {
+      column-span: 5;
+    }
+  </style>
 <div id="EncounterDetails" style="visibility: hidden; display: none;">
 <section headerLabel="Encounter Details">
   <br/>
@@ -9,14 +14,18 @@
  </section>
  </div>
  <div id="Visit Attributes" style="visibility: visible; display: block;">
- <table>
-  <tr>
+ <table class="attributes">
+ <tr>
   <td>
     <obs conceptId="161630AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" labelText="Primary Service" defaultObsDatetime="now" answerConceptIds="161627AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,161623AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,164949AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,164950AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,164951AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,164952AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,164953AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,164954AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabels="General medicine service,Surgical service,Orthopedic service,Plastic surgery service,Obstetrics and gynecology service,Neurosurgery service,Ear nose and throat service,Urology service" />
   </td>
+  </tr>
+  <tr>
   <td>
     <obs conceptId="ec559b53-8cc9-4b54-a34e-95a605919365" labelText="Death in Hospital:&lt;br/&gt;" defaultObsDatetime="now" answerSeparator=" " answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabels="Yes,No" style="radio"/>
   </td>
+  </tr>
+  <tr>
   <td>
     <obs conceptId="eadfe47c-7988-42ea-97d0-e21ce71db7e0" labelText="PRE-OP RISK ASSESSMENT ONLY?&lt;br/&gt;" defaultObsDatetime="now" answerSeparator=" " answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1067AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabels="Yes,No,Unknown" style="radio"/>
   </td>
@@ -25,9 +34,13 @@
   <td>
     <obs conceptId="a9ae21a2-2631-49d6-928c-d23001812729" labelText="PALLIATIVE CONSULT&lt;br/&gt;" defaultObsDatetime="now" answerSeparator=" " answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1067AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabels="Yes,No,Unknown" style="radio"/>
   </td>
+  </tr>
+  <tr>
   <td>
     <obs conceptId="1169AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" labelText="HIV+:&lt;br/&gt;" defaultObsDatetime="now" answerSeparator=" " answerConceptIds="703AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,664AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1067AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabels="Positive,Negative,Unknown" style="radio"/>
   </td>
+  </tr>
+  <tr>
   <td>  
     <obs conceptId="5497AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" labelText="CD4:" defaultObsDatetime="now"/>
   </td>
@@ -36,9 +49,13 @@
   <td>  
     <obs conceptId="a424ed50-5f94-4296-a91c-73ebbc1ccca1" labelText="Patient diabetic?&lt;br/&gt;" defaultObsDatetime="now" answerSeparator=" " answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1067AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabels="Yes,No,Unknown" style="radio"/>
   </td>
+  </tr>
+  <tr>
   <td>
     <obs conceptId="159644AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" labelText="HbA1c:" defaultObsDatetime="now"/>
   </td>
+  </tr>
+  <tr>
   <td>
     <obs conceptId="59073230-e0d9-4cbc-bebc-4bf91a42f3bb" labelText="Ward stay during admission&lt;br/&gt;" defaultObsDatetime="now" answerSeparator=" " answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1067AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabels="Yes,No,Unknown" style="radio"/>
   </td>
@@ -47,9 +64,13 @@
   <td>  
     <obs conceptId="46d4283e-3275-4c6e-9d52-cfd858889f4b" labelText="HDU stay during admission?&lt;br/&gt;" defaultObsDatetime="now" answerSeparator=" " answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1067AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabels="Yes,No,Unknown" style="radio"/>
   </td>
+  </tr>
+  <tr>
   <td>
     <obs conceptId="dd61d87f-3398-46c2-8108-00db2e49bab6" labelText="HDU CO-MGMT ONLY?&lt;br/&gt;" defaultObsDatetime="now" answerSeparator=" " answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1067AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabels="Yes,No,Unknown" style="radio"/>
   </td>
+  </tr>
+  <tr>
   <td>  
     <obs conceptId="9446f7aa-7a1c-4246-a0a5-1ebc3560a0e0" labelText="ICU stay during admission?&lt;br/&gt;" defaultObsDatetime="now" answerSeparator=" " answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1067AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabels="Yes,No,Unknown" style="radio"/>
   </td>
@@ -58,9 +79,13 @@
   <td>  
     <obs conceptId="99f47aa5-827c-4472-9884-fbbc094f70bd" labelText="Mechanical ventilation&lt;br/&gt;" defaultObsDatetime="now" answerSeparator=" " answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1067AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabels="Yes,No,Unknown" style="radio"/>
   </td>
+  </tr>
+  <tr>
   <td>
     <obs conceptId="611cfa95-0685-4c76-bf9c-981647a085e6" labelText="Received vaospressors during hospital stay?&lt;br/&gt;" defaultObsDatetime="now" answerSeparator=" " answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1067AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabels="Yes,No,Unknown" style="radio"/>
   </td>
+  </tr>
+  <tr>
   <td>  
     <obs conceptId="8284a6a3-0445-4a23-96cd-8c6767397051" labelText="Suspected or confirmed infection within 24 hours of ICU admission (e.g Abx ordered) &lt;br/&gt;" defaultObsDatetime="now" answerSeparator=" " answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1067AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabels="Yes,No,Unknown" style="radio"/>
   </td>
@@ -69,9 +94,13 @@
   <td>
     <obs conceptId="8f7ad9c2-aca6-458e-9362-963b4d391a7c" labelText="1st SBP in ICU &#8804; 90?&lt;br/&gt;" defaultObsDatetime="now" answerSeparator=" " answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1067AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabels="Yes,No,Unknown" style="radio"/>
   </td>
+  </tr>
+  <tr>
   <td>
     <obs conceptId="0b19946c-63a6-41e8-b3af-a87fc6addab4" labelText="1st MAP in ICU &#8804; 65? &lt;br/&gt;" defaultObsDatetime="now" answerSeparator=" " answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1067AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabels="Yes,No,Unknown" style="radio"/>
   </td>
+  </tr>
+  <tr>
   <td>
     <obs conceptId="7cccf308-edca-4c3e-afde-e7a3f1155ec6" labelText="Had patient received any sedation prior to 1st GCS score at ICU admission?&lt;br/&gt;" defaultObsDatetime="now" answerSeparator=" " answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1067AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabels="Yes,No,Unknown" style="radio"/>
   </td>
@@ -80,9 +109,13 @@
   <td>
     <obs conceptId="8b1d25f9-2f2e-4dfa-a5a1-87e2f7a3bb52" labelText="Surgery during hospital stay&lt;br/&gt;" defaultObsDatetime="now" answerSeparator=" " answerConceptIds="1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,d8dc2abe-d5a5-44b1-9dc6-809a993a8dbc,1680114c-72b9-44d7-a292-f2c981322587" answerLabels="No,Yes - scheduled in clinic,Yes - not scheduled in clinic" style="radio"/>
   </td>
+  </tr>
+  <tr>
   <td>  
     <obs conceptId="9360b4f4-4456-4bc2-97fd-68e661a19d78" labelText="1st heart rate in ICU" defaultObsDatetime="now"/>
   </td>
+  </tr>
+  <tr>
   <td>
     <obs conceptId="99659fa6-fe39-41d7-ac6b-f183d9231310" labelText="1st GCS score at ICU admission (#)" defaultObsDatetime="now"/>
   </td>
