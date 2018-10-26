@@ -28,6 +28,15 @@
        });
     });
    jQuery(function() {
+       getField('death_in_hospital.value').change(function() {
+          if ( getValue('death_in_hospital.value') == '1065')  {
+               document.getElementById('yes_death_in_hospital').style.display='block';
+          } else {
+              document.getElementById('yes_death_in_hospital').style.display='none';
+          }
+       });
+    });
+   jQuery(function() {
           if ( getValue('hiv_positive.value') == '703')  {
                document.getElementById('cd4_count').style.display='block';
           } else {
@@ -48,6 +57,15 @@
               document.getElementById('yes_icustay').style.display='none';
           }
        });
+   jQuery(function() {
+       getField('death_in_hospital.value').change(function() {
+          if ( getValue('death_in_hospital.value') == '1065')  {
+               document.getElementById('yes_death_in_hospital').style.display='block';
+          } else {
+              document.getElementById('yes_death_in_hospital').style.display='none';
+          }
+       });
+    });
   </script>
   <style>
     td {
@@ -72,9 +90,36 @@
   </tr>
   <tr>
     <td>
-      <obs conceptId="ec559b53-8cc9-4b54-a34e-95a605919365" labelText="Death in Hospital:&lt;br/&gt;" defaultObsDatetime="now" answerSeparator=" " answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabels="Yes,No" style="radio"/>
+      <obs conceptId="ec559b53-8cc9-4b54-a34e-95a605919365" id="death_in_hospital" labelText="Death in Hospital:&lt;br/&gt;" defaultObsDatetime="now" answerSeparator=" " answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabels="Yes,No"/>
     </td>
   </tr>
+  <tbody id="yes_death_in_hospital" style="display: none">
+  <tr>
+    <td>  
+      <obs conceptId="24718921-c543-40c8-8860-72c8bd2f6042" labelText="Anticipated death following a terminal illness and/or following pre-arrival cardiac/respiratory arrest?&lt;br/&gt;" defaultObsDatetime="now" answerSeparator=" " answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabels="Yes,No" style="radio"/>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <obs conceptId="b4a4946f-b6d7-42f7-9312-5177cf1f7f07" labelText="Expected death given clinical situation, despite the health service taking preventative measures?&lt;br/&gt;" defaultObsDatetime="now" answerSeparator=" " answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabels="Yes,No" style="radio"/>
+    </td>
+  </tr>
+  <tr>
+    <td>  
+      <obs conceptId="5cd85418-e409-40cf-a13f-8cbc7cbca206" labelText="Unexpected death, not reasonably preventable with medical intervention?&lt;br/&gt;" defaultObsDatetime="now" answerSeparator=" " answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabels="Yes,No" style="radio"/>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <obs conceptId="31afb19a-40fb-47ee-bc09-86b04d13cd69" labelText="Preventable death - Quality / system issues / opportunity for improvement identified?&lt;br/&gt;" defaultObsDatetime="now" answerSeparator=" " answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabels="Yes,No" style="radio"/>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <obs conceptId="0d29fff3-58f5-474c-9ce3-93c1b71f2aab" labelText="Unexpected death, resulting from medical intervention? &lt;br/&gt;" defaultObsDatetime="now" answerSeparator=" " answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabels="Yes,No" style="radio"/>
+    </td>
+  </tr>
+  </tbody>
   <tr>
     <td>
       <obs conceptId="eadfe47c-7988-42ea-97d0-e21ce71db7e0" labelText="PRE-OP RISK ASSESSMENT ONLY?&lt;br/&gt;" defaultObsDatetime="now" answerSeparator=" " answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1067AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabels="Yes,No,Unknown" style="radio"/>
